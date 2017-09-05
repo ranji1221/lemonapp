@@ -13,9 +13,9 @@
     <modules>
 		<module>lemoncommon</module>
 		<module>lemonmodel</module>
-		<!--
 		<module>lemonpersist</module>
 		<module>lemonservice</module>
+		<!--
     	<module>lemonwebapp</module>
 		-->
   	</modules>

@@ -1,6 +1,14 @@
-package org.ranji.lemon.pagination;
+package org.ranji.lemon.persist.authority;
 
-import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.persist.authority.prototype.IUserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,32 +27,30 @@ import java.util.List;
  * See the License for the specific language governing permissions and limitations under the License.
  * Copyright [2017] [RanJi] [Email-jiran1221@163.com]
  * 
- * web项目开发中分页处理的Model类
+ * Authority模块中的UserDao测试类
  * @author RanJi
- * @date 2013-10-1
+ * @date 2017-9-5
  * @since JDK1.7
  * @version 1.0
  */
-public class PagerModel<T> {
 
-	private int total;
-	private List<T> data;
-
-	public int getTotal() {
-		return total;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:spring-persist.xml")
+public class UserDaoTest {
+	
+	@Autowired
+	private IUserDao userDao;
+	
+	@Before
+	public void init(){}
+	
+	@Test
+	public void testAddUser(){
+		User u = new User();
+		u.setUserName("zhangsan");
+		u.setUserPass("123456");
+		
+		userDao.save(u);
 	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
-
-	public List<T> getData() {
-		return data;
-	}
-
-	public void setData(List<T> data) {
-		this.data = data;
-	}
-
+	
 }
-

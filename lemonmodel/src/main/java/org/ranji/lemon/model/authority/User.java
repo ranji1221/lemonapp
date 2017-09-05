@@ -1,6 +1,6 @@
-package org.ranji.lemon.pagination;
+package org.ranji.lemon.model.authority;
 
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,32 +19,41 @@ import java.util.List;
  * See the License for the specific language governing permissions and limitations under the License.
  * Copyright [2017] [RanJi] [Email-jiran1221@163.com]
  * 
- * web项目开发中分页处理的Model类
+ * Authority模块中的User用户类
  * @author RanJi
  * @date 2013-10-1
  * @since JDK1.7
  * @version 1.0
  */
-public class PagerModel<T> {
+public class User implements Serializable {
 
-	private int total;
-	private List<T> data;
+	private static final long serialVersionUID = -7866077717886165234L;
+	private int id;
+	private String userName;
+	private String userPass;
 
-	public int getTotal() {
-		return total;
+	public int getId() {
+		return id;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public List<T> getData() {
-		return data;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setData(List<T> data) {
-		this.data = data;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
+	public String getUserPass() {
+		return userPass;
+	}
+
+	public void setUserPass(String userPass) {
+		this.userPass = userPass;
+	}
+	
 }
-

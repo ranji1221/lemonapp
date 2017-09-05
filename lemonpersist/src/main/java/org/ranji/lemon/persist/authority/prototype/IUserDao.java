@@ -1,6 +1,8 @@
-package org.ranji.lemon.pagination;
+package org.ranji.lemon.persist.authority.prototype;
 
 import java.util.List;
+import org.ranji.lemon.persist.common.prototype.IGenericDao;
+import org.ranji.lemon.model.authority.User;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,32 +21,39 @@ import java.util.List;
  * See the License for the specific language governing permissions and limitations under the License.
  * Copyright [2017] [RanJi] [Email-jiran1221@163.com]
  * 
- * web项目开发中分页处理的Model类
+ * IUserDao接口类
  * @author RanJi
  * @date 2013-10-1
  * @since JDK1.7
  * @version 1.0
  */
-public class PagerModel<T> {
+public interface IUserDao extends IGenericDao<User, Integer> {
 
-	private int total;
-	private List<T> data;
+	/**
+	 * 存储用户-角色的对应
+	 * @param userId 用户id
+	 * @param roleId 角色id
+	 */
+	public void saveUR(int userId, int roleId);
 
-	public int getTotal() {
-		return total;
-	}
+	/**
+	 * 删除用户-角色的对应
+	 * @param userId 用户id
+	 * @param roleId 角色id
+	 */
+	public void deleteUR(int userId, int roleId);
 
-	public void setTotal(int total) {
-		this.total = total;
-	}
+	/**
+	 * 删除某用户的全部用户-角色的对应
+	 * @param userId 用户id
+	 */
+	public void deleteURsByUserId(int userId);
 
-	public List<T> getData() {
-		return data;
-	}
-
-	public void setData(List<T> data) {
-		this.data = data;
-	}
+	/**
+	 * 根据用户id查询全部的用户-角色对应
+	 * @param userId 用户id
+	 * @return 角色id集合
+	 */
+	public List<Integer> findURsByUserId(int userId);
 
 }
-
