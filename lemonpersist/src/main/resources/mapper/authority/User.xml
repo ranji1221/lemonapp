@@ -5,5 +5,18 @@
 	<insert id="save" parameterType="User" keyProperty="id" useGeneratedKeys="true">
 		insert into tbl_auth_user (userName, userPass) values (#{userName}, #{userPass})
 	</insert>
-
+	
+	<select id="findAll" resultType="User" parameterType="Map">
+		select * from tbl_auth_user
+		where 1=1
+		<include refid="paramsSQL"/>
+	</select>
+	
+	<!-- 通用的设置条件的查询SQL语句 -->
+	<sql id="paramsSQL">
+		<if test=" userName != null and userName != '' ">
+			and userName like concat(concat('%', #{userName, jdbcType=VARCHAR}),'%')
+		</if>
+	</sql>
+	
 </mapper>

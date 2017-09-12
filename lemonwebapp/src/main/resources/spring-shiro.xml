@@ -15,7 +15,7 @@
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<bean id="systemRealm" class="com.ityyedu.jiran.support.shiro.SystemRealm" />
+	<bean id="systemRealm" class="org.ranji.lemon.common.security.SystemRealm" />
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- 设置自定义realm -->
 		<property name="realm" ref="systemRealm" />
@@ -23,7 +23,7 @@
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 	<bean id="shiro" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/web/admin/common/login.html" />
+		<property name="loginUrl" value="/backend/login" />
 		<property name="successUrl" value="/web/admin/common/main.html" />
 		<property name="filterChainDefinitions">
 			<value>

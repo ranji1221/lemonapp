@@ -43,7 +43,6 @@
 	<!-- 依赖管理，它的优势在于若子模块覆盖了父模块的依赖则真正的引入，否则不引入Jar文件 -->
 	<dependencyManagement>
 		<dependencies>
-			
 			<!-- JavaEE (Servlet API) -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
