@@ -14,7 +14,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>lemoncommon</artifactId>
 	<packaging>jar</packaging>
-	<name>Lemon Common</name>
+	<name>Lemon Common Project</name>
 	
 	<!-- lemon云的common子平台的依赖配置 -->
 	<dependencies>

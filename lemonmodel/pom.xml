@@ -14,7 +14,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>lemonmodel</artifactId>
 	<packaging>jar</packaging>
-	<name>Lemon </name>
+	<name>Lemon Model Project</name>
 
 	<dependencies>
 		<dependency>
