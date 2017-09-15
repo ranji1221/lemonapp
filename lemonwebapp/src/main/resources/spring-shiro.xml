@@ -24,7 +24,6 @@
 	<bean id="shiro" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/backend/login" />
-		<property name="successUrl" value="/web/admin/common/main.html" />
 		<property name="filterChainDefinitions">
 			<value>
 				/login = anon

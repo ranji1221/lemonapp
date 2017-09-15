@@ -7,6 +7,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.ranji.lemon.annotation.SystemControllerLog;
 import org.ranji.lemon.model.authority.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,20 +62,16 @@ public class LoginController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView login(User user, HttpSession session,HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
-		System.out.println(user.getUserName());
-		System.out.println(user.getUserPass());
 		Subject currentUser = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getUserPass());
 		try{
-			System.out.println("cccccccccccccccc");
 			currentUser.login(token);
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa");
 			session.setAttribute("userInfo", user);
-			mv.setViewName("redirect:/backend/admin");
+			mv.setViewName("redirect:/index.jsp");
 		} catch (AuthenticationException e){
 			mv.addObject("message", "login errors");
 			mv.setViewName("redirect:/backend/login");
-		}
+		} 
 		return mv;
 	}
 }

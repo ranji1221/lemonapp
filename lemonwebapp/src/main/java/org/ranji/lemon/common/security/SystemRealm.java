@@ -10,6 +10,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.ranji.lemon.model.authority.User;
@@ -44,15 +45,12 @@ public class SystemRealm extends AuthorizingRealm{
 	@Autowired
 	private IUserService userService;
 	
-	
-	
 	/**
 	 * 编写认证代码
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authToken) throws AuthenticationException {
-		System.out.println("bbbbbbbbbbbbbbbbbbbb");
 		//--
 		UsernamePasswordToken token = (UsernamePasswordToken)authToken;
 		//-- 1. 根据验证单的填写的名字从后台查找用户
@@ -73,9 +71,18 @@ public class SystemRealm extends AuthorizingRealm{
 	 * 编写授权代码
 	 */
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-		return null;
-		
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		//-- 编写授权代码
+		//-- 以下的代码是测试代码，假设所有的用户都会有"user:list"的权限
+		//-- 在实际的开发中，我们会自己写好user-role-permission模块，然后从数据库中查询，用户的权限
+		//-- 并可以赋予用户权限
+		String userName = (String)principals.fromRealm(getName()).iterator().next();
+		SimpleAuthorizationInfo info = null;
+		if(userName != null && !"".equals(userName))
+			info = new SimpleAuthorizationInfo();
+		info.addStringPermission("user:add");
+		info.addStringPermission("user:delete");
+		return info;
 		
 	}
 	

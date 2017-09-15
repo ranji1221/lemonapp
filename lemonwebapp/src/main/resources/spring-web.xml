@@ -29,9 +29,20 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
+	
+	<!-- 启动对@AspectJ注解的支持 （为实现日志管理而自定义切面所需要） -->
+	<aop:aspectj-autoproxy/>
+	
 	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+	<context:component-scan base-package="org.ranji.lemon.common.aop" />    <!-- 自定义系统日志切面实现 -->
 	<context:component-scan base-package="org.ranji.lemon.controller" />
+	
+	<!-- 通过线程池来执行日志保存 -->
+	<bean id="taskExecutor"   class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">  
+        <property name="corePoolSize" value="5" />  
+        <property name="maxPoolSize" value="10" />  
+        <property name="WaitForTasksToCompleteOnShutdown" value="true" />  
+    </bean>  
 
 	<!-- 资源映射 -->
 	<mvc:resources mapping="/img/**" location="/images/" />
@@ -48,17 +59,22 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
-	<!-- 启用shiro安全框架的注解功能 暂时注释掉安全框架 -->
-	<!-- <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor" />
-	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-		<property name="securityManager" ref="securityManager" />
-	</bean> -->
-
 	<!-- 全局异常处理 -->
+	<bean id="exceptionResolver" class="org.ranji.lemon.common.exception.SystemExceptionResolver"></bean>
+	
 	<!-- 
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView" value="forward:/backend/error" />
-		<property name="exceptionAttribute" value="ex" />
+		<property name="exceptionMappings">  
+	        <props>  
+	            <prop key="org.apache.shiro.authz.UnauthorizedException">
+	            	/exception/unauthorized
+	            </prop>   
+	            <prop key="org.apache.shiro.authz.UnauthenticatedException">  
+	                /exception/unauthenticated  
+	            </prop>  
+	        </props>  
+	    </property>  
 	</bean>
-	 -->
+	-->
 </beans>

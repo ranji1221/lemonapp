@@ -2,10 +2,13 @@ package org.ranji.lemon.controller.backend.authority;
 
 import java.util.Arrays;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.ranji.lemon.annotation.SystemControllerLog;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.service.authority.prototype.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,12 +46,24 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 	
+	
+	@RequiresPermissions("user:add")
+	@RequestMapping(value = "/adduser")
+	@SystemControllerLog(description="权限管理-添加用户")
 	@ResponseBody
-	@RequestMapping(value = "/test")
-	public String test() {
-		return "test success";
+	public String addUser() {
+		return "add user success";
 	}
-
+	
+	@RequiresPermissions("user:delete")
+	@RequestMapping(value = "/deleteuser")
+	@SystemControllerLog(description="权限管理-删除用户")
+	@ResponseBody
+	public String deleteUser() {
+		return "delete user success";
+	}
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "/add")
 	public String add(User obj) {
