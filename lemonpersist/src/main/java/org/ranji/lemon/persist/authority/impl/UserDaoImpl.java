@@ -36,29 +36,29 @@ import org.springframework.stereotype.Repository;
 public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements IUserDao {
 
 	@Override
-	public void saveUR(int userId, int roleId) {
+	public void saveUserAndRoleRelation(int userId, int roleId) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userId", userId);
 		params.put("roleId", roleId);
-		sqlSessionTemplate.insert(typeNameSpace + ".saveUR", params);
+		sqlSessionTemplate.insert(typeNameSpace + ".saveUserAndRoleRelation", params);
 	}
 
 	@Override
-	public void deleteUR(int userId, int roleId) {
+	public void deleteUserAndRoleRelation(int userId, int roleId) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userId", userId);
 		params.put("roleId", roleId);
-		sqlSessionTemplate.delete(typeNameSpace + ".deleteUR", params);
+		sqlSessionTemplate.delete(typeNameSpace + ".deleteUserAndRoleRelation", params);
 	}
 
 	@Override
-	public void deleteURsByUserId(int userId) {
-		sqlSessionTemplate.delete(typeNameSpace + ".deleteURsByUserId", userId);
+	public void deleteUserAndRolesRelationByUserId(int userId) {
+		sqlSessionTemplate.delete(typeNameSpace + ".deleteUserAndRolesRelationByUserId", userId);
 	}
 
 	@Override
-	public List<Integer> findURsByUserId(int userId) {
-		return sqlSessionTemplate.selectList(typeNameSpace + ".findURsByUserId", userId);
+	public List<Integer> findUserRolesRelationByUserId(int userId) {
+		return sqlSessionTemplate.selectList(typeNameSpace + ".findUserRolesRelationByUserId", userId);
 	}
 
 }
