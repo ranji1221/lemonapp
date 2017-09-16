@@ -76,5 +76,7 @@ public class Role implements Serializable{
 	
 	public void test11(){}
 	
-	public void test(){}
+	public void test(){
+		System.out.println("测试测试");
+	}
 }
