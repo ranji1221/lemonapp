@@ -74,7 +74,7 @@ public class Role implements Serializable{
 		this.roleMaxNum = roleMaxNum;
 	}
 	
-	public void test11(){
-		
-	}
+	public void test11(){}
+	
+	public void test(){}
 }
