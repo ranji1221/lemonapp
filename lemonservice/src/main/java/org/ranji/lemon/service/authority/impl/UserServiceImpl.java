@@ -61,22 +61,26 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
 
 	@Override
 	public void saveUR(int userId, int roleId) {
-		((IUserDao) dao).saveUR(userId, roleId);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteUR(int userId, int roleId) {
-		((IUserDao) dao).deleteUR(userId, roleId);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteURsByUserId(int userId) {
-		((IUserDao) dao).deleteURsByUserId(userId);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public List<Integer> findURsByUserId(int userId) {
-		return ((IUserDao) dao).findURsByUserId(userId);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

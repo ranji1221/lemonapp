@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.ranji.lemon.annotation.SystemControllerLog;
+import org.ranji.lemon.annotation.SystemControllerPermission;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.service.authority.prototype.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -47,11 +49,14 @@ public class UserController {
 	private IUserService userService;
 	
 	
-	@RequiresPermissions("user:add")
+	//@RequiresPermissions("user:add")
+	@SystemControllerPermission("user:add")
 	@RequestMapping(value = "/adduser")
 	@SystemControllerLog(description="权限管理-添加用户")
 	@ResponseBody
 	public String addUser() {
+		System.out.println("cccccccccccccccccccccccccccccccccccccccccc");
+		System.out.println("dddddddddddddddddddddddddddddddddddddddddddd");
 		return "add user success";
 	}
 	
