@@ -1,8 +1,11 @@
 package org.ranji.lemon.persist.authority;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.persist.authority.prototype.IUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +47,77 @@ public class UserDaoTest {
 	@Before
 	public void init(){}
 	
+	//存储用户测试方法
 	@Test
 	public void testAddUser(){
-		User u = new User();
-		u.setUserName("zhangsan");
-		u.setUserPass("123456");
+		for(int i = 1; i < 10; i++){
+			User u = new User();
+			u.setUserName("zhangsan" + i);
+			u.setUserPass("123456");
+			
+			userDao.save(u);
+		}
 		
-		userDao.save(u);
+	}
+	
+
+	//存储用户与角色对应 
+	@Test
+	public void testSaveUserAndRoleRelation(){
+		for(int i = 2; i < 10; i++){
+			userDao.saveUserAndRoleRelation(1, i);
+		}
+	}
+	
+	//删除用户测试方法
+	@Test
+	public void testDeleteRole(){
+		userDao.delete(1);
+	}
+	
+	//删除角色与操作的对应
+	@Test
+	public void testDeleteUserAndRoleRelation(){
+		userDao.deleteUserAndRoleRelation(1, 2);
+	}
+	
+	//根据角色id删除角色与操作的对应
+	@Test
+	public void testDeleteUserAndRolesRelationByUserId(){
+		userDao.deleteUserAndRolesRelationByUserId(1);
+	}
+	//查询某个角色测试方法
+	@Test
+	public void testFindRole(){
+		User user = userDao.find(2);
+		System.out.println(user.getUserName());
+	}
+	
+	//查询全部角色测试方法
+	@Test
+	public void testFindAllRole(){
+		List<User> users = userDao.findAll();
+		for(User us: users){
+			System.out.println(us.getUserName());
+		}
+	}
+	
+	//根据角色id查询角色和操作的对应
+	@Test
+	public void testFindUserRolesRelationByUserId(){
+		List<Integer> userIds = userDao.findUserRolesRelationByUserId(1);
+		for(Integer us: userIds){
+			System.out.println(us);
+		}
+	}
+	//更新角色测试方法
+	@Test
+	public void testUpdateRole(){
+		User us = new User();
+		us.setId(2);
+		us.setUserName("lisi");
+		us.setUserPass("23456");
+		userDao.update(us);
 	}
 	
 }

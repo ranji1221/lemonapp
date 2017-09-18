@@ -4,11 +4,13 @@
 	<typeAliases>
 		<!-- system begin -->
 		<typeAlias type="org.ranji.lemon.model.authority.User" alias="User" />
+		<typeAlias type="org.ranji.lemon.model.authority.Role" alias="Role" />
 		<!-- system end -->
 	</typeAliases>
 	<mappers>
 		<!-- system begin -->
 		<mapper resource="mapper/authority/User.xml" />
+		<mapper resource="mapper/authority/Role.xml" />
 		<!-- system end -->
 	</mappers>
 </configuration>

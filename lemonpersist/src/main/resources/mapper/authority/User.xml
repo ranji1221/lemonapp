@@ -3,20 +3,74 @@
 <mapper namespace="org.ranji.lemon.model.authority.User">
 
 	<insert id="save" parameterType="User" keyProperty="id" useGeneratedKeys="true">
-		insert into tbl_auth_user (userName, userPass) values (#{userName}, #{userPass})
+		insert into lemon_auth_user (userName, userPass) values (#{userName}, #{userPass})
 	</insert>
 	
+	<!-- 存储某个用户和角色的对应关系 -->
+	<insert id="saveUserAndRoleRelation" parameterType="Map" keyProperty="id" useGeneratedKeys="true">
+		insert into lemon_auth_user_role (userId, roleId) values (#{userId}, #{roleId})
+	</insert>
+	
+	<!-- 删除某个用户 -->
+	<delete id="delete" parameterType="int" >
+		delete from lemon_auth_user where id = #{id}
+	</delete>
+	
+	<!-- 删除用户和角色的对应关系 -->
+	<delete id="deleteUserAndRoleRelation" parameterType="Map">
+		delete from lemon_auth_user_role where userId = #{userId} and roleId = #{roleId}
+	</delete>
+	
+	<!-- 根据用户id删除用户和角色的对应关系 -->
+	<delete id="deleteUserAndRolesRelationByUserId" parameterType="int">
+		delete from lemon_auth_user_role where userId = #{userId}
+	</delete>
+	
+	<!-- 查询某个用户 -->
+	<select id="find" parameterType="int" resultType="User">
+		select * from lemon_auth_user where id = #{id}
+	</select>
+	
+	<!-- 查询全部用户 -->
 	<select id="findAll" resultType="User" parameterType="Map">
-		select * from tbl_auth_user
-		where 1=1
+		select * from lemon_auth_user
 		<include refid="paramsSQL"/>
 	</select>
 	
+	<!-- 分页查询用户 -->
+	<select id="findPaginated" resultType="User" parameterType="Map">
+		select * from lemon_auth_user
+		<include refid="paramsSQL"/>
+		 limit #{offset}, #{limit}
+	</select>
+	
+	<select id="getTotalOfItems" parameterType="Map" resultType="int">
+		select count(*) from lemon_auth_user
+		<include refid="paramsSQL"/>
+	</select>
+	
+	<!-- 根据用户id查询用户和角色的对应关系 -->
+	<select id="findUserRolesRelationByUserId" parameterType="int" resultType="Integer">
+		select roleId from lemon_auth_user_role where userId = #{userId}
+	</select>
+	
+	<!-- 修个某个用户 -->
+	<update id="update" parameterType="User">
+		update lemon_auth_user
+		<set>
+			<if test="userName != null and userName != ''">userName = #{userName},</if>
+			<if test="userPass != null and userPass != ''">userPass = #{userPass},</if>
+		</set>
+		where id = #{id}
+	</update>
+	
 	<!-- 通用的设置条件的查询SQL语句 -->
 	<sql id="paramsSQL">
-		<if test=" userName != null and userName != '' ">
-			and userName like concat(concat('%', #{userName, jdbcType=VARCHAR}),'%')
-		</if>
+		<where>
+			<if test=" userNameLike != null and userNameLike != '' ">
+				and userName like concat(concat('%', #{userName, jdbcType=VARCHAR}),'%')
+			</if>
+		</where>
 	</sql>
 	
 </mapper>

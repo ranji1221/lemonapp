@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ranji.lemon.model.authority.Role">
+	<!-- 存储某个角色 -->
+	<insert id="save" parameterType="Role" keyProperty="id" useGeneratedKeys="true">
+		insert into lemon_auth_role (roleName, roleExtendPID,roleRelyID,roleMaxNum) values (#{roleName}, #{roleExtendPID}, #{roleRelyID},#{roleMaxNum})
+	</insert>
+	
+	<!-- 存储某个角色和操作的对应关系 -->
+	<insert id="saveRoleAndOperationRelation" parameterType="Map" keyProperty="id" useGeneratedKeys="true">
+		insert into lemon_auth_role_operation (roleId, operationId) values (#{roleId}, #{operationId})
+	</insert>
+	
+	<!-- 删除某个角色 -->
+	<delete id="delete" parameterType="int" >
+		delete from lemon_auth_role where id = #{id}
+	</delete>
+	
+	<!-- 删除角色和操作的对应关系 -->
+	<delete id="deleteRoleAndOperationRelation" parameterType="Map">
+		delete from lemon_auth_role_operation where roleId = #{roleId} and operationId = #{operationId}
+	</delete>
+	
+	<!-- 根据角色id删除角色和操作的对应关系 -->
+	<delete id="deleteRoleAndOperationsRelationByRoleId" parameterType="int">
+		delete from lemon_auth_role_operation where roleId = #{roleId}
+	</delete>
+	
+	<!-- 查询某个角色 -->
+	<select id="find" parameterType="int" resultType="Role">
+		select * from lemon_auth_role where id = #{id}
+	</select>
+	
+	<!-- 查询全部角色 -->
+	<select id="findAll" resultType="Role" parameterType="Map">
+		select * from lemon_auth_role
+		where 1=1
+		<include refid="paramsSQL"/>
+	</select>
+	
+	<!-- 根据角色id查询角色和操作的对应关系 -->
+	<select id="findRoleAndOperationsRelationByRoleId" parameterType="int" resultType="Integer">
+		select operationId from lemon_auth_role_operation where roleId = #{roleId}
+	</select>
+	
+	<!-- 修个某个角色 -->
+	<update id="update" parameterType="Role">
+		update lemon_auth_role
+		<set>
+			<if test="roleName != null and roleName != ''">roleName = #{roleName},</if>
+			<if test="roleExtendPID != null and roleExtendPID != ''">roleExtendPID = #{roleExtendPID},</if>
+			<if test="roleRelyID != null and roleRelyID != ''">roleRelyID = #{roleRelyID},</if>
+			<if test="roleMaxNum != null and roleMaxNum != ''">roleMaxNum = #{roleMaxNum},</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 通用的设置条件的查询SQL语句 -->
+	<sql id="paramsSQL">
+		<if test=" roleName != null and roleName != '' ">
+			and roleName like concat(concat('%', #{roleName, jdbcType=VARCHAR}),'%')
+		</if>
+	</sql>
+	
+</mapper>
