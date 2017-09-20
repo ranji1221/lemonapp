@@ -4,25 +4,21 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.ranji.lemon.annotation.SystemControllerPermission;
+import org.ranji.lemon.common.exception.UnauthorizedException;
 import org.ranji.lemon.model.authority.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.ServletWebRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -68,7 +64,7 @@ public class SystemPermissionAspect {
      * @throws InterruptedException 
      * @throws IOException 
      */
-    /*@Before("controllerAspect()")
+    @Before("controllerAspect()")
     public void doBefore(JoinPoint joinPoint) throws InterruptedException, IOException{
         //读取session中的用户 
         HttpSession session = request.getSession();       
@@ -81,13 +77,13 @@ public class SystemPermissionAspect {
         	try{
         		currentUser.checkPermission(permissionInfo);
         	}catch (Exception e) {
-				System.out.println("没有"+permissionInfo+"权限");
-				throw new UnauthorizedException();
+				//System.out.println("没有"+permissionInfo+"权限");
+				throw new UnauthorizedException(permissionInfo);
 			}
         }
-    }*/
+    }
     
-   
+   /*
     @Around("controllerAspect()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable{
         // 读取session中的用户 
@@ -106,7 +102,7 @@ public class SystemPermissionAspect {
 			}
         }
         return pjp.proceed();
-    }
+    }*/
     
     
     
@@ -118,6 +114,20 @@ public class SystemPermissionAspect {
      */
     public static String getControllerMethodPemissionInfo(ProceedingJoinPoint pjp) {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
+        Method method = signature.getMethod();
+        SystemControllerPermission controllerPermission = method
+                .getAnnotation(SystemControllerPermission.class);
+        return controllerPermission.value();
+    }
+    
+    /**
+     * 获取SystemControllerPermission注解中的Value信息 用于Controller层注解
+     * 
+     * @param ProceedingJoinPoint 切点
+     * @return permissionInfo
+     */
+    public static String getControllerMethodPemissionInfo(JoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         SystemControllerPermission controllerPermission = method
                 .getAnnotation(SystemControllerPermission.class);

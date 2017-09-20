@@ -37,7 +37,7 @@ public class SystemExceptionResolver implements  HandlerExceptionResolver{
 			HttpServletResponse response, Object handler, Exception ex) {
 		
 		ModelAndView mv = new ModelAndView("/exception/exception");
-		if(ex instanceof org.apache.shiro.authz.UnauthorizedException) mv.setViewName("/exception/unauthorized"); 
+		if(ex instanceof org.ranji.lemon.common.exception.UnauthorizedException) mv.setViewName("/exception/unauthorized"); 
 		mv.addObject("exception",ex.toString().replaceAll("\n", "<br/>"));
 		return mv;
 	}
