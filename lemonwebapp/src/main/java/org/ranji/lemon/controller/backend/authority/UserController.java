@@ -55,8 +55,6 @@ public class UserController {
 	@SystemControllerLog(description="权限管理-添加用户")
 	@ResponseBody
 	public String addUser() {
-		System.out.println("cccccccccccccccccccccccccccccccccccccccccc");
-		System.out.println("dddddddddddddddddddddddddddddddddddddddddddd");
 		return "add user success";
 	}
 	

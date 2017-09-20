@@ -36,13 +36,15 @@ public class SystemLog implements Serializable{
 	
 	private int id;
 	private String logType;				//-- 日志类型
-	private String logTitle;				//-- 日志标题
-	private String remoteAddr;		//-- 请求地址
+	private String logTitle;			//-- 日志标题
+	private String remoteAddr;			//-- 请求地址
 	private String requestUri;			//-- 请求URI
 	private String method;				//-- 请求方式
 	private String params;				//-- 提交参数
 	private String exception;			//-- 异常
+	private int authStatus;				//-- 权限状态   1: 代表不需权限   2：无权限   3：享有权限
 	
+
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private Date operateDate;			//-- 开始时间
 	private String timeout;				//-- 耗时
@@ -129,5 +131,11 @@ public class SystemLog implements Serializable{
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
+	
+	public int getAuthStatus() {
+		return authStatus;
+	}
+	public void setAuthStatus(int authStatus) {
+		this.authStatus = authStatus;
+	}
 }

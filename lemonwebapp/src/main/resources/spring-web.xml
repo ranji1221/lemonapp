@@ -34,7 +34,7 @@
 	<aop:aspectj-autoproxy/>
 	
 	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-	<context:component-scan base-package="org.ranji.lemon.common.aop" />    <!-- 自定义系统日志切面实现 -->
+	<context:component-scan base-package="org.ranji.lemon.common.aop" />
 	<context:component-scan base-package="org.ranji.lemon.controller" />
 	
 	<!-- 通过线程池来执行日志保存 -->
@@ -58,9 +58,6 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
-
-	<!-- 全局异常处理 -->
-	<bean id="exceptionResolver" class="org.ranji.lemon.common.exception.SystemExceptionResolver"></bean>
 	
 	<!-- 
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

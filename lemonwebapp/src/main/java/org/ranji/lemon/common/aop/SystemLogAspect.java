@@ -112,7 +112,7 @@ public class SystemLogAspect {
             Map<String,String[]> params=request.getParameterMap(); //请求提交的参数
 
             try {
-                title=getControllerMethodDescription2(joinPoint);
+                title=getControllerMethodDescriptionInfo(joinPoint);
             } catch (Exception e) {
                 e.printStackTrace();
             }    
@@ -168,15 +168,13 @@ public class SystemLogAspect {
 
     
     
-    
-    
     /**
      * 获取注解中对方法的描述信息 用于Controller层注解
      * 
      * @param joinPoint 切点
      * @return discription
      */
-    public static String getControllerMethodDescription2(JoinPoint joinPoint) {
+    public static String getControllerMethodDescriptionInfo(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         SystemControllerLog controllerLog = method

@@ -2,20 +2,16 @@ package org.ranji.lemon.common.aop;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.ranji.lemon.annotation.SystemControllerPermission;
-import org.ranji.lemon.common.exception.UnauthorizedException;
 import org.ranji.lemon.model.authority.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -64,6 +60,7 @@ public class SystemPermissionAspect {
      * @throws InterruptedException 
      * @throws IOException 
      */
+    /*
     @Before("controllerAspect()")
     public void doBefore(JoinPoint joinPoint) throws InterruptedException, IOException{
         //读取session中的用户 
@@ -77,13 +74,12 @@ public class SystemPermissionAspect {
         	try{
         		currentUser.checkPermission(permissionInfo);
         	}catch (Exception e) {
-				//System.out.println("没有"+permissionInfo+"权限");
-				throw new UnauthorizedException(permissionInfo);
+				System.out.println("没有"+permissionInfo+"权限");
+				//throw new UnauthorizedException(permissionInfo);
 			}
         }
-    }
+    }*/
     
-   /*
     @Around("controllerAspect()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable{
         // 读取session中的用户 
@@ -98,11 +94,11 @@ public class SystemPermissionAspect {
         		currentUser.checkPermission(permissionInfo);
         	}catch (Exception e) {
 				System.out.println("没有"+permissionInfo+"权限");
-				return "/exception/unauthorized";	//-- 这种写法相当于给MV.setViewName();  如何写成"redirect:/exception/unauthorized"相当于调用Controller
+				return "{message:unauthorized}";	//-- 这种写法相当于给MV.setViewName();  如何写成"redirect:/exception/unauthorized"相当于调用Controller
 			}
         }
         return pjp.proceed();
-    }*/
+    }
     
     
     
@@ -126,12 +122,13 @@ public class SystemPermissionAspect {
      * @param ProceedingJoinPoint 切点
      * @return permissionInfo
      */
+    /*
     public static String getControllerMethodPemissionInfo(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         SystemControllerPermission controllerPermission = method
                 .getAnnotation(SystemControllerPermission.class);
         return controllerPermission.value();
-    }
+    }*/
     
 }
