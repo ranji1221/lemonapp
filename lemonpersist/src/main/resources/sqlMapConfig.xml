@@ -5,12 +5,16 @@
 		<!-- system begin -->
 		<typeAlias type="org.ranji.lemon.model.authority.User" alias="User" />
 		<typeAlias type="org.ranji.lemon.model.authority.Role" alias="Role" />
+		<typeAlias type="org.ranji.lemon.model.authority.Resource" alias="Resource" />
+		<typeAlias type="org.ranji.lemon.model.authority.Operation" alias="Operation" />
 		<!-- system end -->
 	</typeAliases>
 	<mappers>
 		<!-- system begin -->
 		<mapper resource="mapper/authority/User.xml" />
 		<mapper resource="mapper/authority/Role.xml" />
+		<mapper resource="mapper/authority/Resource.xml" />
+		<mapper resource="mapper/authority/Operation.xml" />
 		<!-- system end -->
 	</mappers>
 </configuration>
