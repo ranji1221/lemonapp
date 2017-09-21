@@ -60,25 +60,25 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
 	}
 
 	@Override
-	public void saveUR(int userId, int roleId) {
+	public void saveUserAndRoleRelation(int userId, int roleId) {
 		((IUserDao) dao).saveUserAndRoleRelation(userId, roleId);
 		
 	}
 
 	@Override
-	public void deleteUR(int userId, int roleId) {
+	public void deleteUserAndRoleRelation(int userId, int roleId) {
 		((IUserDao) dao).deleteUserAndRoleRelation(userId, roleId);
 		
 	}
 
 	@Override
-	public void deleteURsByUserId(int userId) {
+	public void deleteUserAndRolesByUserId(int userId) {
 		((IUserDao) dao).deleteUserAndRolesRelationByUserId(userId);
 		
 	}
 
 	@Override
-	public List<Integer> findURsByUserId(int userId) {
+	public List<Integer> findUserAndRolesByUserId(int userId) {
 		return ((IUserDao) dao).findUserRolesRelationByUserId(userId);
 	}
 
