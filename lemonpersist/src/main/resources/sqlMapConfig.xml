@@ -7,6 +7,7 @@
 		<typeAlias type="org.ranji.lemon.model.authority.Role" alias="Role" />
 		<typeAlias type="org.ranji.lemon.model.authority.Resource" alias="Resource" />
 		<typeAlias type="org.ranji.lemon.model.authority.Operation" alias="Operation" />
+		<typeAlias type="org.ranji.lemon.model.log.SystemLog" alias="SystemLog" />
 		<!-- system end -->
 	</typeAliases>
 	<mappers>
@@ -15,6 +16,7 @@
 		<mapper resource="mapper/authority/Role.xml" />
 		<mapper resource="mapper/authority/Resource.xml" />
 		<mapper resource="mapper/authority/Operation.xml" />
+		<mapper resource="mapper/log/SystemLog.xml" />
 		<!-- system end -->
 	</mappers>
 </configuration>
