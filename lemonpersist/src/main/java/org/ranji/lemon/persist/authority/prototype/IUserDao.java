@@ -1,8 +1,9 @@
 package org.ranji.lemon.persist.authority.prototype;
 
 import java.util.List;
-import org.ranji.lemon.persist.common.prototype.IGenericDao;
+
 import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.persist.common.prototype.IGenericDao;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -55,5 +56,6 @@ public interface IUserDao extends IGenericDao<User, Integer> {
 	 * @return 角色id集合
 	 */
 	public List<Integer> findUserRolesRelationByUserId(int userId);
+
 
 }
