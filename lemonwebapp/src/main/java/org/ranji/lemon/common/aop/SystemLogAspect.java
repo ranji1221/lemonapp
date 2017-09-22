@@ -123,6 +123,7 @@ public class SystemLogAspect {
                     Runtime.getRuntime().totalMemory()/1024/1024, 
                     Runtime.getRuntime().freeMemory()/1024/1024, 
                     (Runtime.getRuntime().maxMemory()-Runtime.getRuntime().totalMemory()+Runtime.getRuntime().freeMemory())/1024/1024); 
+
         }
 
         SystemLog log=new SystemLog();

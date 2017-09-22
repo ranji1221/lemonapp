@@ -33,7 +33,7 @@ public class Resource implements Serializable{
 	private String resourceName; // 资源名称
 	private int resourceType;  // 资源类型
 	private String resourceURL; // 资源URL
-	private int resourcePID; // 资源父ID
+	private int resourcePId; // 资源父ID
 	
 	
 	public int getId() {
@@ -68,12 +68,12 @@ public class Resource implements Serializable{
 		this.resourceURL = resourceURL;
 	}
 	
-	public int getResourcePID() {
-		return resourcePID;
+	public int getResourcePId() {
+		return resourcePId;
 	}
 	
-	public void setResourcePID(int resourcePID) {
-		this.resourcePID = resourcePID;
+	public void setResourcePId(int resourcePId) {
+		this.resourcePId = resourcePId;
 	}
 	
 

@@ -30,8 +30,8 @@ public class Role implements Serializable{
 	private static final long serialVersionUID = -2561045793807899015L;
 	private int id;
 	private String roleName; // 角色名称
-	private int roleExtendPID; // 角色的父ID
-	private int roleRelyID; //  角色依赖ID
+	private int roleExtendPId; // 角色的父ID
+	private int roleRelyId; //  角色依赖ID
 	private int roleMaxNum; // 最大限制用户数
 	
 	public int getId() {
@@ -50,20 +50,20 @@ public class Role implements Serializable{
 		this.roleName = roleName;
 	}
 	
-	public int getRoleExtendPID() {
-		return roleExtendPID;
+	public int getRoleExtendPId() {
+		return roleExtendPId;
 	}
 	
-	public void setRoleExtendPID(int roleExtendPID) {
-		this.roleExtendPID = roleExtendPID;
+	public void setRoleExtendPId(int roleExtendPId) {
+		this.roleExtendPId = roleExtendPId;
 	}
 	
-	public int getRoleRelyID() {
-		return roleRelyID;
+	public int getRoleRelyId() {
+		return roleRelyId;
 	}
 	
-	public void setRoleRelyID(int roleRelyID) {
-		this.roleRelyID = roleRelyID;
+	public void setRoleRelyId(int roleRelyId) {
+		this.roleRelyId = roleRelyId;
 	}
 	
 	public int getRoleMaxNum() {
@@ -72,11 +72,5 @@ public class Role implements Serializable{
 	
 	public void setRoleMaxNum(int roleMaxNum) {
 		this.roleMaxNum = roleMaxNum;
-	}
-	
-	public void test11(){}
-	
-	public void test(){
-		System.out.println("我才是真的测试");
 	}
 }

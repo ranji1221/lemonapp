@@ -1,5 +1,6 @@
 package org.ranji.lemon.persist.log;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -58,6 +59,9 @@ public class SystemLogDaoTest {
 			systemLog.setParams("3");
 			systemLog.setException("exception");
 			systemLog.setAuthStatus(1);
+			systemLog.setOperateDate(new Date());
+			systemLog.setTimeout("3000");
+			systemLog.setUserName("zhangsan");
 			systemLogDao.save(systemLog);
 		}
 		
@@ -79,7 +83,7 @@ public class SystemLogDaoTest {
 	public void testUpdateSystemLog(){
 		SystemLog sl = new SystemLog();
 		sl.setId(2);
-		sl.setLogType("警告1");
+		sl.setLogType("警告11111");
 		sl.setLogTitle("访问首页1");
 		sl.setRemoteAddr("192.168.1.17");
 		sl.setRequestUri("192.168.1.17");
@@ -87,6 +91,10 @@ public class SystemLogDaoTest {
 		sl.setParams("5");
 		sl.setException("exception1");
 		sl.setAuthStatus(2);
+		sl.setOperateDate(new Date());
+		sl.setTimeout("3000");
+		sl.setUserName("zhangsan");
+		sl.setLogId("3");
 		systemLogDao.update(sl);
 	}
 	//查询所有日志测试方法

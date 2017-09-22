@@ -59,7 +59,7 @@ public class SystemRealm extends AuthorizingRealm{
 		List<User> users = userService.findAll(params);
 		User user = null;
 		if(users!=null && users.size()>0) user = users.get(0);
-		
+//System.out.println(user.getUserName()+"======================");
 		//-- 2. 返回认证材料信息
 		AuthenticationInfo authenInfo = null;
 		if(user != null)
@@ -80,7 +80,8 @@ public class SystemRealm extends AuthorizingRealm{
 		SimpleAuthorizationInfo info = null;
 		if(userName != null && !"".equals(userName))
 			info = new SimpleAuthorizationInfo();
-		//info.addStringPermission("user:add");
+		if(userName.equals("zhangsan"))
+			info.addStringPermission("user:add");
 		//info.addStringPermission("user:delete");
 		return info;
 		

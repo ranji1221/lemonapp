@@ -45,10 +45,13 @@ public class LoginController {
 	/**
 	 *  登录页面
 	 * @return  登录页面
+	 * @throws Exception 
 	 */
+	@SystemControllerLog(description="访问登录页面")
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public ModelAndView loginPage(){
+	public ModelAndView loginPage() throws Exception{
 		ModelAndView mv = new ModelAndView();
+		if(1==1)throw new Exception("haha");
 		mv.setViewName("/backend/authority/login");
 		return mv;
 	}
@@ -59,6 +62,7 @@ public class LoginController {
 	 * @param request
 	 * @return
 	 */
+	@SystemControllerLog(description="登录系统")
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView login(User user, HttpSession session,HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
@@ -66,7 +70,6 @@ public class LoginController {
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getUserPass());
 		try{
 			currentUser.login(token);
-			session.setAttribute("userInfo", user);
 			mv.setViewName("redirect:/index.jsp");
 		} catch (AuthenticationException e){
 			mv.addObject("message", "login errors");
