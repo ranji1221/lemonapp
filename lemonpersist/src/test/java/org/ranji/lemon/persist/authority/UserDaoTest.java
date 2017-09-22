@@ -1,6 +1,8 @@
 package org.ranji.lemon.persist.authority;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -85,6 +87,16 @@ public class UserDaoTest {
 	@Test
 	public void testDeleteUserAndRolesRelationByUserId(){
 		userDao.deleteUserAndRolesRelationByUserId(1);
+	}
+	//查询所有用户
+	@Test
+	public void testFindAllUser(){
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("userName", "lisi");
+		List<User> us = userDao.findAll(params);
+		for(User u : us){
+			System.out.println(u.getUserName());
+		}
 	}
 	//查询某个角色测试方法
 	@Test

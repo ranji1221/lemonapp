@@ -54,6 +54,11 @@
 		select roleId from lemon_auth_user_role where userId = #{userId}
 	</select>
 	
+	<!-- 根据用户 用户名查询用户 -->
+	<select id="findUserByName" parameterType="string" resultType="user">
+		select * from lemon_auth_user where userName = #{userName}
+	</select>
+	
 	<!-- 修个某个用户 -->
 	<update id="update" parameterType="User">
 		update lemon_auth_user
@@ -67,8 +72,9 @@
 	<!-- 通用的设置条件的查询SQL语句 -->
 	<sql id="paramsSQL">
 		<where>
-			<if test=" userNameLike != null and userNameLike != '' ">
-				and userName like concat(concat('%', #{userName, jdbcType=VARCHAR}),'%')
+			<if test=" userName != null and userName != ''">
+				<!-- and userName like concat(concat('%', #{userName, jdbcType=VARCHAR}),'%') -->
+				and userName = #{userName}
 			</if>
 		</where>
 	</sql>
