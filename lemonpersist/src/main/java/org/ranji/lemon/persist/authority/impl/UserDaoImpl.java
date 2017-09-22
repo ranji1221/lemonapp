@@ -60,5 +60,10 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements IUserD
 	public List<Integer> findUserRolesRelationByUserId(int userId) {
 		return sqlSessionTemplate.selectList(typeNameSpace + ".findUserRolesRelationByUserId", userId);
 	}
+	
+	@Override
+	public User findUserByUserName(String UserName){
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".findUserByUserName", UserName);
+	}
 
 }

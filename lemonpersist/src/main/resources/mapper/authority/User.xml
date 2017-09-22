@@ -57,7 +57,7 @@
 	<!-- 根据用户名字查找用户 -->
 	<select id="findUserByUserName" parameterType="String" resultType="User">
 		select * from lemon_auth_user where userName = #{userName}
-	</select>
+	</select> 
 	
 	<!-- 修个某个用户 -->
 	<update id="update" parameterType="User">

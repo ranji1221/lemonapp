@@ -55,5 +55,7 @@ public interface IUserDao extends IGenericDao<User, Integer> {
 	 * @return 角色id集合
 	 */
 	public List<Integer> findUserRolesRelationByUserId(int userId);
+	
+	public User findUserByUserName(String userName);
 
 }
