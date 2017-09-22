@@ -42,7 +42,7 @@ public class SystemLog implements Serializable{
 	private String method;				//-- 请求方式     4: POST/GET/PUT
 	private String params;				//-- 提交参数    5: userName=zhangsan&userPass=123....
 	private String exception;			//-- 异常            6: 异常信息  
-	private int authStatus;				//-- 权限状态   1: 代表不需权限   2：无权限   3：享有权限
+	private int authStatus = 1;				//-- 权限状态   1: 代表不需权限   2：无权限   3：享有权限
 	
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
