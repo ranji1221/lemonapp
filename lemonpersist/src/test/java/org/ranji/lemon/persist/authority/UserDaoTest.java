@@ -104,6 +104,12 @@ public class UserDaoTest {
 		User user = userDao.find(2);
 		System.out.println(user.getUserName());
 	}
+	//按用户名查找用户
+	@Test
+	public void testFindUserByUserName(){
+		User user = userDao.findUserByUserName("zhangsan");
+		System.out.println(user.getUserName());
+	}
 	
 	//查询全部角色测试方法
 	@Test

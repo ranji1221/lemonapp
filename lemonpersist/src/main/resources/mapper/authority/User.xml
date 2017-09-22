@@ -54,6 +54,12 @@
 		select roleId from lemon_auth_user_role where userId = #{userId}
 	</select>
 	
+
+	<!-- 根据用户名字查找用户 -->
+	<select id="findUserByUserName" parameterType="String" resultType="User">
+		select * from lemon_auth_user where userName = #{userName}
+	</select> 
+	
 	<!-- 根据用户 用户名查询用户 -->
 	<select id="findUserByName" parameterType="string" resultType="user">
 		select * from lemon_auth_user where userName = #{userName}
@@ -72,9 +78,17 @@
 	<!-- 通用的设置条件的查询SQL语句 -->
 	<sql id="paramsSQL">
 		<where>
-			<if test=" userName != null and userName != ''">
-				<!-- and userName like concat(concat('%', #{userName, jdbcType=VARCHAR}),'%') -->
+			<if test=" userName != null and userName != '' ">
 				and userName = #{userName}
+			</if>
+			<if test=" userNameLike != null and userNameLike != '' ">
+				and userName like concat(concat('%', #{userNameLike, jdbcType=VARCHAR}),'%')
+			</if>
+			<if test=" userPass != null and userPass != '' ">
+				and userPass = #{userPass}
+			</if>
+			<if test=" userPassLike != null and userPassLike != '' ">
+				and userPass like concat(concat('%', #{userPassLike, jdbcType=VARCHAR}),'%')
 			</if>
 		</where>
 	</sql>
