@@ -47,7 +47,7 @@ public class SystemLog implements Serializable{
 	private String timeout;				//-- 耗时      多少毫秒
 	
 	private String userName;			//-- 用户			
-	private String logId;               //--日志记录id
+	//private String logId;               //--日志记录id
 	
 	public String getUserName() {
 		return userName;
@@ -138,12 +138,7 @@ public class SystemLog implements Serializable{
 	public void setAuthStatus(int authStatus) {
 		this.authStatus = authStatus;
 	}
-	public String getLogId() {
-		return logId;
-	}
-	public void setLogId(String logId) {
-		this.logId = logId;
-	}
+	
 	@Override
 	public String toString(){
 		return "类型：" + logType + "\n标题：" + logTitle + "\n访问地址：" + remoteAddr + 
