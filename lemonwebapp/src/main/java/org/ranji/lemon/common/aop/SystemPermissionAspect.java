@@ -3,7 +3,6 @@ package org.ranji.lemon.common.aop;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,7 +11,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.ranji.lemon.annotation.SystemControllerPermission;
-import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.system.SystemContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -82,21 +81,18 @@ public class SystemPermissionAspect {
     
     @Around("controllerAspect()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable{
-        // 读取session中的用户 
-        HttpSession session = request.getSession();       
-        User user = (User) session.getAttribute("userInfo");
-        
-        //-- 获取@SystemControllerPermission标注中的权限信息
-        if(user != null){  //-- 其实实际应用中，肯定是先认证了用户的，而不可能没有用户存在，所以这个地方仅仅是代码健壮性的一种考量。
-            String permissionInfo = getControllerMethodPemissionInfo(pjp);
-        	Subject currentUser = SecurityUtils.getSubject();
-        	try{
-        		currentUser.checkPermission(permissionInfo);
-        	}catch (Exception e) {
-				System.out.println("没有"+permissionInfo+"权限");
-				return "{message:unauthorized}";	//-- 这种写法相当于给MV.setViewName();  如何写成"redirect:/exception/unauthorized"相当于调用Controller
-			}
-        }
+        String permissionInfo = getControllerMethodPemissionInfo(pjp);
+    	Subject currentUser = SecurityUtils.getSubject();
+    	try{
+    		if(currentUser!=null){
+    			currentUser.checkPermission(permissionInfo);
+    			SystemContext.setAuthStatus(3);			//-- 享有授权
+    		}
+    	}catch (Exception e) {
+			System.out.println("没有"+permissionInfo+"权限");
+			SystemContext.setAuthStatus(2);		//-- 无授权
+			return "{message:unauthorized}";	//-- 这种写法相当于给MV.setViewName();  如何写成"redirect:/exception/unauthorized"相当于调用Controller
+		}
         return pjp.proceed();
     }
     
