@@ -10,13 +10,13 @@ Lemon Cloud Framework
 
 ### 团队成员
 * Mr.RanJi：Team Leader
-* Mrs.JianBo: Project Manager
+* Mr.JianBo: Project Manager
+* Mr.YuXuan: Advance Frontend Designer
+* Mr.YaNan:  Advance Developer Engineer
+* Mr.FengJie:  Advance Developer Engineer
+* Mr.BinBin: Advance Developer Engineer
 * Mrs.JiaMin: Advance UI Designer
 * Mrs.JunQin: Advance UI Designer
-* Mr.YuXuan: Advance Frontend Designer
-* Mr.Yao:  Advance Eeveloper Engineer
-* Mr.FengJie:  Advance Eeveloper Engineer
-* Mr.BinBin: Advance Eeveloper Engineer
 
 #### 核心技术
 * Spring Framework4 + Dubbo2.5 + motan 0.3 (核心)
