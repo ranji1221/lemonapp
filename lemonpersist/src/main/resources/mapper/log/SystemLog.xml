@@ -51,7 +51,8 @@
 			<if test="timeout != null and timeout != ''">timeout = #{timeout},</if>
 			<if test="userName != null and userName != ''">userName = #{userName},</if>
 		</set>
-		where logId = #{logId}
+		<!-- where logId = #{logId} -->
+		where id = #{id}
 	</update>
 	
 	<!-- 通用的设置条件的查询SQL语句 -->
