@@ -35,20 +35,28 @@ public class SystemLog implements Serializable{
 	private static final long serialVersionUID = -8290370426605089254L;
 	
 	private int id;
-	private String logType;				//-- 日志类型
-	private String logTitle;			//-- 日志标题
-	private String remoteAddr;			//-- 请求地址
-	private String requestUri;			//-- 请求URI
-	private String method;				//-- 请求方式
-	private String params;				//-- 提交参数
-	private String exception;			//-- 异常
+	private String logType;				//-- 日志类型      1:info  2:error
+	private String logTitle;			//-- 日志标题      2: 资源 xxxx模块--xxxx操作 
+	private String remoteAddr;			//-- 请求地址     3: IP地址
+	private String requestUri;			//-- 请求URI 4: URI    localhost/user/add
+	private String method;				//-- 请求方式     4: POST/GET/PUT
+	private String params;				//-- 提交参数    5: userName=zhangsan&userPass=123....
+	private String exception;			//-- 异常            6: 异常信息  
 	private int authStatus;				//-- 权限状态   1: 代表不需权限   2：无权限   3：享有权限
 	
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-	private Date operateDate;			//-- 开始时间
-	private String timeout;				//-- 耗时
-	private int userId;				//-- 用户ID
+	private Date operateDate;			//-- 开始时间    开发访问资源时间
+	private String timeout;				//-- 耗时      多少毫秒
+	
+	private String userName;			//-- 用户			
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getId() {
 		return id;
 	}
@@ -124,12 +132,6 @@ public class SystemLog implements Serializable{
 	}
 	public void setTimeout(String timeout) {
 		this.timeout = timeout;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	
 	public int getAuthStatus() {
