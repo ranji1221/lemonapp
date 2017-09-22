@@ -1,12 +1,10 @@
 package org.ranji.lemon.model.log;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -45,7 +43,6 @@ public class SystemLog implements Serializable{
 	private int authStatus = 1;				//-- 权限状态   1: 代表不需权限   2：无权限   3：享有权限
 	
 
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private Date operateDate;			//-- 开始时间    开发访问资源时间
 	private String timeout;				//-- 耗时      多少毫秒
 	
@@ -139,5 +136,12 @@ public class SystemLog implements Serializable{
 	}
 	public void setAuthStatus(int authStatus) {
 		this.authStatus = authStatus;
+	}
+	@Override
+	public String toString(){
+		return "类型：" + logType + "\n标题：" + logTitle + "\n访问地址：" + remoteAddr + 
+				"\n请求地址："+requestUri + "\n请求参数："+params +
+				"\n授权状态：" + authStatus + "\n开始访问时间：" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(operateDate) +
+				"\n耗时：" + timeout + "\n访问者：" + userName;
 	}
 }

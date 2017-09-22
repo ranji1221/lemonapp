@@ -27,6 +27,7 @@ public class SystemContext {
 
 	private static ThreadLocal<Integer> offset = new ThreadLocal<Integer>();
 	private static ThreadLocal<Integer> pageSize = new ThreadLocal<Integer>();
+	private static ThreadLocal<Integer> authStatus = new ThreadLocal<Integer>();  //-- 为记录日志信息的授权状态而设置
 
 	/**
 	 * 获取偏移量
@@ -63,5 +64,22 @@ public class SystemContext {
 	public static void removePageSize() {
 		pageSize.remove();
 	}
+	
+	/**
+	 * 设置授权的状态信息
+	 */
+	public static int getAuthStatus() {
+		Integer os = (Integer) authStatus.get();
+		if (os == null)
+			return 1;
+		return os.intValue();
+	}
 
+	public static void setAuthStatus(int authStatusValue) {
+		authStatus.set(authStatusValue);
+	}
+
+	public static void removeAuthStatus() {
+		authStatus.remove();
+	}
 }
