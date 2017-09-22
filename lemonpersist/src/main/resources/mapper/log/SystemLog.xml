@@ -3,8 +3,8 @@
 <mapper namespace="org.ranji.lemon.model.log.SystemLog">
 
 	<insert id="save" parameterType="SystemLog" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_log_systemLog (logType, logTitle,remoteAddr,requestUri,method,params,exception,authStatus,operateDate,timeout,userName) 
-		values (#{logType}, #{logTitle},#{remoteAddr},#{requestUri},#{method},#{params},#{exception},#{authStatus},#{operateDate},#{timeout},#{userName})
+		insert into lemon_log_systemLog (logType, logTitle,remoteAddr,requestUri,method,params,exception,authStatus,operateDate,timeout,userName,logId) 
+		values (#{logType}, #{logTitle},#{remoteAddr},#{requestUri},#{method},#{params},#{exception},#{authStatus},#{operateDate},#{timeout},#{userName},#{logId})
 	</insert>
 	
 	<!-- 删除某条日志 -->
@@ -51,7 +51,7 @@
 			<if test="timeout != null and timeout != ''">timeout = #{timeout},</if>
 			<if test="userName != null and userName != ''">userName = #{userName},</if>
 		</set>
-		where id = #{id}
+		where logId = #{logId}
 	</update>
 	
 	<!-- 通用的设置条件的查询SQL语句 -->

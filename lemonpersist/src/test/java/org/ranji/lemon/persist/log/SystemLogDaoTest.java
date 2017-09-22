@@ -83,7 +83,7 @@ public class SystemLogDaoTest {
 	public void testUpdateSystemLog(){
 		SystemLog sl = new SystemLog();
 		sl.setId(2);
-		sl.setLogType("警告1");
+		sl.setLogType("警告11111");
 		sl.setLogTitle("访问首页1");
 		sl.setRemoteAddr("192.168.1.17");
 		sl.setRequestUri("192.168.1.17");
@@ -94,6 +94,7 @@ public class SystemLogDaoTest {
 		sl.setOperateDate(new Date());
 		sl.setTimeout("3000");
 		sl.setUserName("zhangsan");
+		sl.setLogId("3");
 		systemLogDao.update(sl);
 	}
 	//查询所有日志测试方法
