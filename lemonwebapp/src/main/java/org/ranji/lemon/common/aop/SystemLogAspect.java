@@ -6,19 +6,19 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.ranji.lemon.annotation.SystemControllerLog;
-import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.annotation.SystemControllerPermission;
 import org.ranji.lemon.model.log.SystemLog;
+import org.ranji.lemon.system.SystemContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +56,9 @@ import org.springframework.stereotype.Component;
 public class SystemLogAspect {
 	private  static  final Logger logger = LoggerFactory.getLogger(SystemLogAspect. class);
 
-    private static final ThreadLocal<Date> beginTimeThreadLocal = new NamedThreadLocal<Date>("ThreadLocal beginTime");
-    private static final ThreadLocal<SystemLog> logThreadLocal =  new NamedThreadLocal<SystemLog>("ThreadLocal log");
-    private static final ThreadLocal<User> currentUser=new NamedThreadLocal<>("ThreadLocal user");
+    private static final ThreadLocal<Long> beginTimeThreadLocal = new NamedThreadLocal<Long>("ThreadLocal BeginTime");
+    private static final ThreadLocal<SystemLog> logThreadLocal =  new NamedThreadLocal<SystemLog>("ThreadLocal Log");
+    
     
     @Autowired(required=false)
     private HttpServletRequest request;
@@ -82,17 +82,11 @@ public class SystemLogAspect {
      */
     @Before("controllerAspect()")
     public void doBefore(JoinPoint joinPoint) throws InterruptedException{
-        Date beginTime=new Date();
-        beginTimeThreadLocal.set(beginTime);//线程绑定变量（该数据只有当前请求的线程可见）  
+        beginTimeThreadLocal.set(System.currentTimeMillis());//线程绑定变量（该数据只有当前请求的线程可见）  
         if (logger.isDebugEnabled()){//这里日志级别为debug
             logger.debug("开始计时: {}  URI: {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
-                .format(beginTime), request.getRequestURI());
+                .format(beginTimeThreadLocal.get()), request.getRequestURI());
         }
-
-        //读取session中的用户 
-        HttpSession session = request.getSession();       
-        User user = (User) session.getAttribute("userInfo");    
-        currentUser.set(user);
     }
     
     /**
@@ -102,55 +96,58 @@ public class SystemLogAspect {
     @SuppressWarnings("unchecked")
 	@After("controllerAspect()")
     public void doAfter(JoinPoint joinPoint) {
-        User user = currentUser.get();
-        if(user != null){
-            String title="";
-            String type="info";                       //日志类型(info:入库,error:错误)
-            String remoteAddr=request.getRemoteAddr();//请求的IP
-            String requestUri=request.getRequestURI();//请求的Uri
-            String method=request.getMethod();        //请求的方法类型(post/get)
-            Map<String,String[]> params=request.getParameterMap(); //请求提交的参数
+    	System.out.println("bbbbbbbbbbbbbbb");
+        String title="";
+        String type="info";                       //日志类型(info:入库,error:错误)
+      
+        String remoteAddr=request.getRemoteAddr();//请求的IP
+        String requestUri=request.getRequestURI();//请求的Uri
+        String method=request.getMethod();        //请求的方法类型(post/get)
+        Map<String,String[]> params=request.getParameterMap(); //请求提交的参数
 
-            try {
-                title=getControllerMethodDescriptionInfo(joinPoint);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }    
-            // 打印JVM信息。
-            long beginTime = beginTimeThreadLocal.get().getTime();//得到线程绑定的局部变量（开始时间）  
-            long endTime = System.currentTimeMillis();  //2、结束时间  
-            if (logger.isDebugEnabled()){
-                logger.debug("计时结束：{}  URI: {}  耗时： {}   最大内存: {}m  已分配内存: {}m  已分配内存中的剩余空间: {}m  最大可用内存: {}m",
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(endTime), 
-                        request.getRequestURI(), 
-                        new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(endTime-beginTime)),
-                        Runtime.getRuntime().maxMemory()/1024/1024, 
-                        Runtime.getRuntime().totalMemory()/1024/1024, 
-                        Runtime.getRuntime().freeMemory()/1024/1024, 
-                        (Runtime.getRuntime().maxMemory()-Runtime.getRuntime().totalMemory()+Runtime.getRuntime().freeMemory())/1024/1024); 
-            }
-
-            SystemLog log=new SystemLog();
-            log.setLogTitle(title);
-            log.setLogType(type);
-            log.setRemoteAddr(remoteAddr);
-            log.setRequestUri(requestUri);
-            log.setMethod(method);
-            log.setMapToParams(params);
-            log.setUserId(user.getId());
-            Date operateDate=beginTimeThreadLocal.get();
-            log.setOperateDate(operateDate);
-            log.setTimeout(new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(endTime-beginTime)));
-            //1.直接执行保存操作
-            //this.logService.createSystemLog(log);
-
-            //2.优化:异步保存日志
-            //new SaveLogThread(log, logService).start();
-
-            //3.再优化:通过线程池来执行日志保存  (暂时注释掉)
-            //threadPoolTaskExecutor.execute(new SaveLogThread(log, logService));
-            logThreadLocal.set(log);
+        try {
+            title=getControllerMethodDescriptionInfo(joinPoint);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+        
+        // 打印JVM信息。
+        long beginTime = beginTimeThreadLocal.get();//得到线程绑定的局部变量（开始时间）  
+        long endTime = System.currentTimeMillis();  //2、结束时间  
+        if (logger.isDebugEnabled()){
+            logger.debug("计时结束：{}  URI: {}  耗时： {}   最大内存: {}m  已分配内存: {}m  已分配内存中的剩余空间: {}m  最大可用内存: {}m",
+                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(endTime), 
+                    request.getRequestURI(), 
+                    new SimpleDateFormat("mm:ss:SSS").format(new Date(endTime-beginTime-28800000)), //--减去8小时的东八区时间
+                    Runtime.getRuntime().maxMemory()/1024/1024, 
+                    Runtime.getRuntime().totalMemory()/1024/1024, 
+                    Runtime.getRuntime().freeMemory()/1024/1024, 
+                    (Runtime.getRuntime().maxMemory()-Runtime.getRuntime().totalMemory()+Runtime.getRuntime().freeMemory())/1024/1024); 
         }
+
+        SystemLog log=new SystemLog();
+        log.setLogTitle(title);
+        log.setLogType(type);
+        log.setRemoteAddr(remoteAddr);
+        log.setRequestUri(requestUri);
+        log.setAuthStatus(SystemContext.getAuthStatus());
+        SystemContext.removeAuthStatus();
+        log.setMethod(method);
+        log.setMapToParams(params);
+        log.setUserName(SecurityUtils.getSubject().getPrincipal()!=null ? (String)SecurityUtils.getSubject().getPrincipal(): "visitor" );
+        log.setOperateDate(new Date(beginTimeThreadLocal.get()));
+        log.setTimeout(new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(endTime-beginTime-28800000))); //--减去8小时的东八区时间
+        System.out.println(log);   //-- 输出日志信息
+        //System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(endTime))); //-- 输出结束时间
+        //1.直接执行保存操作
+        //this.logService.createSystemLog(log);
+
+        //2.优化:异步保存日志
+        //new SaveLogThread(log, logService).start();
+
+        //3.再优化:通过线程池来执行日志保存  (暂时注释掉)
+        //threadPoolTaskExecutor.execute(new SaveLogThread(log, logService));
+        logThreadLocal.set(log);
 
     }
     /**
@@ -160,6 +157,7 @@ public class SystemLogAspect {
      */
     @AfterThrowing(pointcut = "controllerAspect()", throwing = "e")  
     public  void doAfterThrowing(JoinPoint joinPoint, Throwable e) {
+    	System.out.println("ccccccccccccccc");
         SystemLog log = logThreadLocal.get();
         log.setLogType("error");
         log.setException(e.toString());
@@ -182,6 +180,21 @@ public class SystemLogAspect {
         String discription = controllerLog.description();
         return discription;
     }
+    
+    /**
+     * 获取SystemControllerPermission注解中的Value信息 用于Controller层注解
+     * 
+     * @param ProceedingJoinPoint 切点
+     * @return permissionInfo
+     */
+    public static String getControllerMethodPemissionInfo(JoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        SystemControllerPermission controllerPermission = method
+                .getAnnotation(SystemControllerPermission.class);
+        return controllerPermission != null ? controllerPermission.value():"";
+    }
+    
     
     /**
      * 保存日志线程
