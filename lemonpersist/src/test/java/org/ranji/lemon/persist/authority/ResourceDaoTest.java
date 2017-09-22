@@ -52,7 +52,7 @@ public class ResourceDaoTest {
 		r.setResourceName("测试");
 		r.setResourceType(1);
 		r.setResourceURL("www.baidu.com");
-		r.setResourcePID(0);
+		r.setResourcePId(0);
 		//r.setResourcePID(2);
 		resourceDao.save(r);
 	

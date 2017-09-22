@@ -4,8 +4,8 @@
 
 	<!-- 增加资源 -->
 	<insert id="save" parameterType="Resource" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_auth_resource (resourceName, resourceType,resourceURL,resourcePID) values 
-		(#{resourceName},#{resourceType},#{resourceURL},#{resourcePID})
+		insert into lemon_auth_resource (resourceName, resourceType,resourceURL,resourcePId) values 
+		(#{resourceName},#{resourceType},#{resourceURL},#{resourcePId})
 	</insert>
 	
 	<!-- 查找资源 -->
@@ -105,11 +105,11 @@
 			<if test=" resourceURLLike != null and resourceURLLike != '' ">
 				and resourceURL like concat(concat('%', #{resourceURLLike, jdbcType=VARCHAR}),'%')
 			</if>
-			<if test=" resourcePID != null and resourcePID != '' ">
+			<if test=" resourcePId != null and resourcePId != '' ">
 				and resourcePID = #{resourcePID, jdbcType=INTEGER})
 			</if>
-			<if test=" resourcePIDLike != null and resourcePIDLike != '' ">
-				and resourcePID like concat(concat('%', #{resourcePIDLike, jdbcType=INTEGER}),'%')
+			<if test=" resourcePIdLike != null and resourcePIdLike != '' ">
+				and resourcePId like concat(concat('%', #{resourcePIdLike, jdbcType=INTEGER}),'%')
 			</if>
 		</where>
 	</sql>

@@ -3,7 +3,7 @@
 <mapper namespace="org.ranji.lemon.model.authority.Role">
 	<!-- 存储某个角色 -->
 	<insert id="save" parameterType="Role" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_auth_role (roleName, roleExtendPID,roleRelyID,roleMaxNum) values (#{roleName}, #{roleExtendPID}, #{roleRelyID},#{roleMaxNum})
+		insert into lemon_auth_role (roleName, roleExtendPId,roleRelyId,roleMaxNum) values (#{roleName}, #{roleExtendPId}, #{roleRelyId},#{roleMaxNum})
 	</insert>
 	
 	<!-- 存储某个角色和操作的对应关系 -->
@@ -48,8 +48,8 @@
 		update lemon_auth_role
 		<set>
 			<if test="roleName != null and roleName != ''">roleName = #{roleName},</if>
-			<if test="roleExtendPID != null and roleExtendPID != ''">roleExtendPID = #{roleExtendPID},</if>
-			<if test="roleRelyID != null and roleRelyID != ''">roleRelyID = #{roleRelyID},</if>
+			<if test="roleExtendPId != null and roleExtendPId != ''">roleExtendPId = #{roleExtendPId},</if>
+			<if test="roleRelyId != null and roleRelyId != ''">roleRelyId = #{roleRelyId},</if>
 			<if test="roleMaxNum != null and roleMaxNum != ''">roleMaxNum = #{roleMaxNum},</if>
 		</set>
 		where id = #{id}
