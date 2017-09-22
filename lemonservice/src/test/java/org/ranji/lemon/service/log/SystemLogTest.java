@@ -1,5 +1,6 @@
 package org.ranji.lemon.service.log;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class SystemLogTest {
 	//存储日志测试方法
 		@Test
 		public void testAddSystemLog(){
-			for(int i = 11; i < 20; i++){
+			for(int i = 1; i < 10; i++){
 				SystemLog systemLog = new SystemLog();
 				systemLog.setLogType("警告" + i);
 				systemLog.setLogTitle("访问首页");
@@ -52,9 +53,11 @@ public class SystemLogTest {
 				systemLog.setParams("3");
 				systemLog.setException("exception");
 				systemLog.setAuthStatus(1);
+				systemLog.setOperateDate(new Date());
+				systemLog.setTimeout("3000");
+				systemLog.setUserName("zhangsan");
 				systemLogService.save(systemLog);
 			}
-			
 		}
 		//删除日志测试方法
 		@Test
@@ -81,6 +84,9 @@ public class SystemLogTest {
 			sl.setParams("5");
 			sl.setException("exception1");
 			sl.setAuthStatus(2);
+			sl.setOperateDate(new Date());
+			sl.setTimeout("3000");
+			sl.setUserName("zhangsan");
 			systemLogService.update(sl);
 		}
 		//查询所有日志测试方法

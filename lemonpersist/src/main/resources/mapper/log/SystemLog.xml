@@ -3,8 +3,8 @@
 <mapper namespace="org.ranji.lemon.model.log.SystemLog">
 
 	<insert id="save" parameterType="SystemLog" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_log_systemLog (logType, logTitle,remoteAddr,requestUri,method,params,exception,authStatus) 
-		values (#{logType}, #{logTitle},#{remoteAddr},#{requestUri},#{method},#{params},#{exception},#{authStatus})
+		insert into lemon_log_systemLog (logType, logTitle,remoteAddr,requestUri,method,params,exception,authStatus,operateDate,timeout,userName) 
+		values (#{logType}, #{logTitle},#{remoteAddr},#{requestUri},#{method},#{params},#{exception},#{authStatus},#{operateDate},#{timeout},#{userName})
 	</insert>
 	
 	<!-- 删除某条日志 -->
@@ -47,6 +47,9 @@
 			<if test="params != null and params != ''">params = #{params},</if>
 			<if test="exception != null and exception != ''">exception = #{exception},</if>
 			<if test="authStatus != null and authStatus != ''">authStatus = #{authStatus},</if>
+			<if test="operateDate != null and operateDate != ''">operateDate = #{operateDate},</if>
+			<if test="timeout != null and timeout != ''">timeout = #{timeout},</if>
+			<if test="userName != null and userName != ''">userName = #{userName},</if>
 		</set>
 		where id = #{id}
 	</update>
@@ -108,6 +111,24 @@
 			</if>
 			<if test="authStatusLike != null and authStatusLike != '' ">
 				and authStatus like concat(concat('%', #{authStatusLike, jdbcType=INTEGER}),'%')
+			</if>
+			<if test=" operateDate != null and operateDate != '' ">
+				and operateDate = #{operateDate}
+			</if>
+			<if test="operateDateLike != null and operateDateLike != '' ">
+				and operateDate like concat(concat('%', #{operateDate, jdbcType=INTEGER}),'%')
+			</if>
+			<if test=" timeout != null and timeout != '' ">
+				and timeout = #{timeout}
+			</if>
+			<if test="timeoutLike != null and timeoutLike != '' ">
+				and timeout like concat(concat('%', #{timeout, jdbcType=INTEGER}),'%')
+			</if>
+			<if test=" userName != null and userName != '' ">
+				and userName = #{userName}
+			</if>
+			<if test="userNameLike != null and userNameLike != '' ">
+				and userName like concat(concat('%', #{userName, jdbcType=INTEGER}),'%')
 			</if>
 		</where>
 	</sql>

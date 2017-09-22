@@ -137,7 +137,7 @@ public class SystemLogAspect {
             log.setRequestUri(requestUri);
             log.setMethod(method);
             log.setMapToParams(params);
-            log.setUserId(user.getId());
+            log.setUserName(user.getUserName());
             Date operateDate=beginTimeThreadLocal.get();
             log.setOperateDate(operateDate);
             log.setTimeout(new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(endTime-beginTime)));
