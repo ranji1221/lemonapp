@@ -30,4 +30,7 @@ import org.ranji.lemon.model.authority.Role;
 public interface IAuthorityService {
 	
 	public List<Role> userFindRole();
+	
+	//查询用户的所有角色及父级角色
+	public  List<Role> findRolesByUserId(int userId);
 }

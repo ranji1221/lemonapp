@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.persist.authority.prototype.IUserDao;
 import org.ranji.lemon.persist.common.impl.GenericDaoImpl;
@@ -63,7 +64,12 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements IUserD
 	
 	@Override
 	public User findUserByUserName(String UserName){
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".findUserByUserName", UserName);
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".findUserByName", UserName);
+	}
+	
+	@Override
+	public List<Role> findRoleByUserId(int userId){
+		return sqlSessionTemplate.selectList(typeNameSpace + ".findRoleByUserId", userId);
 	}
 
 }

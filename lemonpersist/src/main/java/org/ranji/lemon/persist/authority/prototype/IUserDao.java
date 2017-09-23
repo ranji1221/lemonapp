@@ -2,6 +2,7 @@ package org.ranji.lemon.persist.authority.prototype;
 
 import java.util.List;
 
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.persist.common.prototype.IGenericDao;
 
@@ -58,6 +59,7 @@ public interface IUserDao extends IGenericDao<User, Integer> {
 	public List<Integer> findUserRolesRelationByUserId(int userId);
 	
 	public User findUserByUserName(String userName);
-
+	
+	public List <Role> findRoleByUserId(int userId);  
 
 }

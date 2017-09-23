@@ -2,6 +2,7 @@ package org.ranji.lemon.service.authority.prototype;
 
 import java.util.List;
 
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.service.common.prototype.IGenericService;
 
@@ -73,5 +74,7 @@ public interface IUserService extends IGenericService<User, Integer> {
 	 * @return 角色id集合
 	 */
 	public List<Integer> findUserAndRolesByUserId(int userId);
+	
+	public List<Role> findRoleByUserId(int userId);
 
 }
