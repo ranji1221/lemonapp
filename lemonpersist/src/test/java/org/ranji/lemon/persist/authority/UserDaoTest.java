@@ -110,6 +110,14 @@ public class UserDaoTest {
 		User user = userDao.findUserByUserName("zhangsan");
 		System.out.println(user.getUserName());
 	}
+	//按用户id查找关联角色测试
+	@Test
+	public void testFindRolesByUserId(){
+		List<Role> role = userDao.findRoleByUserId(1);
+		for(Role r: role){
+			System.out.println(r.getRoleName());
+		}
+	}
 	
 	//查询全部角色测试方法
 	@Test
