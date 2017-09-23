@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- lemon云平台之父配置 -->
+	<parent>
+		<artifactId>lemonapp</artifactId>
+		<groupId>org.ranji.lemon</groupId>
+		<version>1.0</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<!-- lemon云的webservice接口子平台的配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>lemonjersey</artifactId>
+	<packaging>war</packaging>
+	<name>Lemon WebService Project</name>
+
+	<properties>
+		<jersey.version>1.19.4</jersey.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>lemonservice</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- Jersey1.19.4 -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.jersey.contribs</groupId>
+		    <artifactId>jersey-spring</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<!-- Tomcat7 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8080</port>
+					<path>/lemonws</path>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>lemonws</finalName>
+	</build>
+</project>

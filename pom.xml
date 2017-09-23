@@ -16,7 +16,8 @@
 		<module>lemonpersist</module>
 		<module>lemonservice</module>
     	<module>lemonwebapp</module>
-  	</modules>
+    	<module>lemonjersey</module>	<!-- webservice接口项目 -->
+  </modules>
 	
 	<!-- lemon云平台通用的属性设置-->
 	<properties>
