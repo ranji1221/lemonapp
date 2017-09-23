@@ -94,7 +94,6 @@ public class SystemLogDaoTest {
 		sl.setOperateDate(new Date());
 		sl.setTimeout("3000");
 		sl.setUserName("zhangsan");
-		sl.setLogId("3");
 		systemLogDao.update(sl);
 	}
 	//查询所有日志测试方法
