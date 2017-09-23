@@ -58,8 +58,18 @@ public interface IUserDao extends IGenericDao<User, Integer> {
 	 */
 	public List<Integer> findUserRolesRelationByUserId(int userId);
 	
+	/**
+	 * 根据用户名查找用户
+	 * @param userName 用户名
+	 * 
+	 */
 	public User findUserByUserName(String userName);
 	
+	/**
+	 * 根据用户id查找关联角色
+	 * @param userId 用户id
+	 * 
+	 */
 	public List <Role> findRoleByUserId(int userId);  
 
 }

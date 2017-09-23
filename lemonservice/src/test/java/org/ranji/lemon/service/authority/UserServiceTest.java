@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.pagination.PagerModel;
 import org.ranji.lemon.service.authority.prototype.IUserService;
@@ -77,6 +78,14 @@ public class UserServiceTest {
 		users = userService.findAll();
 		for (User user : users) {
 			System.out.println(user);
+		}
+	}
+	//根据用户id查找关联角色测试
+	@Test
+	public void testFindRoleByUserId(){
+		List<Role> role = userService.findRoleByUserId(1);
+		for(Role r: role){
+			System.out.println(r.getRoleName());
 		}
 	}
 	
