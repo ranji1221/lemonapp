@@ -17,6 +17,7 @@
 		<module>lemonservice</module>
     	<module>lemonwebapp</module>
     	<module>lemonjersey</module>	<!-- webservice接口项目 -->
+    	<module>lemonbpmn</module>		<!-- flowable工作流项目 -->
   </modules>
 	
 	<!-- lemon云平台通用的属性设置-->

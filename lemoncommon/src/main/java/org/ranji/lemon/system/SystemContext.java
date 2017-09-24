@@ -28,6 +28,7 @@ public class SystemContext {
 	private static ThreadLocal<Integer> offset = new ThreadLocal<Integer>();
 	private static ThreadLocal<Integer> pageSize = new ThreadLocal<Integer>();
 	private static ThreadLocal<Integer> authStatus = new ThreadLocal<Integer>();  //-- 为记录日志信息的授权状态而设置
+	
 
 	/**
 	 * 获取偏移量
