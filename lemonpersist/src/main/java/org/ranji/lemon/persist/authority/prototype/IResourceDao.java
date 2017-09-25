@@ -30,26 +30,6 @@ import org.ranji.lemon.model.authority.Resource;
 public interface IResourceDao extends IGenericDao<Resource, Integer> {
 
 	/**
-	 * 存储资源-操作的对应
-	 * @param resourceId 资源id
-	 * @param OperationId 操作id
-	 */
-	public void saveResourceAndOperation(int resourceId, int OperationId);
-
-	/**
-	 * 删除资源-操作对应
-	 * @param resourceId 资源id
-	 * @param operationId 操作id
-	 */
-	public void deleteResourceAndOperation(int resourceId,int operationId);
-
-	/**
-	 * 删除资源（及对应的全部操作）
-	 * @param resourceId 资源id
-	 */
-	public void deleteROsByResourceId(int resourceId);
-
-	/**
 	 * 根据资源id查询全部的资源-操作对应
 	 * @param resourceId 资源id
 	 * @return 操作id集合

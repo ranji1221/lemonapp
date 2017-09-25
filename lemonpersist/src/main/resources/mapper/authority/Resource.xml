@@ -50,29 +50,13 @@
 		where id = #{id}
 	</update>
 	
-	<!-- 增加资源与操作关联  -->
-	<insert id="saveResourceAndOperation" parameterType="Map" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_auth_resource_operation (resourceId, operationId) values 
-		(#{resourceId},#{operationId})
-	</insert>
-	
-	<!-- 删除资源与操作关联  -->
-	<delete id="deleteResourceAndOperation" parameterType="Map">
-		delete from lemon_auth_resource_operation where resourceId = #{resourceId} and operationId = #{operationId}
-	</delete>
-	
-	<!-- 删除资源与操作的所有关联  -->
-	<delete id="deleteROsByResourceId" parameterType="int">
-		delete from lemon_auth_resource_operation where resourceId = #{resourceId} 
-	</delete>
-	
 	<!-- 查找资源对应的全部操作 -->
 	<select id="findROsByResourceId" resultType="Integer" parameterType="int">
-		select operationId from lemon_auth_resource_operation where resourceId = #{resourceId} 
+		select id from lemon_auth_operation where resourceId = #{resourceId} 
 	</select>
 	
 	<!-- 查找资源分页查询 -->
-	<select id="findPaginated" parameterType="Map" resultType="User">
+	<select id="findPaginated" parameterType="Map" resultType="Resource">
 		select * from lemon_auth_resource 
 		<include refid="paramsSQL" />
 		limit #{offset}, #{limit}

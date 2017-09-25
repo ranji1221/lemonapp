@@ -38,27 +38,6 @@ import org.springframework.stereotype.Repository;
 public class ResourceDaoImpl extends GenericDaoImpl<Resource, Integer> implements IResourceDao {
 
 	@Override
-	public void saveResourceAndOperation(int resourceId, int operationId) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("resourceId", resourceId);
-		params.put("operationId", operationId);
-		sqlSessionTemplate.insert(typeNameSpace + ".saveResourceAndOperation", params);
-	}
-
-	@Override
-	public void deleteResourceAndOperation(int resourceId,int operationId) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("resourceId", resourceId);
-		params.put("operationId", operationId);
-		sqlSessionTemplate.delete(typeNameSpace + ".deleteResourceAndOperation", params);
-	}
-
-	@Override
-	public void deleteROsByResourceId(int resourceId) {
-		sqlSessionTemplate.delete(typeNameSpace + ".deleteROsByResourceId", resourceId);
-	}
-
-	@Override
 	public List<Integer> findROsByResourceId(int resourceId) {
 		return sqlSessionTemplate.selectList(typeNameSpace + ".findROsByResourceId", resourceId);
 	}

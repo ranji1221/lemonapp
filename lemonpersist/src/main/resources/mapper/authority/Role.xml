@@ -34,7 +34,6 @@
 	<!-- 查询全部角色 -->
 	<select id="findAll" resultType="Role" parameterType="Map">
 		select * from lemon_auth_role
-		where 1=1
 		<include refid="paramsSQL"/>
 	</select>
 	
@@ -67,11 +66,48 @@
 		where id = #{id}
 	</update>
 	
+	<!-- 查找角色分页查询 -->
+	<select id="findPaginated" parameterType="Map" resultType="Role">
+		select * from lemon_auth_role 
+		<include refid="paramsSQL" />
+		limit #{offset}, #{limit}
+	</select>
+	
+	<!-- 查找角色总数 -->
+	<select id="getTotalOfItems" parameterType="Map" resultType="int">
+		select count(*) from lemon_auth_role 
+		<include refid="paramsSQL" />
+	</select>
+	
 	<!-- 通用的设置条件的查询SQL语句 -->
 	<sql id="paramsSQL">
-		<if test=" roleName != null and roleName != '' ">
-			and roleName like concat(concat('%', #{roleName, jdbcType=VARCHAR}),'%')
-		</if>
+		<where>
+			<if test=" roleName != null and roleName != '' ">
+				and roleName = #{roleName}
+			</if>
+			<if test=" roleNameLike != null and roleNameLike != '' ">
+				and roleName like concat(concat('%', #{roleNameLike, jdbcType=VARCHAR}),'%')
+			</if>
+			<if test=" roleExtendPId != null and roleExtendPId != '' ">
+				and roleExtendPId = #{roleExtendPId}
+			</if>
+			<if test=" roleExtendPId != null and roleExtendPIdLike != '' ">
+				and roleExtendPId like concat(concat('%', #{roleExtendPIdLike, jdbcType=INTEGER}),'%')
+			</if>
+			<if test=" roleRelyId != null and roleRelyId != '' ">
+				and roleRelyId = #{roleRelyId}
+			</if>
+			<if test=" roleRelyIdLike != null and roleRelyIdLike != '' ">
+				and roleRelyId like concat(concat('%', #{roleRelyIdLike, jdbcType=INTEGER}),'%')
+			</if>
+			
+			<if test=" roleMaxNum != null and roleMaxNum != '' ">
+				and roleMaxNum = #{roleMaxNum}
+			</if>
+			<if test=" roleMaxNumLike != null and roleMaxNumLike != '' ">
+				and roleMaxNum like concat(concat('%', #{roleMaxNumLike, jdbcType=INTEGER}),'%')
+			</if>
+		</where>
 	</sql>
 	
 </mapper>

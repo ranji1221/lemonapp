@@ -14,24 +14,6 @@ public class ResourceServiceImpl extends GenericServiceImpl<Resource, Integer> i
 
 	@Autowired
 	IResourceDao resourceDao;
-	
-	@Override
-	public void saveResourceOperation(int resourceId, int operationId) {
-		 resourceDao.saveResourceAndOperation(resourceId, operationId);
-
-	}
-
-	@Override
-	public void deleteResourceOperation(int resourceId, int operationId) {
-		resourceDao.deleteResourceAndOperation(resourceId, operationId);
-
-	}
-
-	@Override
-	public void deleteROsByResourceId(int resourceId) {
-		resourceDao.deleteROsByResourceId(resourceId);
-
-	}
 
 	@Override
 	public List<Integer> findROsByResourceId(int resourceId) {

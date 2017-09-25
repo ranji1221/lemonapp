@@ -81,6 +81,20 @@
 		WHERE
 			u.id = #{id}
 	</select>
+	
+	<!-- 查找用户分页查询 -->
+	<select id="findPaginated" parameterType="Map" resultType="Role">
+		select * from lemon_auth_user 
+		<include refid="paramsSQL" />
+		limit #{offset}, #{limit}
+	</select>
+	
+	<!-- 查找用户总数 -->
+	<select id="getTotalOfItems" parameterType="Map" resultType="int">
+		select count(*) from lemon_auth_user 
+		<include refid="paramsSQL" />
+	</select>
+	
 	<!-- 通用的设置条件的查询SQL语句 -->
 	<sql id="paramsSQL">
 		<where>

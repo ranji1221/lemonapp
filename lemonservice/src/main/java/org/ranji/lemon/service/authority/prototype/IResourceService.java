@@ -32,29 +32,8 @@ import org.ranji.lemon.service.common.prototype.IGenericService;
 public interface IResourceService extends IGenericService<Resource, Integer> {
 
 	// 用户操作方法
-
 	/**
-	 * 存储资源-操作的对应
-	 * @param resourceId 资源id
-	 * @param operationId 操作id
-	 */
-	public void saveResourceOperation(int resourceId, int operationId);
-
-	/**
-	 * 删除用资源-操作的对应
-	 * @param resourceId 资源id
-	 * @param operationId 操作id
-	 */
-	public void deleteResourceOperation(int resourceId, int operationId);
-	
-	/**
-	 * 删除某资源的全部用户-角色的对应
-	 * @param resourceId 资源id
-	 */
-	public void deleteROsByResourceId(int resourceId);
-
-	/**
-	 * 根据资源id查询全部的资源-操作对应
+	 * 根据资源id查询全部的资源-操作
 	 * @param resourceId 资源id
 	 * @return 操作id集合
 	 */

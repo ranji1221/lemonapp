@@ -51,7 +51,7 @@
 	</select>
 	
 	<!-- 分页查找 -->
-	<select id="findPaginated" parameterType="Map" resultType="User">
+	<select id="findPaginated" parameterType="Map" resultType="Operation">
 		select * from lemon_auth_operation 
 		<include refid="paramsSQL" />
 		limit #{offset}, #{limit}

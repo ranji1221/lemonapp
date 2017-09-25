@@ -96,28 +96,6 @@ public class ResourceDaoTest {
 		r.setResourceName("首页");
 		resourceDao.update(r);
 	}
-	//测试资源操作关联
-	@Test
-	public void TestSaveResourceAndOperation(){
-		resourceDao.saveResourceAndOperation(2, 1);
-		resourceDao.saveResourceAndOperation(2, 2);
-		resourceDao.saveResourceAndOperation(2, 3);
-		resourceDao.saveResourceAndOperation(2, 4);
-		resourceDao.saveResourceAndOperation(1, 1);
-		resourceDao.saveResourceAndOperation(1, 2);
-		resourceDao.saveResourceAndOperation(3, 3);
-		resourceDao.saveResourceAndOperation(1, 4);
-	}
-	//测试 删除资源与操作单条关联
-	@Test
-	public void TestDeleteResourceAndOperation(){
-		resourceDao.deleteResourceAndOperation(2, 1);
-	}
-	//测试删除资源对应的全部操作
-	@Test
-	public void TestDeleteROsByResourceId(){
-		resourceDao.deleteROsByResourceId(2);
-	}
 	//测试查找全部操作
 	@Test
 	public void TestFindROsByResourceId(){
