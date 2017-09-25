@@ -77,13 +77,13 @@ public class UserDaoTest {
 		userDao.delete(1);
 	}
 	
-	//删除角色与操作的对应
+	//删除用户与角色的对应
 	@Test
 	public void testDeleteUserAndRoleRelation(){
 		userDao.deleteUserAndRoleRelation(1, 2);
 	}
 	
-	//根据角色id删除角色与操作的对应
+	//根据用户id删除用户与角色的对应
 	@Test
 	public void testDeleteUserAndRolesRelationByUserId(){
 		userDao.deleteUserAndRolesRelationByUserId(1);
@@ -98,7 +98,7 @@ public class UserDaoTest {
 			System.out.println(u.getUserName());
 		}
 	}
-	//查询某个角色测试方法
+	//查询某个用户测试方法
 	@Test
 	public void testFindRole(){
 		User user = userDao.find(2);
@@ -119,16 +119,7 @@ public class UserDaoTest {
 		}
 	}
 	
-	//查询全部角色测试方法
-	@Test
-	public void testFindAllRole(){
-		List<User> users = userDao.findAll();
-		for(User us: users){
-			System.out.println(us.getUserName());
-		}
-	}
-	
-	//根据角色id查询角色和操作的对应
+	//根据角色id查询用户和角色的对应
 	@Test
 	public void testFindUserRolesRelationByUserId(){
 		List<Integer> userIds = userDao.findUserRolesRelationByUserId(1);
@@ -136,9 +127,9 @@ public class UserDaoTest {
 			System.out.println(us);
 		}
 	}
-	//更新角色测试方法
+	//更新用户测试方法
 	@Test
-	public void testUpdateRole(){
+	public void testUpdateUser(){
 		User us = new User();
 		us.setId(2);
 		us.setUserName("lisi");
