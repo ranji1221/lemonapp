@@ -2,6 +2,7 @@ package org.ranji.lemon.service.authority.prototype;
 
 import java.util.List;
 
+import org.ranji.lemon.model.authority.Operation;
 import org.ranji.lemon.model.authority.Role;
 
 /**
@@ -31,6 +32,17 @@ public interface IAuthorityService {
 	
 	public List<Role> userFindRole();
 	
-	//查询用户的所有角色及父级角色
+	/**
+	 * 查询用户的所有角色及父级角色
+	 * @param userId 用户id
+	 * @return 角色对象集合
+	 */
 	public  List<Role> findRolesByUserId(int userId);
+	
+	/**
+	 * 查询用户的所有操作列表
+	 * @param userId 用户id
+	 * @return 操作对象集合
+	 */
+	public List<Operation> findOperationsByUserId(int userId);
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ranji.lemon.model.authority.Operation;
 import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.persist.authority.prototype.IRoleDao;
 import org.ranji.lemon.service.authority.prototype.IRoleService;
@@ -67,6 +68,11 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Integer> implement
 	@Override
 	public List<Integer> findRoleAndOperationsRelationByRoleId(int roleId) {
 		return ((IRoleDao) dao).findRoleAndOperationsRelationByRoleId(roleId);
+	}
+
+	@Override
+	public List<Operation> findOperationByRoleId(int roleId) {
+		return ((IRoleDao) dao).findOperationByRoleId(roleId);
 	}
 
 }

@@ -2,6 +2,7 @@ package org.ranji.lemon.persist.authority.prototype;
 
 import java.util.List;
 
+import org.ranji.lemon.model.authority.Operation;
 import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.persist.common.prototype.IGenericDao;
 
@@ -56,5 +57,13 @@ public interface IRoleDao extends IGenericDao<Role, Integer>{
 	 * @return 操作id集合
 	 */
 	public List<Integer> findRoleAndOperationsRelationByRoleId(int roleId);
+	
+	/**
+	 * 根据角色id查询全部的 角色-操作对应
+	 * @author fengjie
+	 * @param roelId 角色id
+	 * @return 操作对象集合
+	 */
+	public List<Operation> findOperationByRoleId(int roleId);
 
 }

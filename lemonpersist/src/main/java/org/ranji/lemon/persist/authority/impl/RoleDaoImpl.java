@@ -5,6 +5,7 @@ import java.util.List;
 
 import java.util.Map;
 
+import org.ranji.lemon.model.authority.Operation;
 import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.pagination.PagerModel;
 import org.ranji.lemon.persist.authority.prototype.IRoleDao;
@@ -62,6 +63,11 @@ public class RoleDaoImpl extends GenericDaoImpl<Role, Integer> implements IRoleD
 	@Override
 	public List<Integer> findRoleAndOperationsRelationByRoleId(int roleId) {
 		return sqlSessionTemplate.selectList(typeNameSpace + ".findRoleAndOperationsRelationByRoleId", roleId);
+	}
+
+	@Override
+	public List<Operation> findOperationByRoleId(int roleId) {
+		return sqlSessionTemplate.selectList(typeNameSpace + ".findOperationByRoleId", roleId);
 	}
 
 }

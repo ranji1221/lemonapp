@@ -1,16 +1,12 @@
 package org.ranji.lemon.service.authority;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ranji.lemon.model.authority.Operation;
 import org.ranji.lemon.model.authority.Role;
-import org.ranji.lemon.model.authority.User;
-import org.ranji.lemon.pagination.PagerModel;
 import org.ranji.lemon.service.authority.prototype.IAuthorityService;
-import org.ranji.lemon.system.SystemContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -44,12 +40,20 @@ public class AuthServiceTest {
 	@Autowired
 	private IAuthorityService authService;
 	
-	
+	//查询用户所有角色及父级角色测试
 	@Test
 	public void testFindRolesByUserId(){
 		List<Role> role = authService.findRolesByUserId(1);
 		for(Role r: role){
 			System.out.println(r.getRoleName());
+		}
+	}
+	//查询用户的所有操作
+	@Test
+	public void testFindOperationsByUserId(){
+		List<Operation> operation = authService.findOperationsByUserId(1);
+		for(Operation o: operation){
+			System.out.println(o.getOperationName());
 		}
 	}
 	

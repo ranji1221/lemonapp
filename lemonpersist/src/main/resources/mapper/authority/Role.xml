@@ -43,6 +43,18 @@
 		select operationId from lemon_auth_role_operation where roleId = #{roleId}
 	</select>
 	
+	<!-- 根据角色id查询角色和操作的对应关系 -->
+	<select id="findOperationByRoleId" parameterType="int" resultType="Operation">
+		SELECT
+			o.*
+		FROM
+			lemon_auth_role r
+		LEFT JOIN lemon_auth_role_operation r_o ON r.id = r_o.roleId
+		LEFT JOIN lemon_auth_operation o ON o.id = r_o.operationId
+		WHERE
+			r.id = #{roleId}
+	</select>
+	
 	<!-- 修个某个角色 -->
 	<update id="update" parameterType="Role">
 		update lemon_auth_role
