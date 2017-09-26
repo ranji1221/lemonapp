@@ -46,8 +46,9 @@ public class RoleServiceTest {
 	
 	@Test
 	public void testFindRoleTree(){
+		long start = System.currentTimeMillis();
 		List<Role> role = roleService.findRoleTree();
-		
+		System.out.println(System.currentTimeMillis()-start);
 		System.out.println(objectToJson(role));
 	}
 	
@@ -59,8 +60,18 @@ public class RoleServiceTest {
 				e.printStackTrace();
 			}
 	    	return null;
-	    }
-	
+	   }
+	@Test
+	 public void testAddRole(){
+		 
+		 for(int i= 0;i<150;i++ ){
+			 Role role =new Role();
+			 role.setRoleName("chide");
+			 role.setRoleExtendPId(9);
+			 roleService.save(role);
+		 }
+		 
+	 }
 	
 	
 }

@@ -87,21 +87,21 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Integer> implement
 	private List<Role> listToTree(List<Role> roles){
 		List<Role> rootTrees = new ArrayList<Role>();
 		for (Role role : roles) {
-            if(role.getRoleExtendPId() == 0){
+            if(role.getRoleExtendPId() == -1){
                 rootTrees.add(role);
-            }
-            for (Role r : roles) {
-                if(r.getRoleExtendPId() == r.getId()){
-                    if(role.getList() == null){
-                        List<Role> myRoles = new ArrayList<Role>();
-                        myRoles.add(r);
-                        role.setList(myRoles);
-                    }else{
-                        role.getList().add(r);
-                    }
-                }
-            }
-        }
+          }
+	        for (Role r : roles) {
+	            if(r.getRoleExtendPId() == role.getId()){
+	                if(role.getList() == null){
+	                    List<Role> myRoles = new ArrayList<Role>();
+	                    myRoles.add(r);
+	                    role.setList(myRoles);
+	                }else{
+	                    role.getList().add(r);
+	                }
+	            }
+	         }
+       }
 		return rootTrees;
 	}
 	//递归查询角色树
