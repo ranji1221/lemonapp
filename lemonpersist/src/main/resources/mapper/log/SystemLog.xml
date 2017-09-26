@@ -117,13 +117,13 @@
 				and operateDate = #{operateDate}
 			</if>
 			<if test="operateDateLike != null and operateDateLike != '' ">
-				and operateDate like concat(concat('%', #{operateDate, jdbcType=INTEGER}),'%')
+				and operateDate like concat(concat('%', #{operateDate, jdbcType=DATE}),'%')
 			</if>
 			<if test=" timeout != null and timeout != '' ">
 				and timeout = #{timeout}
 			</if>
 			<if test="timeoutLike != null and timeoutLike != '' ">
-				and timeout like concat(concat('%', #{timeout, jdbcType=INTEGER}),'%')
+				and timeout like concat(concat('%', #{timeout, jdbcType=VARCHAR}),'%')
 			</if>
 			<if test=" userName != null and userName != '' ">
 				and userName = #{userName}

@@ -91,7 +91,7 @@
 			<if test=" roleExtendPId != null and roleExtendPId != '' ">
 				and roleExtendPId = #{roleExtendPId}
 			</if>
-			<if test=" roleExtendPId != null and roleExtendPIdLike != '' ">
+			<if test=" roleExtendPIdLike != null and roleExtendPIdLike != '' ">
 				and roleExtendPId like concat(concat('%', #{roleExtendPIdLike, jdbcType=INTEGER}),'%')
 			</if>
 			<if test=" roleRelyId != null and roleRelyId != '' ">

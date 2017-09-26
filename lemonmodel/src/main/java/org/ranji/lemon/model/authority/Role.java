@@ -1,6 +1,8 @@
 package org.ranji.lemon.model.authority;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -33,7 +35,16 @@ public class Role implements Serializable{
 	private int roleExtendPId; // 角色的父ID
 	private int roleRelyId; //  角色依赖ID
 	private int roleMaxNum; // 最大限制用户数
+	private List<Role> list = new ArrayList<Role>();
 	
+	public List<Role> getList() {
+		return list;
+	}
+
+	public void setList(List<Role> list) {
+		this.list = list;
+	}
+
 	public int getId() {
 		return id;
 	}

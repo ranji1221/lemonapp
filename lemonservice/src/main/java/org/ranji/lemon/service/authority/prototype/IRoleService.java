@@ -74,5 +74,16 @@ public interface IRoleService extends IGenericService<Role, Integer>{
 	 * @return 操作对象集合
 	 */
 	public List<Operation> findOperationByRoleId(int roleId);
-
+	
+	/**
+	 * 查询全部角色，树形结构
+	 * @author fengjie
+	 * @return 角色
+	 */
+	 public List<Role> findRoleTree();
+	
+	
+	
+	
+	
 }
