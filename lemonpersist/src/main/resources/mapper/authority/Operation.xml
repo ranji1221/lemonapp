@@ -4,8 +4,8 @@
 	
 	<!-- 增加操作 -->
 	<insert id="save" parameterType="Operation" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_auth_operation (operationName, operationURL,resourceId,operationPId) values 
-		(#{operationName},#{operationURL},#{resourceId},#{operationPId})
+		insert into lemon_auth_operation (operationName, displayName,operationURL,resourceId,operationPId) values 
+		(#{operationName},#{displayName},#{operationURL},#{resourceId},#{operationPId})
 	</insert>
 	
 	<!-- 更新操作 -->
@@ -13,6 +13,7 @@
 		update lemon_auth_operation
 		<set>
 			<if test="operationName != null and operationName != ''">operationName = #{operationName},</if>
+			<if test="displayName != null and displayName != ''">displayName = #{displayName},</if>
 			<if test="operationURL != null and operationURL != ''">operationURL = #{operationURL},</if>
 			<if test="resourceId != null and resourceId != ''">resourceId = #{resourceId},</if>
 			<if test="operationPId != null and operationPId != ''">operationPId = #{operationPId},</if>
@@ -71,6 +72,12 @@
 			</if>
 			<if test=" operationNameLike != null and operationNameLike != '' ">
 				and operationName like concat(concat('%', #{operationNameLike, jdbcType=VARCHAR}),'%')
+			</if>
+			<if test="displayName != null and displayName != ''">
+				and displayName = #{displayName, jdbcType=VARCHAR}
+			</if>
+			<if test=" displayNameLike != null and displayNameLike != '' ">
+				and displayName like concat(concat('%', #{displayNameLike, jdbcType=VARCHAR}),'%')
 			</if>
 			<if test="operationURL != null and operationURL != ''">
 				and operationURL = #{operationName, jdbcType=VARCHAR}

@@ -49,7 +49,8 @@ public class OperationDaoTest {
 	@Test
 	public void testAddOperation(){
 		Operation o = new Operation();
-		o.setOperationName("修改");
+		o.setOperationName("test");
+		o.setDisplayName("测试");
 		o.setOperationPId(1);
 		o.setOperationURL("/update");
 		o.setResourceId(2);
@@ -60,8 +61,12 @@ public class OperationDaoTest {
 	@Test
 	public void testUpdateOperation(){
 		Operation o = new Operation();
-		o.setOperationName("查1看");
-		o.setId(2);
+		o.setOperationName("newTest");
+		o.setDisplayName("新测试");
+		o.setOperationPId(5);
+		o.setOperationURL("/users");
+		o.setResourceId(1);
+		o.setId(5);
 		operationDao.update(o);
 	}
 	//测试删除操作集
@@ -86,7 +91,7 @@ public class OperationDaoTest {
 	public void testFindAll(){
 		List<Operation> l =operationDao.findAll();
 		for(Operation o: l){
-			System.out.println(o.getOperationName());
+			System.out.println(o.getDisplayName());
 		}
 	}
 	//测试查找全部操作
