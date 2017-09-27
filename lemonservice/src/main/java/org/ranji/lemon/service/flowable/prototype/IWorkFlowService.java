@@ -72,4 +72,11 @@ public interface IWorkFlowService {
 	 * @return
 	 */
 	public List<Task> findTodos(String roleName);
+	
+	/**
+	 * 根据taskID查询任务
+	 * @param todoTaskID
+	 * @return
+	 */
+	public Task findTodoTask(String todoTaskID);
 }

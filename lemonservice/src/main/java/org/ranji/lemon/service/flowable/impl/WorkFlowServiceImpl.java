@@ -50,6 +50,10 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	@Autowired
 	TaskService taskService;
 	
+	public TaskService getTaskService(){
+		return taskService;
+	}
+	
 	@Override
 	public Deployment deployProcess(String processDefinitionXML) {
 		return repService.createDeployment()
@@ -95,6 +99,14 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 		return repService.createProcessDefinitionQuery()
 				.processDefinitionId(processDefinitionID)
 				.singleResult();
+	}
+	
+	/**
+	 * 根据todoTaskID查询
+	 */
+	@Override
+	public Task findTodoTask(String todoTaskID) {
+		return taskService.createTaskQuery().taskId(todoTaskID).singleResult();
 	}
 	
 	

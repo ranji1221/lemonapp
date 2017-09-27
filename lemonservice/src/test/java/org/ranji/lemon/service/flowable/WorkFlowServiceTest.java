@@ -4,12 +4,14 @@ package org.ranji.lemon.service.flowable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.engine.task.Task;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ranji.lemon.service.flowable.impl.WorkFlowServiceImpl;
 import org.ranji.lemon.service.flowable.prototype.IWorkFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -75,11 +77,10 @@ public class WorkFlowServiceTest {
 	@Test
 	public void testStartProcessInstance(){
 		Map<String,Object> variables = new HashMap<String,Object>();
-		variables.put("employee", "zhangsan");
-		variables.put("holidays", 7);
-		variables.put("reason", "family time");
+		variables.put("employee", "wangwu");
+		variables.put("holidays", 5);
+		variables.put("reason", "happy time");
 		ProcessInstance pi = wfService.startProcessInstance("holidayRequest", variables);
-		System.out.println(pi.getProcessDefinitionId());
 	}
 	
 	@Test
@@ -91,6 +92,30 @@ public class WorkFlowServiceTest {
 			System.out.println(index+". 流程名称：["+task.getProcessDefinitionId().split(":")[0]+"]  任务名称：["+task.getName()+"]");
 			index++;
 		}
+	}
+	
+	@Test
+	public void testFindTodoTaskInfo(){
+		List<Task> tasks = wfService.findTodos("managers");
+		System.out.println("You have "+tasks.size()+" tasks:");
+		int index = 1;
+		for (Task task : tasks) {
+			System.out.println(index+". 流程名称：["+task.getProcessDefinitionId().split(":")[0]+"]  任务名称：["+task.getName()+"]");
+			index++;
+		}
+		Scanner scanner = new Scanner(System.in); 
+		System.out.println("which task would you like to complete?");
+		int taskIndex = Integer.valueOf(scanner.nextLine());
+		Task task = wfService.findTodoTask(tasks.get(taskIndex-1).getId());
+		System.out.println(task.getProcessVariables().get("employee") + " wants " + 
+				task.getProcessVariables().get("holidays") + " of holidays . Do you approve this?");
 		
+		boolean approved = scanner.nextLine().toLowerCase().equals("y");
+		Map<String,Object> variables = new HashMap<String,Object>();
+		variables.put("approved", approved);
+		((WorkFlowServiceImpl)wfService).getTaskService().complete(task.getId(),variables);
+		
+		System.out.println(task.getProcessVariables().get("approved"));
+		scanner.close();
 	}
 }
