@@ -186,7 +186,7 @@ public class JdbcUtil {
 				DatabaseMetaData dbMetaData = con.getMetaData();
 				rs = dbMetaData.getColumns(dataBase, null, tableName, null);
 				while(rs.next()){
-					columns.add(rs.getString("COLUMN_NAME"));
+					columns.add(rs.getString("COLUMN_NAME")+":" + rs.getString("TYPE_NAME") + ":" +rs.getString("COLUMN_SIZE"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

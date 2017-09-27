@@ -1,17 +1,16 @@
-package org.ranji.lemon.service.authority;
+package org.ranji.lemon.service.flowable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.ranji.lemon.model.authority.Role;
-import org.ranji.lemon.service.authority.prototype.IRoleService;
+import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.service.flowable.prototype.IWorkFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -30,48 +29,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * See the License for the specific language governing permissions and limitations under the License.
  * Copyright [2017] [RanJi] [Email-jiran1221@163.com]
  * 
- * Authority模块中的RoleService测试类
- * @author Fengjie
- * @date 2017-9-23
+ * Authority模块中的UserService测试类
+ * @author RanJi
+ * @date 2013-10-1
  * @since JDK1.7
  * @version 1.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring-persist.xml","classpath:spring-service.xml","classpath:spring-flowable.xml"})
-public class RoleServiceTest {
+public class WorkFlowServiceTest {
 	@Autowired
-	private IRoleService roleService;
-	
-	private static final ObjectMapper MAPPER = new ObjectMapper();
+	private IWorkFlowService wfService;
 	
 	@Test
-	public void testFindRoleTree(){
-		long start = System.currentTimeMillis();
-		List<Role> role = roleService.findRoleTree();
-		System.out.println(System.currentTimeMillis()-start);
-		System.out.println(objectToJson(role));
+	public void testDeployProcess(){
+		wfService.deployProcess("holiday-request.bpmn20.xml");
 	}
-	
-	 public static String objectToJson(Object data) {
-	    	try {
-				String string = MAPPER.writeValueAsString(data);
-				return string;
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-	    	return null;
-	   }
-	@Test
-	 public void testAddRole(){
-		 
-		 for(int i= 0;i<150;i++ ){
-			 Role role =new Role();
-			 role.setRoleName("chide");
-			 role.setRoleExtendPId(9);
-			 roleService.save(role);
-		 }
-		 
-	 }
-	
-	
 }

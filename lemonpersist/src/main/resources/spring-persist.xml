@@ -37,9 +37,9 @@
 	<!-- 配置MyIBatis的SQLSessionFactory，同时要指定数据源 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
+		<property name="configLocation" value="classpath:sqlmapconfig.xml" />
 	</bean>
-
+	
 	<!-- 配置SqlSessionTemplate -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg index="0" ref="sqlSessionFactory" />

@@ -36,13 +36,6 @@
 	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
 	<context:component-scan base-package="org.ranji.lemon.common.aop" />
 	<context:component-scan base-package="org.ranji.lemon.controller" />
-	
-	<!-- 通过线程池来执行日志保存 -->
-	<bean id="taskExecutor"   class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">  
-        <property name="corePoolSize" value="5" />  
-        <property name="maxPoolSize" value="10" />  
-        <property name="WaitForTasksToCompleteOnShutdown" value="true" />  
-    </bean>  
 
 	<!-- 资源映射 -->
 	<mvc:resources mapping="/img/**" location="/assets/images/" />

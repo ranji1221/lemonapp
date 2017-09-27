@@ -26,6 +26,7 @@
 		<springFrame.version>4.0.9.RELEASE</springFrame.version>
 		<shiro.version>1.2.3</shiro.version>
 		<mybatis.version>3.2.6</mybatis.version>
+		<flowable.version>6.1.2</flowable.version>
 		<mysqlDriver.version>5.1.40</mysqlDriver.version>
 		<dom4j.version>1.6.1</dom4j.version>
 		<junit.version>4.11</junit.version>
@@ -252,6 +253,19 @@
 				<artifactId>mybatis-spring</artifactId>
 				<version>1.2.2</version>
 			</dependency>
+			
+			<!-- flowable框架  (工作流框架)-->
+			<dependency>
+		    	<groupId>org.flowable</groupId>
+		    	<artifactId>flowable-engine</artifactId>
+		    	<version>${flowable.version}</version>
+		  	</dependency>
+		  	<dependency>
+		    	<groupId>org.flowable</groupId>
+			    <artifactId>flowable-spring</artifactId>
+			    <version>${flowable.version}</version>
+			</dependency>
+			
 			
 			<!-- C3P0 -->
 			<dependency>

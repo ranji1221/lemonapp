@@ -1,6 +1,5 @@
 package org.ranji.lemon.common;
 
-import java.util.List;
 
 import org.junit.Test;
 import org.ranji.lemon.util.DataBaseType;

@@ -34,7 +34,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @version 1.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring-persist.xml","classpath:spring-service.xml"})
+@ContextConfiguration(locations={"classpath:spring-persist.xml","classpath:spring-service.xml","classpath:spring-flowable.xml"})
 public class SystemLogTest {
 	
 	@Autowired

@@ -16,10 +16,21 @@
 	<name>Lemon Service Project</name>
 
 	<dependencies>
+		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>lemonpersist</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- flowable框架  (工作流框架)-->
+		<dependency>
+	    	<groupId>org.flowable</groupId>
+	    	<artifactId>flowable-engine</artifactId>
+	  	</dependency>
+	  	<dependency>
+		    <groupId>org.flowable</groupId>
+		    <artifactId>flowable-spring</artifactId>
 		</dependency>
 		
 		<!-- JUnit -->
