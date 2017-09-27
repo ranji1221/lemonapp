@@ -1,9 +1,13 @@
 package org.ranji.lemon.service.flowable;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.flowable.engine.repository.ProcessDefinition;
+import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.engine.task.Task;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ranji.lemon.service.flowable.prototype.IWorkFlowService;
@@ -66,5 +70,27 @@ public class WorkFlowServiceTest {
 		for (ProcessDefinition pd : pds) {
 			System.out.println("===============["+pd.getKey()+"  "+pd.getId()+"  "+pd.getName()+"]===============");
 		}
+	}
+	
+	@Test
+	public void testStartProcessInstance(){
+		Map<String,Object> variables = new HashMap<String,Object>();
+		variables.put("employee", "zhangsan");
+		variables.put("holidays", 7);
+		variables.put("reason", "family time");
+		ProcessInstance pi = wfService.startProcessInstance("holidayRequest", variables);
+		System.out.println(pi.getProcessDefinitionId());
+	}
+	
+	@Test
+	public void testFindTodos(){
+		List<Task> tasks = wfService.findTodos("managers");
+		System.out.println("You have "+tasks.size()+" tasks:");
+		int index = 1;
+		for (Task task : tasks) {
+			System.out.println(index+". 流程名称：["+task.getProcessDefinitionId().split(":")[0]+"]  任务名称：["+task.getName()+"]");
+			index++;
+		}
+		
 	}
 }

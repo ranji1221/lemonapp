@@ -56,7 +56,10 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 				.addClasspathResource(processDefinitionXML)
 				.deploy();
 	}
-
+	
+	/**
+	 * 下面的两个方法在查询流程定义的时候用
+	 */
 	@Override
 	public ProcessDefinition getProcessDefinition(String processDefinitionKey) {
 		return repService.createProcessDefinitionQuery()
@@ -83,6 +86,15 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	@Override
 	public List<Task> findTodos(String roleName) {
 		return taskService.createTaskQuery().taskCandidateGroup(roleName).list();
+	}
+	/**
+	 * 此方法一般用于在task中获得流程定义的信息
+	 */
+	@Override
+	public ProcessDefinition getProcessDefinitionByID(String processDefinitionID) {
+		return repService.createProcessDefinitionQuery()
+				.processDefinitionId(processDefinitionID)
+				.singleResult();
 	}
 	
 	

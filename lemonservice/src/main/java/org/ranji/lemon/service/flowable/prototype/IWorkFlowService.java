@@ -46,6 +46,14 @@ public interface IWorkFlowService {
 	 */
 	public ProcessDefinition getProcessDefinition(String processDefinitionKey);
 	/**
+	 * 获取流程定义
+	 * @param processDefinitionID 流程定义ID
+	 * @return
+	 */
+	public ProcessDefinition getProcessDefinitionByID(String processDefinitionID);
+	
+	
+	/**
 	 * 获取某个流程定义的所有版本
 	 * @param processDefinitionKey 流程定义Key  (配置文件中的process的id属性的值)
 	 * @return 流程定义的集合
