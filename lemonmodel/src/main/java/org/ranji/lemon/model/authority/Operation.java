@@ -31,7 +31,8 @@ public class Operation implements Serializable{
 	private static final long serialVersionUID = -7110169615874248183L;
 	
 	private int id;
-	private String operationName; // 操作名
+	private String operationName; // 操作名 user：list
+	private String displayName; // 操作名 中文
 	private String operationURL; // 操作链接
 	private int resourceId; // 资源ID 
 	private int operationPId; //操作父id
@@ -52,6 +53,14 @@ public class Operation implements Serializable{
 		this.operationName = operationName;
 	}
 	
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
 	public String getOperationURL() {
 		return operationURL;
 	}

@@ -32,6 +32,7 @@ public class Role implements Serializable{
 	private static final long serialVersionUID = -2561045793807899015L;
 	private int id;
 	private String roleName; // 角色名称
+	private String displayName; //角色名称 中文
 	private int roleExtendPId; // 角色的父ID
 	private int roleRelyId; //  角色依赖ID
 	private int roleMaxNum; // 最大限制用户数
@@ -61,6 +62,13 @@ public class Role implements Serializable{
 		this.roleName = roleName;
 	}
 	
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 	public int getRoleExtendPId() {
 		return roleExtendPId;
 	}
