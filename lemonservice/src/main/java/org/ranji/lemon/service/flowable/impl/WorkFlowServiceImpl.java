@@ -1,6 +1,15 @@
 package org.ranji.lemon.service.flowable.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.flowable.engine.RepositoryService;
+import org.flowable.engine.RuntimeService;
+import org.flowable.engine.TaskService;
+import org.flowable.engine.repository.Deployment;
+import org.flowable.engine.repository.ProcessDefinition;
+import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.engine.task.Task;
 import org.ranji.lemon.service.flowable.prototype.IWorkFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +44,45 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	@Autowired
 	RepositoryService repService;
 	
+	@Autowired
+	RuntimeService rtService;
+	
+	@Autowired
+	TaskService taskService;
+	
 	@Override
-	public void deployProcess(String processDefinitionXML) {
-		repService.createDeployment().addClasspathResource(processDefinitionXML).deploy();
+	public Deployment deployProcess(String processDefinitionXML) {
+		return repService.createDeployment()
+				.addClasspathResource(processDefinitionXML)
+				.deploy();
+	}
+
+	@Override
+	public ProcessDefinition getProcessDefinition(String processDefinitionKey) {
+		return repService.createProcessDefinitionQuery()
+				.processDefinitionKey(processDefinitionKey)
+				.latestVersion()
+				.singleResult();
+	}
+
+	@Override
+	public List<ProcessDefinition> getProcessDefinitions(String processDefinitionKey) {
+		return repService.createProcessDefinitionQuery()
+				.processDefinitionKey(processDefinitionKey)
+				.orderByProcessDefinitionVersion()
+				.desc()
+				.list();
+	}
+
+	@Override
+	public ProcessInstance startProcessInstance(String processDefinitionKey,
+			Map<String, Object> variables) {
+		return rtService.startProcessInstanceByKey(processDefinitionKey,variables);
+	}
+
+	@Override
+	public List<Task> findTodos(String roleName) {
+		return taskService.createTaskQuery().taskCandidateGroup(roleName).list();
 	}
 	
 	

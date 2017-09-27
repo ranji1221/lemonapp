@@ -1,12 +1,11 @@
 package org.ranji.lemon.service.flowable;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.List;
+
+import org.flowable.engine.repository.ProcessDefinition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.service.flowable.prototype.IWorkFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -44,5 +43,28 @@ public class WorkFlowServiceTest {
 	@Test
 	public void testDeployProcess(){
 		wfService.deployProcess("holiday-request.bpmn20.xml");
+	}
+	
+	/**
+	 * 测试根据processDefintion.xml中的ID属性的值获取最新的那个流程定义版本
+	 */
+	@Test
+	public void testFindProcessDefinition(){
+		ProcessDefinition pd = wfService.getProcessDefinition("holidayRequest");
+		System.out.println("===============["+pd.getKey()+"  "+pd.getId()+"  "+pd.getName()+"]===============");
+		
+	}
+	
+	/**
+	 * 测试根据processDefintion.xml中的ID属性的值获取所有的流程定义版本 (倒序排列)
+	 */
+	@Test
+	public void testFindProcessDefinitions(){
+		ProcessDefinition opd = wfService.getProcessDefinition("holidayRequest");
+		System.out.println("===============["+opd.getKey()+"  "+opd.getId()+"  "+opd.getName()+"]===============");
+		List<ProcessDefinition> pds = wfService.getProcessDefinitions("holidayRequest");
+		for (ProcessDefinition pd : pds) {
+			System.out.println("===============["+pd.getKey()+"  "+pd.getId()+"  "+pd.getName()+"]===============");
+		}
 	}
 }
