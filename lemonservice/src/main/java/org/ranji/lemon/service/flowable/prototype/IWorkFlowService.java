@@ -1,5 +1,6 @@
 package org.ranji.lemon.service.flowable.prototype;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -79,4 +80,42 @@ public interface IWorkFlowService {
 	 * @return
 	 */
 	public Task findTodoTask(String todoTaskID);
+	
+	
+	/**
+	 * 根据流程定义id查询其资源文件（xml/图片），注意response需要设置ContentType：<br>
+	 * &nbsp;&nbsp;response.setContentType("application/xml");<br>
+	 * &nbsp;&nbsp;response.setContentType("image/png");
+	 * @param processDefinitionID 流程定义id
+	 * @param type xml/img（对应xml文件/流程图片）
+	 * @return 输入流，在Controller中使用IOUtils即可将其输出到response中
+	 */
+	public InputStream getProcessDefinitionRes(String processDefinitionID, String type);
+	
+	/**
+	 * 根据流程实例ID查询流程中所带的变量集合
+	 * @param processInstancID
+	 * @return
+	 */
+	public Map<String,Object> findProcessInstanceVariables(String processInstancID);
+	/**
+	 * 根据流程实例ID和某个变量的Name查询某个变量的值
+	 * @param processInstanceID
+	 * @param variableName
+	 * @return
+	 */
+	public Object findProcessInstanceVariable(String processInstanceID,String variableName);
+	/**
+	 * 根据任务ID获取流程实例的变量集合
+	 * @param taskID
+	 * @return
+	 */
+	public Map<String,Object> findProcessInstanceVariablesByTaskID(String taskID);
+	/**
+	 * 根据任务ID和变量Name获取流程实例中某个Name的值
+	 * @param taskID
+	 * @param variableName
+	 * @return
+	 */
+	public Object findProcessInstanceVariableByTaskIDAndVarKey(String taskID, String variableName);
 }

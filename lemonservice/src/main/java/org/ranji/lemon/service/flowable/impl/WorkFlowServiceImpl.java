@@ -1,5 +1,6 @@
 package org.ranji.lemon.service.flowable.impl;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -89,7 +90,7 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 
 	@Override
 	public List<Task> findTodos(String roleName) {
-		return taskService.createTaskQuery().taskCandidateGroup(roleName).list();
+		return taskService.createTaskQuery().taskCandidateGroup(roleName).orderByTaskCreateTime().desc().list();
 	}
 	/**
 	 * 此方法一般用于在task中获得流程定义的信息
@@ -108,6 +109,60 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	public Task findTodoTask(String todoTaskID) {
 		return taskService.createTaskQuery().taskId(todoTaskID).singleResult();
 	}
+	
+	@Override
+	public InputStream getProcessDefinitionRes(String processDefinitionID, String type) {
+		// 获取流程定义
+		ProcessDefinition pd = repService.getProcessDefinition(processDefinitionID);
+		// 获取资源名称
+		String resourceName = null;
+		if ("xml".equals(type)) {
+			resourceName = pd.getResourceName();
+		} else if ("img".equals(type)) {
+			resourceName = pd.getDiagramResourceName();
+		} else {
+			throw new RuntimeException("Unsupported resource type: " + type);
+		}
+		// 获取资源内容（xml/image）并返回
+		return repService.getResourceAsStream(pd.getDeploymentId(), resourceName);
+	}
+	
+	
+	/**
+	 * 根据流程实例ID获取流程实例所带的变量集合
+	 */
+	@Override
+	public Map<String, Object> findProcessInstanceVariables(
+			String processInstancID) {
+		return rtService.getVariables(processInstancID);
+	}
+	
+	/**
+	 * 根据流程实例ID和某个变量的Name获取流程实例所带的某个Name变量的值
+	 */
+	@Override
+	public Object findProcessInstanceVariable(String processInstanceID,
+			String variableName) {
+		return rtService.getVariable(processInstanceID, variableName);
+	}
+	
+	/**
+	 * 根据任务ID获取某个流程实例所带的变量集合
+	 */
+	@Override
+	public Map<String, Object> findProcessInstanceVariablesByTaskID(
+			String taskID) {
+		return taskService.getVariables(taskID);
+	}
+	/**
+	 * 根据任务ID和某个变量Name获取流程实例中的某个Name变量的值
+	 */
+	@Override
+	public Object findProcessInstanceVariableByTaskIDAndVarKey(String taskID,
+			String variableName) {
+		return taskService.getVariable(taskID, variableName);
+	}
+	
 	
 	
 }
