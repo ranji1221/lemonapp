@@ -81,7 +81,7 @@ public interface IWorkFlowService {
 	 */
 	public Task findTodoTask(String todoTaskID);
 	
-	
+
 	/**
 	 * 根据流程定义id查询其资源文件（xml/图片），注意response需要设置ContentType：<br>
 	 * &nbsp;&nbsp;response.setContentType("application/xml");<br>
@@ -118,4 +118,5 @@ public interface IWorkFlowService {
 	 * @return
 	 */
 	public Object findProcessInstanceVariableByTaskIDAndVarName(String taskID, String variableName);
+
 }

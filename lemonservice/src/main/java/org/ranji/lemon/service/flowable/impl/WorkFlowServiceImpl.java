@@ -109,6 +109,7 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	public Task findTodoTask(String todoTaskID) {
 		return taskService.createTaskQuery().taskId(todoTaskID).singleResult();
 	}
+
 	
 	@Override
 	public InputStream getProcessDefinitionRes(String processDefinitionID, String type) {
@@ -162,7 +163,5 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 			String variableName) {
 		return taskService.getVariable(taskID, variableName);
 	}
-	
-	
 	
 }
