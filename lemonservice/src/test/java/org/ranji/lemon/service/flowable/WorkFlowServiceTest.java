@@ -62,6 +62,19 @@ public class WorkFlowServiceTest {
 	}
 	
 	/**
+	 * 测试拿到所有可发起的流程定义的最新版本
+	 */
+	@Test
+	public void testGetProcessDefinitions(){
+		List<ProcessDefinition> pds = wfService.getAllProcessDefinitions();
+		for (ProcessDefinition pd : pds) {
+			System.out.println("===============["+pd.getKey()+"  "+pd.getId()+"  "+pd.getName()+"]===============");
+		}
+		
+		
+	}
+	
+	/**
 	 * 测试根据processDefintion.xml中的ID属性的值获取所有的流程定义版本 (倒序排列)
 	 */
 	@Test

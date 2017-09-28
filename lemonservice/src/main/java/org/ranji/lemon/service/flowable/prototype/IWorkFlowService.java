@@ -118,5 +118,10 @@ public interface IWorkFlowService {
 	 * @return
 	 */
 	public Object findProcessInstanceVariableByTaskIDAndVarName(String taskID, String variableName);
+	/**
+	 * 获取所有可发起的流程定义(每个流程定义可能有很多的版本，这里理应拿到每个流程定义的所对应的最新的那个版本)
+	 * @return
+	 */
+	public List<ProcessDefinition> getAllProcessDefinitions();
 
 }
