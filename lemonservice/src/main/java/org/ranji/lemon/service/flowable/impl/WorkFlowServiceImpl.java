@@ -1,5 +1,6 @@
 package org.ranji.lemon.service.flowable.impl;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -108,6 +109,22 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	public Task findTodoTask(String todoTaskID) {
 		return taskService.createTaskQuery().taskId(todoTaskID).singleResult();
 	}
-	
+
+	@Override
+	public InputStream getProcessDefinitionRes(String processDefinitionID, String type) {
+		// 获取流程定义
+		ProcessDefinition pd = repService.getProcessDefinition(processDefinitionID);
+		// 获取资源名称
+		String resourceName = null;
+		if ("xml".equals(type)) {
+			resourceName = pd.getResourceName();
+		} else if ("img".equals(type)) {
+			resourceName = pd.getDiagramResourceName();
+		} else {
+			throw new RuntimeException("Unsupported resource type: " + type);
+		}
+		// 获取资源内容（xml/image）并返回
+		return repService.getResourceAsStream(pd.getDeploymentId(), resourceName);
+	}
 	
 }

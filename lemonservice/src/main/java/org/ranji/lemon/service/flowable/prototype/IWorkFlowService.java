@@ -1,5 +1,6 @@
 package org.ranji.lemon.service.flowable.prototype;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -79,4 +80,15 @@ public interface IWorkFlowService {
 	 * @return
 	 */
 	public Task findTodoTask(String todoTaskID);
+	
+	/**
+	 * 根据流程定义id查询其资源文件（xml/图片），注意response需要设置ContentType：<br>
+	 * &nbsp;&nbsp;response.setContentType("application/xml");<br>
+	 * &nbsp;&nbsp;response.setContentType("image/png");
+	 * @param processDefinitionID 流程定义id
+	 * @param type xml/img（对应xml文件/流程图片）
+	 * @return 输入流，在Controller中使用IOUtils即可将其输出到response中
+	 */
+	public InputStream getProcessDefinitionRes(String processDefinitionID, String type);
+	
 }
