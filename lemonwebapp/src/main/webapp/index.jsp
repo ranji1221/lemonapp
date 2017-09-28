@@ -6,5 +6,6 @@
 	<shiro:hasPermission name="user:delete">  
 	<li> <a href="${pageContext.request.contextPath}/backend/authority/user/deleteuser">删除用户</a></li>
 	</shiro:hasPermission>   
+	<li> <a href="${pageContext.request.contextPath}/backend/flowable/list">工作流测试</a></li>
 </ul>
 
