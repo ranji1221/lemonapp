@@ -117,5 +117,5 @@ public interface IWorkFlowService {
 	 * @param variableName
 	 * @return
 	 */
-	public Object findProcessInstanceVariableByTaskIDAndVarKey(String taskID, String variableName);
+	public Object findProcessInstanceVariableByTaskIDAndVarName(String taskID, String variableName);
 }

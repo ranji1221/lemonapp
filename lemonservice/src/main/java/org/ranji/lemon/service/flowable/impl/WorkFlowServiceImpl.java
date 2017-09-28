@@ -158,7 +158,7 @@ public class WorkFlowServiceImpl implements IWorkFlowService{
 	 * 根据任务ID和某个变量Name获取流程实例中的某个Name变量的值
 	 */
 	@Override
-	public Object findProcessInstanceVariableByTaskIDAndVarKey(String taskID,
+	public Object findProcessInstanceVariableByTaskIDAndVarName(String taskID,
 			String variableName) {
 		return taskService.getVariable(taskID, variableName);
 	}

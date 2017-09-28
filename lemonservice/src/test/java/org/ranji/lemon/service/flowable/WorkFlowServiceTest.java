@@ -77,10 +77,12 @@ public class WorkFlowServiceTest {
 	@Test
 	public void testStartProcessInstance(){
 		Map<String,Object> variables = new HashMap<String,Object>();
-		variables.put("employee", "wangwu");
-		variables.put("holidays", 5);
+		variables.put("employee", "jiran");
+		variables.put("holidays", 3);
 		variables.put("reason", "happy time");
 		ProcessInstance pi = wfService.startProcessInstance("holidayRequest", variables);
+		
+		System.out.println(wfService.findProcessInstanceVariable(pi.getId(), "employee"));
 	}
 	
 	@Test
@@ -96,6 +98,7 @@ public class WorkFlowServiceTest {
 	
 	@Test
 	public void testFindTodoTaskInfo(){
+		//-- 1. 获得经理角色的所有待办任务
 		List<Task> tasks = wfService.findTodos("managers");
 		System.out.println("You have "+tasks.size()+" tasks:");
 		int index = 1;
@@ -103,12 +106,13 @@ public class WorkFlowServiceTest {
 			System.out.println(index+". 流程名称：["+task.getProcessDefinitionId().split(":")[0]+"]  任务名称：["+task.getName()+"]");
 			index++;
 		}
+		//-- 2. 选择待办任务
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println("which task would you like to complete?");
 		int taskIndex = Integer.valueOf(scanner.nextLine());
-		Task task = wfService.findTodoTask(tasks.get(taskIndex-1).getId());
-		System.out.println(task.getProcessVariables().get("employee") + " wants " + 
-				task.getProcessVariables().get("holidays") + " of holidays . Do you approve this?");
+		Task task = tasks.get(taskIndex-1);
+		System.out.println(wfService.findProcessInstanceVariableByTaskIDAndVarName(task.getId(), "employee") + " wants " + 
+				wfService.findProcessInstanceVariableByTaskIDAndVarName(task.getId(), "holidays") + " of holidays . Do you approve this?");
 		
 		boolean approved = scanner.nextLine().toLowerCase().equals("y");
 		Map<String,Object> variables = new HashMap<String,Object>();
