@@ -598,7 +598,8 @@ $(document).on("click", ".module_minimize", function() {
 function getdom_module(this_dom) {
 	$(".ajax_dom").empty().hide()
 	var dom_modul = this_dom.find(".hidmission").html()
-	$("<li>" + dom_modul + "</li>").appendTo($(".mission ol"))
+	var url = this_dom.find(".hidmission p").attr("class")
+	$("<li class="+url+">" + dom_modul + "</li>").appendTo($(".mission ol"))
 
 }
 $(document).on("click", function() {
