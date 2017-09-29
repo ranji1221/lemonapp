@@ -322,7 +322,7 @@ $(function() {
 			cache: false
 		});
 		$('#user-authorization .modal-content').html('');
-		$('#user-authorization .modal-content').load('./pages/user/user-authorization.html')
+		$('#user-authorization .modal-content').load('backend/authority/user/authuser/modal')
 		$('#user-authorization').modal('show');
 	})
 	// 角色授权模态框的调用

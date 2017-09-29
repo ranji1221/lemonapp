@@ -79,9 +79,9 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Integer> implement
 	
 	@Override
 	public List<Role> findRoleTree() {
-		return find(-1); //递归查询方法
-//		List<Role> roles= findAll(); //查出所有角色
-//		return listToTree(roles);	//转化为树形结构
+		//return find(-1); //递归查询方法
+		List<Role> roles= findAll(); //查出所有角色
+		return listToTree(roles);	//转化为树形结构
 	}
 	//将集合转化为树形结构
 	private List<Role> listToTree(List<Role> roles){
@@ -89,7 +89,7 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Integer> implement
 		for (Role role : roles) {
             if(role.getRoleExtendPId() == -1){
                 rootTrees.add(role);
-          }
+            	}
 	        for (Role r : roles) {
 	            if(r.getRoleExtendPId() == role.getId()){
 	                if(role.getList() == null){

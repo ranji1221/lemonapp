@@ -86,6 +86,7 @@ public class SystemRealm extends AuthorizingRealm{
 			info.addStringPermission("user:bulkadd");
 			info.addStringPermission("user:lookuser");
 			info.addStringPermission("user:edituser");
+			info.addStringPermission("user:authuser");
 		//info.addStringPermission("user:delete");
 		return info;
 		
