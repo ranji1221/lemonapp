@@ -5,7 +5,7 @@
 $(function() {
 	var editModal = $("#editModal");
 	var editRoleUrl = "pages/role/editRoleModal.html";
-	var editUserUrl = "backend/authority/user/edituser";
+	var editUserUrl = "backend/authority/user/edituser/modal";
 	var editSourceUrl = "pages/resources/editSourceModal.html";
 	var lookRoleUrl = "pages/role/lookRoleModal.html";
 	var lookUserUrl = "backend/authority/user/lookuser/modal";

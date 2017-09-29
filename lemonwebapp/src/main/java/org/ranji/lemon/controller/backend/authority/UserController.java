@@ -85,11 +85,16 @@ public class UserController {
 	}
 	
 	@SystemControllerPermission("user:edituser")
-	@RequestMapping(value = "/edituser")
+	@RequestMapping(value = "/edituser/{size}")
 	@SystemControllerLog(description="权限管理-更新用户")
-	public String editUser() {
-
-		return "backend/authority/user/editUserModal";
+	public String editUser(@PathVariable String size) {
+		if("modal".equals(size)){
+			return "backend/authority/user/editUserModal";
+		}else if("max".equals(size)){
+			return "backend/authority/user/edit";
+		}
+		return null;
+		
 	}
 	
 	@RequiresPermissions("user:delete")

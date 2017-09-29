@@ -17,7 +17,7 @@
 				<input type="text" class="form-control" placeholder="搜索你想找到的...">
 				<span class="input-group-btn">
 			        <button class="btn btn-default" type="button">
-						<img src="./assets/images/sys/iconsearch.png" alt="">
+						<img src="${pageContext.request.contextPath}/img/sys/iconsearch.png" alt="">
 			        </button>
 			        </span>
 			</div>
@@ -76,22 +76,22 @@
 		<div class="pull-right col-lg-2 col-md-3 col-sm-4 col-xs-4 role_hearde_icon">
 			<div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 role_hearde_this_icon red_border">
 
-				<img src="./assets/images/sys/modal1.png" alt="" />
+				<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="" />
 				<!--<a href=""><span class="glyphicon glyphicon-remove red_back"></span></a>-->
 			</div>
 			<div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1  role_hearde_this_icon  blue_border">
 				<!--<a href=""><span class="glyphicon glyphicon-resize-small blue_back"></span></a>-->
 
-				<img src="./assets/images/sys/modal3.png" alt="" />
+				<img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="" />
 			</div>
 			<div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 role_hearde_this_icon green_border dom_minimize">
 				<!--<a href=""><span class="small_icon glyphicon green_back">-</span></a>-->
 				<div class="hidmission">
 					<span class="icon-pencil icon-slidenav"></span>
-					<p url="./pages/user/edit" u_id="3" >用户编辑</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/user/edituser/max" u_id="3" >用户编辑</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
-				<img src="./assets/images/sys/modal2.png" alt="" />
+				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
 			</div>
 		</div>
 	</div>
@@ -208,7 +208,7 @@
 	$('.blue_border').on("click", function(e) {
 		e.preventDefault()
 		$.ajax({
-			url: "./pages/user/list.html",
+			url: "${pageContext.request.contextPath}/backend/authority/user/listuser",
 			dataType: "html"
 		}).done(function(data) {
 			$(".ajax_dom").empty()
@@ -220,7 +220,7 @@
 	$('.red_border').on("click", function(e) {
 		e.preventDefault()
 		$.ajax({
-			url: "./pages/user/list.html",
+			url: "${pageContext.request.contextPath}/backend/authority/user/listuser",
 			dataType: "html"
 		}).done(function(data) {
 			$(".ajax_dom").empty()

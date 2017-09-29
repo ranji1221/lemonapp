@@ -199,7 +199,7 @@ $(function() {
 			e.preventDefault()
 			$("#editUserModal").modal('hide')
 			$.ajax({
-				url: "./pages/user/edit.html",
+				url: "backend/authority/user/edituser/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()

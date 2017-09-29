@@ -5,9 +5,9 @@
 	    	<a href="#" data="2" url="hoem" >首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="./pages/user/list">用户管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/listusert">用户管理</a>
 	    </li>
-	    <li><a href="" url="./pages/user/list">用户列表</a></li>
+	    <li><a href="" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户列表</a></li>
 	    <li class="active">查看用户</li>
     	<div class="nav-search" id="nav-search">
 			<form class="form-search">
@@ -86,7 +86,7 @@
                 <img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
                 <div class="hidmission">
 					<span class="icon-eye-open icon-slidenav"></span>
-					<p url="./pages/user/look">查看用户</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/user/lookuser/max">查看用户</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
             </div>
@@ -123,7 +123,7 @@
 			$('.blue_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"./pages/user/list.html",
+					url:"${pageContext.request.contextPath}/backend/authority/user/listuser",
 					dataType:"html"
 				}).done(function(data){
 					$(".ajax_dom").empty()
@@ -135,7 +135,7 @@
 	$('.red_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"./pages/user/list.html",
+					url:"${pageContext.request.contextPath}/backend/authority/user/listuser",
 					dataType:"html"
 				}).done(function(data){
 					console.log(data)
