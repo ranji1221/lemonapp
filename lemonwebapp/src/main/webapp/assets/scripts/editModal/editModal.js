@@ -4,10 +4,10 @@
 
 $(function() {
 	var editModal = $("#editModal");
-	var editRoleUrl = "pages/role/editRoleModal.html";
+	var editRoleUrl = "backend/authority/role/editrole/modal";
 	var editUserUrl = "backend/authority/user/edituser/modal";
 	var editSourceUrl = "backend/authority/resource/editresource/modal";
-	var lookRoleUrl = "pages/role/lookRoleModal.html";
+	var lookRoleUrl = "backend/authority/role/lookrole/modal";
 	var lookUserUrl = "backend/authority/user/lookuser/modal";
 	var lookSourceUrl = "backend/authority/resource/lookresource/modal";
 	var removeUrl = "pages/remove/remove.html";
@@ -334,7 +334,7 @@ $(function() {
 		});
 		// console.log('尝试清除js');
 		$('#role-authorization .modal-content').html('');
-		$('#role-authorization .modal-content').load('./pages/role/role-authorization.html')
+		$('#role-authorization .modal-content').load('backend/authority/role/authrole/modal')
 		$('#role-authorization').modal('show');
 	})
 });

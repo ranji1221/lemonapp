@@ -105,7 +105,7 @@ $(function() {
 			$(".ajax_dom").show()
 			$("#lookRoleModal").modal('hide')
 			$.ajax({
-				url: "./pages/role/look.html",
+				url: "backend/authority/role/lookrole/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -134,7 +134,7 @@ $(function() {
 			e.preventDefault()
 			$("#editRoleModal").modal('hide')
 			$.ajax({
-				url: "./pages/role/edit.html",
+				url: "backend/authority/role/editrole/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
