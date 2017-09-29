@@ -1,5 +1,49 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${pageContext.request.contextPath}/js/role/rolelist.js"></script>
+<script >
+	//alert(122);
+	initHtml(11);
+	function initHtml(data){
+		var html = '';
+		if(true){
+			var role = ${roleList};
+			$.each(role,function(index,value,role){
+				html += '<tr>'+
+				'<td class="checkboxtd">'+
+					'<label>'+
+						'<input  type="checkbox" name="layout">'+
+					'</label>'+
+				'</td>'+
+				'<td>'+
+					(index+1) +
+				'</td>'+
+				'<td title="首页">'+
+					value.roleName +//${role.roleName}
+				'</td>'+
+				'<td title="首页">'+
+					"123"  +
+				'</td>'+
+				'<td>'+
+					'<span class="icon-eye-open iconact lookRole"></span>'+
+				'</td>'+
+				'<td>'+
+					'<span class="icon-pencil iconact editRole" n_id="1"></span>'+
+				'</td>'+
+				'<td>'+
+					'<span class="icon-trash iconact removeBtn"></span>'+
+				'</td>'+
+				'<td>'+
+					'<span class="icon-key iconact"></span>'+
+				'</td>'+
+			'</tr>';
+				
+			})		
+		}
+		$('#rolesList').html(html);
+	}
+
+</script>
 
 <div class="rolelist roleslist">
 	<ol class="breadcrumb">
@@ -68,7 +112,8 @@
 					<th style="width:0.9rem;">授权</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id = "rolesList">
+			<!--<c:forEach items="${roleList}" var = "role">
 				<tr>
 					<td class='checkboxtd'>
 						<label>
@@ -79,7 +124,7 @@
 						01
 					</td>
 					<td title="首页">
-						首页
+						
 					</td>
 					<td title="首页">
 						首页
@@ -97,6 +142,7 @@
 						<span class="icon-key iconact"></span>
 					</td>
 				</tr>
+				</c:forEach>
 				<tr>
 					<td class='checkboxtd'>
 						<label>
@@ -376,119 +422,7 @@
 					<td>
 						<span class="icon-key iconact"></span>
 					</td>
-				</tr>
-				<tr>
-					<td class='checkboxtd'>
-						<label>
-							<input  type="checkbox" name="layout">
-						</label>
-					</td>
-					<td>
-						12
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td>
-						<span class="icon-eye-open iconact lookRole"></span>
-					</td>
-					<td>
-						<span class="icon-pencil iconact editRole"></span>
-					</td>
-					<td>
-						<span class="icon-trash iconact removeBtn"></span>
-					</td>
-					<td>
-						<span class="icon-key iconact"></span>
-					</td>
-				</tr>
-				<tr>
-					<td class='checkboxtd'>
-						<label>
-							<input  type="checkbox" name="layout">
-						</label>
-					</td>
-					<td>
-						13
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td>
-						<span class="icon-eye-open iconact lookRole"></span>
-					</td>
-					<td>
-						<span class="icon-pencil iconact editRole"></span>
-					</td>
-					<td>
-						<span class="icon-trash iconact removeBtn"></span>
-					</td>
-					<td>
-						<span class="icon-key iconact"></span>
-					</td>
-				</tr>
-				<tr>
-					<td class='checkboxtd'>
-						<label>
-							<input  type="checkbox" name="layout">
-						</label>
-					</td>
-					<td>
-						14
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td>
-						<span class="icon-eye-open iconact lookRole"></span>
-					</td>
-					<td>
-						<span class="icon-pencil iconact editRole"></span>
-					</td>
-					<td>
-						<span class="icon-trash iconact removeBtn"></span>
-					</td>
-					<td>
-						<span class="icon-key iconact"></span>
-					</td>
-				</tr>
-				<tr>
-					<td class='checkboxtd'>
-						<label>
-							<input  type="checkbox" name="layout">
-						</label>
-					</td>
-					<td>
-						15
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td title="首页">
-						首页
-					</td>
-					<td>
-						<span class="icon-eye-open iconact lookRole"></span>
-					</td>
-					<td>
-						<span class="icon-pencil iconact editRole"></span>
-					</td>
-					<td>
-						<span class="icon-trash iconact removeBtn"></span>
-					</td>
-					<td>
-						<span class="icon-key iconact"></span>
-					</td>
-				</tr>
+				</tr>-->
 			</tbody>
 		</table>
 		<div class="tfoot">
@@ -526,9 +460,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 <!-- 最大化容器 -->
 <div class="maxcontainer">
