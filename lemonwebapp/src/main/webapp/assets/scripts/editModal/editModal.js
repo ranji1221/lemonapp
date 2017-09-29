@@ -4,10 +4,10 @@
 
 $(function() {
 	var editModal = $("#editModal");
-	var editRoleUrl = "pages/role/editRoleModal.html";
+	var editRoleUrl = "backend/authority/role/editrole/modal";
 	var editUserUrl = "backend/authority/user/edituser/modal";
 	var editSourceUrl = "pages/resources/editSourceModal.html";
-	var lookRoleUrl = "pages/role/lookRoleModal.html";
+	var lookRoleUrl = "backend/authority/role/lookrole/modal";
 	var lookUserUrl = "backend/authority/user/lookuser/modal";
 	var lookSourceUrl = "pages/resources/lookSourceModal.html";
 	var removeUrl = "pages/remove/remove.html";
