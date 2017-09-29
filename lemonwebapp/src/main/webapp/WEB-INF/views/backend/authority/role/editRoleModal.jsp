@@ -5,7 +5,7 @@
 		<div class="modal-header">
 			<div class="pull-right">
 				<a href="javascript:;" data-dismiss="modal" class="minus module_minimize">
-					<img src="./assets/images/sys/modal2.png" alt="" />
+					<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
 					<div class="hidmission">
 						<span class="icon-pencil icon-slidenav"></span>
 						<p u_id="2" class="editRole">编辑角色</p>
@@ -14,10 +14,10 @@
 
 				</a>
 				<a href="javascript:;" class="external-link">
-					<img src="./assets/images/sys/modal3.png" />
+					<img src="${pageContext.request.contextPath}/img/sys/modal3.png" />
 				</a>
 				<a href="javascript:;" class="remove" data-dismiss="modal">
-					<img src="./assets/images/sys/modal1.png" alt="" />
+					<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="" />
 				</a>
 			</div>
 			<h4 class="modal-title">

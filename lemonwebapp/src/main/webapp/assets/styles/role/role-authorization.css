@@ -411,7 +411,7 @@ label{
 .maxcontainer .ui-slider-horizontal .ui-slider-handle{
 	top:-0.07rem;
 	text-align: center;
-	background-image:url('../../images/sys/slidericon.png');
+	background-image:url('/img/sys/slidericon.png');
 	background-repeat: no-repeat;
 	background-position:center;
 	background-size:0.22rem 0.24rem;

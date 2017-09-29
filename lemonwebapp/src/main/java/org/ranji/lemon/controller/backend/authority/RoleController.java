@@ -5,6 +5,7 @@ import org.ranji.lemon.annotation.SystemControllerPermission;
 import org.ranji.lemon.service.authority.prototype.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -59,4 +60,41 @@ public class RoleController {
 		return "backend/authority/role/bulkaddroles";
 	}
 	
+	//@SystemControllerPermission("role:bulkadd")
+	@RequestMapping(value = "/lookrole/{size}")
+	@SystemControllerLog(description="权限管理-查看角色")
+	public String lookRole(@PathVariable String size) {
+		if("modal".equals(size)){
+			return "backend/authority/role/lookRoleModal";
+		}else if("max".equals(size)){
+			return "backend/authority/role/look";
+		}
+		return null;
+		
+	}
+	
+	//@SystemControllerPermission("role:bulkadd")
+	@RequestMapping(value = "/editrole/{size}")
+	@SystemControllerLog(description="权限管理-修改角色")
+	public String editRole(@PathVariable String size) {
+		if("modal".equals(size)){
+			return "backend/authority/role/editRoleModal";
+		}else if("max".equals(size)){
+			return "backend/authority/role/edit";
+		}
+		return null;
+		
+	}
+	
+	//@SystemControllerPermission("role:bulkadd")
+	@RequestMapping(value = "/authrole/{size}")
+	@SystemControllerLog(description="权限管理-给角色分配资源")
+	public String authRole(@PathVariable String size) {
+		if("modal".equals(size)){
+			return "backend/authority/role/role-authorization";
+		}else if("max".equals(size)){
+			return "backend/authority/role/role-authorizationlg";
+		}
+		return null;
+	}
 }

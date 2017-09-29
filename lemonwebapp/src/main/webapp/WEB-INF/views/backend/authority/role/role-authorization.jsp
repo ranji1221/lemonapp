@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 
-<script src="./assets/scripts/role/role-authorization.js"></script>
+<script src="${pageContext.request.contextPath}/js/role/role-authorization.js"></script>
 <!-- 角色授权 -->
 <!-- Modal -->
 	<div class="modal-contentbox">
@@ -8,7 +8,7 @@
 			<p>角色授权</p>
 			<div class="btns">
 				<a href="javascript:;" class="min module_minimize" data-dismiss="modal">
-					<img src="./assets/images/sys/modal2.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
 					<div class="hidmission">
 						<span class="icon-key icon-slidenav"></span>
 						<p class='role-aut'>角色授权</p>
@@ -17,10 +17,10 @@
 				</a>
 				<!-- <a href="javascript:;" class="maxrole" data-dismiss="modal" u_id="4"> -->
 				<a href="javascript:;" class="maxrole external-link" data-dismiss="modal" u_id="4">
-					<img src="./assets/images/sys/modal3.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="">
 				</a>
 				<a href="javascript:;" class="zclose" data-dismiss="modal">
-					<img src="./assets/images/sys/modal1.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="">
 				</a>
 			</div>
 		</div>

@@ -184,9 +184,9 @@ $(function(){
 		
 		$.ajaxSetup ({ cache: false });
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('./pages/role/rolelist.html').show();
+        $('.ajax_dom').load('backend/authority/role/listrole').show();
 		$('#role-authorization .modal-content').html('');
-		$('#role-authorization .modal-content').load('./pages/role/role-authorization.html')
+		$('#role-authorization .modal-content').load('backend/authority/role/authrole/modal')
 		$('#role-authorization').modal('show');
 	})
 	$('.maxcontainer').off('click.lgclose').on('click.lgclose','.zclose',function(){
@@ -195,7 +195,7 @@ $(function(){
 		// $('.ajax_dom').html('');
 		// $('.ajax_dom').hide();
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('./pages/role/rolelist.html').show();
+        $('.ajax_dom').load('backend/authority/role/listrole').show();
 		
 	})
 })

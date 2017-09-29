@@ -334,7 +334,7 @@ $(function() {
 		});
 		// console.log('尝试清除js');
 		$('#role-authorization .modal-content').html('');
-		$('#role-authorization .modal-content').load('./pages/role/role-authorization.html')
+		$('#role-authorization .modal-content').load('backend/authority/role/authrole/modal')
 		$('#role-authorization').modal('show');
 	})
 });
