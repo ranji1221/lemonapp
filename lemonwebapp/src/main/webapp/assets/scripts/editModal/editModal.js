@@ -9,7 +9,7 @@ $(function() {
 	var editSourceUrl = "pages/resources/editSourceModal.html";
 	var lookRoleUrl = "backend/authority/role/lookrole/modal";
 	var lookUserUrl = "backend/authority/user/lookuser/modal";
-	var lookSourceUrl = "pages/resources/lookSourceModal.html";
+	var lookSourceUrl = "backend/authority/resources/looksource/modal";
 	var removeUrl = "pages/remove/remove.html";
 	//  $("#editUserModal").on('hide.bs.modal',function () {
 	//     $(this).removeData('bs.modal');
