@@ -6,9 +6,9 @@
 	    	<a href="#" data="2" url="home">首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="./pages/role/rolelist">角色管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/listrole">角色管理</a>
 	    </li>
-	    <li><a href="" url="./pages/role/rolelist">角色列表</a></li>
+	    <li><a href="" url="${pageContext.request.contextPath}/backend/authority/role/listrole">角色列表</a></li>
 	    <li class="active">查看角色</li>
     	<div class="nav-search" id="nav-search">
 			<form class="form-search">
@@ -16,7 +16,7 @@
 			        <input type="text" class="form-control" placeholder="搜索你想找到的...">
 			        <span class="input-group-btn">
 			        <button class="btn btn-default" type="button">
-						<img src="./assets/images/sys/iconsearch.png" alt="">
+						<img src="${pageContext.request.contextPath}/img/sys/iconsearch.png" alt="">
 			        </button>
 			        </span>
 			    </div><!-- /input-group -->
@@ -74,20 +74,20 @@
         <div class="pull-right col-lg-2 col-md-2 col-sm-3 col-xs-4 role_hearde_icon">
             <div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 role_hearde_this_icon red_border">
             	
-            	<img src="./assets/images/sys/modal1.png" alt="" />
+            	<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="" />
                 <!--<a href=""><span class="glyphicon glyphicon-remove red_back"></span></a>-->
             </div>
             <div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1  role_hearde_this_icon  blue_border">
                 <!--<a href=""><span class="glyphicon glyphicon-resize-small blue_back"></span></a>-->
                 
-                <img src="./assets/images/sys/modal3.png" alt="" />
+                <img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="" />
             </div>
             <div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 role_hearde_this_icon green_border dom_minimize">
                 <!--<a href=""><span class="small_icon glyphicon green_back">-</span></a>-->
-                <img src="./assets/images/sys/modal2.png" alt="" />
+                <img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
                 <div class="hidmission">
 					<span class="icon-eye-open icon-slidenav"></span>
-					<p url="./pages/role/look">查看角色</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/role/lookrole/max">查看角色</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
             </div>
@@ -124,7 +124,7 @@
 			$('.blue_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"./pages/role/rolelist.html",
+					url:"${pageContext.request.contextPath}/backend/authority/role/listrole",
 					dataType:"html"
 				}).done(function(data){
 					$(".ajax_dom").empty()
@@ -136,7 +136,7 @@
 	$('.red_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"./pages/role/rolelist.html",
+					url:"${pageContext.request.contextPath}/backend/authority/role/listrole",
 					dataType:"html"
 				}).done(function(data){
 					$(".ajax_dom").empty()

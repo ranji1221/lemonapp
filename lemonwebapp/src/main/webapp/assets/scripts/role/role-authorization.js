@@ -176,7 +176,7 @@ $(function(){
 		// 填充列表页
 		// console.log(role_aut_id);
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('./pages/role/role-authorizationlg.html').show();
+        $('.ajax_dom').load('backend/authority/role/authrole/max').show();
         
     })
 	

@@ -54,7 +54,7 @@ $(function(){
 		// console.log(role_aut_id);
 		$('#role-authorization .modal-content').attr('aut_id',role_aut_id);
 		$('#role-authorization .modal-content').html('');
-		$('#role-authorization .modal-content').load('./pages/role/role-authorization.html')
+		$('#role-authorization .modal-content').load('backend/authority/role/authrole/modal');
 		$('#role-authorization').modal('show');
 	})
 })

@@ -105,7 +105,7 @@ $(function() {
 			$(".ajax_dom").show()
 			$("#lookRoleModal").modal('hide')
 			$.ajax({
-				url: "./pages/role/look.html",
+				url: "backend/authority/role/lookrole/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -134,7 +134,7 @@ $(function() {
 			e.preventDefault()
 			$("#editRoleModal").modal('hide')
 			$.ajax({
-				url: "./pages/role/edit.html",
+				url: "backend/authority/role/editrole/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -238,7 +238,7 @@ $(function() {
 			e.preventDefault()
 			$("#lookSourceModal").modal('hide')
 			$.ajax({
-				url: "./pages/resources/look.html",
+				url: "backend/authority/resource/lookresource/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -265,7 +265,7 @@ $(function() {
 			e.preventDefault()
 			$("#editSourceModal").modal('hide')
 			$.ajax({
-				url: "./pages/resources/edit.html",
+				url: "backend/authority/resource/editresource/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
