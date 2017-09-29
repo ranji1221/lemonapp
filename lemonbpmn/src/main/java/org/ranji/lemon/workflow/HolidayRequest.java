@@ -12,6 +12,7 @@ import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
 import org.flowable.engine.TaskService;
 import org.flowable.engine.history.HistoricActivityInstance;
+import org.flowable.engine.history.HistoricTaskInstance;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.repository.ProcessDefinition;
@@ -91,9 +92,12 @@ public class HolidayRequest {
 		ProcessInstance processInstance = 
 				runtimeService.startProcessInstanceByKey("holidayRequest",variables);
 		
+		runtimeService.setVariable(processInstance.getId(), "shop", "食品店");
+		
 		//-- 7. 利用TaskService, 查询manager角色的待办任务
 		TaskService taskService = processEngine.getTaskService();
-		List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("managers").list();
+		List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("managers").desc().list();
+		// .taskCandidateOrAssigned(arg0) 查询用户id的所有待办（已签收+待签收）
 		System.out.println("You have "+tasks.size()+" tasks:");
 		for(int i=0;i<tasks.size();i++)
 			System.out.println((i+1)+")"+tasks.get(i).getName());
@@ -103,9 +107,11 @@ public class HolidayRequest {
 		int taskIndex = Integer.valueOf(scanner.nextLine());
 		Task todo = tasks.get(taskIndex-1); //-- 选择的待办的任务
 		Map<String,Object> processVariables = taskService.getVariables(todo.getId());
+		// runtimeService.getVariables(todo.getProcessInstanceId());
 		System.out.println(processVariables.get("employee") + " wants " + 
 				processVariables.get("holidays") + " of holidays . Do you approve this?");
-		
+		System.out.println(processVariables.get("shop"));
+		// 签收任务：taskService.claim(taskId, userId);
 		//-- 9. 默认它是同意的，就不考虑不同意了，只是为了测试别那么较真儿嘛
 		boolean approved = scanner.nextLine().toLowerCase().equals("y");
 		variables = new HashMap<String,Object>();
@@ -123,6 +129,9 @@ public class HolidayRequest {
 		for(HistoricActivityInstance activity : activities)
 			System.out.println(activity.getActivityId() + " took "
 					+ activity.getDurationInMillis() + " milliseconds");
+		
+		// List<HistoricTaskInstance> htis = historyService.createHistoricTaskInstanceQuery().taskAssignee("").list();
+		//List<ProcessInstance> pis = runtimeService.createProcessInstanceQuery().list();
 		
 		//-- 11. 看看此流程实例是否结束了呢?
 		boolean isEnd = processInstance.isEnded();

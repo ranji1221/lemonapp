@@ -6,6 +6,7 @@
 	<shiro:hasPermission name="user:delete">  
 	<li> <a href="${pageContext.request.contextPath}/backend/authority/user/deleteuser">删除用户</a></li>
 	</shiro:hasPermission>   
+<<<<<<< HEAD
 </ul> --%>
 <!DOCTYPE html>
 <!--1、指定语言基础-->
@@ -842,4 +843,8 @@
 	</body>
 
 </html>
+=======
+	<li> <a href="${pageContext.request.contextPath}/backend/flowable/list">工作流测试</a></li>
+</ul>
+>>>>>>> branch 'master' of https://github.com/ranji1221/lemonapp.git
 
