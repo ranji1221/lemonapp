@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" pageEncoding="UTF-8" %>
 <!-- <link rel="stylesheet" href="./assets/styles/rolelist/rolelistREM.css" /> -->
-<script src="./assets/scripts/user/userlist.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/userlist.js"></script>
 
 
 <div class="rolelist sourcelist">
@@ -10,7 +10,7 @@
             <a href="#" data="2" url="home">首页</a>
         </li>
         <li>
-            <a href="#" url="./pages/resources/resourcelist">资源管理</a>
+            <a href="#" url="${pageContext.request.contextPath}/backend/authority/resource/listresource">资源管理</a>
         </li>
         <li class="active">资源列表</li>
         <div class="nav-search" id="nav-search">
@@ -19,7 +19,7 @@
                     <input type="text" class="form-control" placeholder="搜索你想找到的...">
                     <span class="input-group-btn">
 			        <button class="btn btn-default" type="button">
-						<img src="./assets/images/sys/iconsearch.png" alt="">
+						<img src="${pageContext.request.contextPath}/img/sys/iconsearch.png" alt="">
 			        </button>
 			        </span>
                 </div><!-- /input-group -->
@@ -557,16 +557,16 @@
         </table>
         <div class="tfoot">
             <div class="btns">
-				<span class="newPro" url="./pages/resources/add.html">
-					<img src="./assets/images/sys/icons4.png" alt="">
+				<span class="newPro" url="${pageContext.request.contextPath}/backend/authority/resource/addresources">
+					<img src="${pageContext.request.contextPath}/img/sys/icons4.png" alt="">
 					新建
 				</span>
                 <span>
-					<img src="./assets/images/sys/icons1.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/icons1.png" alt="">
 					刷新
 				</span>
                 <span  class="removeBtn">
-					<img src="./assets/images/sys/icons2.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/icons2.png" alt="">
 					删除
 				</span>
             </div>
