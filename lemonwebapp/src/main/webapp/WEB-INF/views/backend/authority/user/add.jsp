@@ -39,7 +39,7 @@
 				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
 				<div class="hidmission">
 					<span class="icon-pencil icon-slidenav"></span>
-					<p url="./pages/user/add" u_id="3" n_id="-1">添加用户</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/resource/addresources" u_id="3" n_id="-1">添加用户</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
 			</div>
