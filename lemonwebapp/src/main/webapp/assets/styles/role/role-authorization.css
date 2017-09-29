@@ -1,0 +1,587 @@
+#role-authorization .modal-dialog{
+	width:10.24rem;
+	margin:1.4rem auto 0;
+}
+
+@media (max-width:768px){
+	#role-authorization .modal-dialog{
+		width:6rem;
+	}
+}
+#role-authorization .modal-content{
+	overflow:hidden;
+	width:10.24rem;
+}
+@media (max-width:768px){
+	#role-authorization .modal-content{
+		width:6rem;
+	}
+}
+#role-authorization .modal-content .titlezl{
+	height: 0.6rem;
+	line-height: 0.6rem;
+	padding:0 0.25rem;
+	background-color: rgba(55, 142, 248, 1);
+	color:rgb(255,255,255);
+	position:relative;
+}
+#role-authorization .modal-content .titlezl:before{
+	position:absolute;
+	content:'';
+	width:0.04rem;
+	height:0.2rem;
+	background:rgb(255,255,255);
+	left:0.25rem;
+	top:0.2rem;
+}
+#role-authorization .modal-content .titlezl p{
+	font-size:0.18rem;
+	padding-left:0.08rem;
+	float:left;
+	line-height:0.6rem;
+}
+#role-authorization .modal-content .titlezl div.btns{
+	float:right;
+	height:0.6rem;
+}
+#role-authorization .modal-content .titlezl div.btns a{
+	float:left;
+	width:0.3rem;
+	height:0.6rem;
+	margin-left:0.1rem;
+}
+#role-authorization .modal-content .titlezl div.btns a img{
+	width:100%;
+	height:100%;
+}
+#role-authorization .modal-content form{
+	display: block;
+	padding:0.4rem 0.7rem 0.4rem 1rem;
+}
+#role-authorization form .form-group label{
+	font-size:0.18rem;
+	color:rgb(0,0,0);
+	position:relative;
+	/*line-height: 0.2rem;*/
+}
+#role-authorization form .form-group >label:before{
+	position:absolute;
+	content:'';
+	top:50%;
+	left:-0.3rem;
+	width:6px;
+	height:6px;
+	margin-top:-3px;
+	border-radius:50%;
+	background:rgba(55, 142, 248, 1);
+}
+#role-authorization form .form-group >label.prompt:before{
+	display: none;
+}
+.rolename, .authorization{
+	font-size:0.16rem;
+	color:rgb(102,102,102);
+	height: 0.52rem;
+	line-height: 0.52rem;
+	outline:none;
+	box-shadow: none;
+}
+#role-authorization form .form-group #rolename:focus{
+	background:rgb(244,244,244);
+}
+#role-authorization form .rolename{
+	display: block;
+	margin-bottom:0rem;
+}
+#role-authorization form .rolename span.errormessage{
+	float:right;
+	color:rgb(245,82,58);
+	font-size:0.16rem;
+
+}
+/*滑块*/
+#role-authorization .role-slider{
+	width:3.4rem;
+	height:0.1rem;
+	border-radius:0.05rem;
+	margin:0.2rem;
+	background:rgb(244,244,244);
+	display: none;
+}
+#role-authorization .ui-state-default{
+	
+	width: 0.24rem;
+	height:0.24rem;
+	background-color: rgba(245, 245, 245, 1);
+	border-radius: 0.05rem;
+	border: solid 1px rgba(55, 142, 248, 1);
+
+}
+#role-authorization .ui-slider-horizontal .ui-slider-handle{
+	top:-0.07rem;
+	text-align: center;
+}
+#role-authorization .ui-slider-horizontal .ui-slider-handle:before{
+	content:'|||';
+	color:rgba(55, 142, 248, 1);
+	font-size:0.17rem;
+}
+#role-authorization .ui-slider-horizontal .ui-slider-range-min{
+	background:rgb(55,142,248);
+}
+.inputwrapper{
+	position:relative;
+}
+.inputwrapper input[type=text]{
+	background:rgb(244,244,244);
+	box-shadow: none;
+}
+.inputwrapper input[type=text]:focus{
+	background:rgb(244,244,244);
+	box-shadow: none;
+}
+.inputwrapper span{
+	position:absolute;
+	font-size: 0.35rem;
+	right:0.12rem;
+	top:50%;
+	margin-top:-0.17rem;
+}
+.inputwrapper span.rolenamelimit{
+	position:absolute;
+	font-size: 0.16rem;
+	right:0.5rem;
+	top:50%;
+	margin-top:-0.2rem;
+	/*width:;*/
+	line-height:0.4rem;
+	color:red;
+}
+.icon-exclamation-sign{
+	color:rgb(245,82,58);
+}
+.icon-ok-sign{
+	display: none;
+	color:rgb(91,222,147);
+}
+/*多选框容器*/
+
+#role-authorization .wrapper{
+	width: 100%;
+	height: 2.3rem;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0.06rem 0.06rem 0.06rem 0.06rem;
+	border: solid 1px rgba(55, 142, 248, 1);
+	overflow: hidden;
+	position:relative;
+}
+#role-authorization .wrapper header{
+	height: 0.54rem;
+	line-height: 0.54rem;
+	background-color: rgba(222, 233, 247, 1);
+	border-radius: 0.06rem 0.06rem 0 0;
+
+}
+
+#role-authorization .wrapper header .icheckbox_flat-blue{
+	/*border:1px solid rgb(191,191,191);*/
+	margin-top:-3px;
+	background-color:white;
+	border-radius: 6px;
+	transform: scale(0.75);
+}
+#role-authorization .form-group >label.prompt{
+	margin-top:0.1rem;
+}
+#role-authorization .form-group >label.prompt .icheckbox_flat-blue{
+	/*border:1px solid rgb(191,191,191);*/
+	margin-top:-3px;
+	background-color:white;
+	border-radius: 6px;
+	transform: scale(0.75);
+}
+#role-authorization .wrapper header label{
+	float:left;
+	padding-left:0.3rem;
+	font-size:0.14rem;
+	margin-bottom:0;
+	line-height: 0.52rem;
+}
+#role-authorization .wrapper header label.prompt{
+	float:right;
+	padding-right:0.1rem;
+}
+label{
+	font-weight:400;
+}
+#role-authorization .treezl{
+	position:absolute;
+	top:0.54rem;
+	left:0;
+	right:0;
+	bottom:0;
+	overflow:auto; 
+}
+.jstree-default .jstree-disabled.jstree-clicked{
+	background:rgba(0,0,0,0);
+}
+#role-authorization .btnbox{
+	text-align: center;
+}
+#role-authorization .btnbox button{
+	font-size:0.22rem;
+	color:rgb(255,255,255);
+	/*width: 1.3rem;
+	height: 0.5rem;*/
+	padding:0.15rem 0.45rem;
+	line-height: 0.2rem;
+	/*background-color: rgba(171, 186, 195, 1);*/
+	background-color: rgba(111, 179, 224, 1);
+	border-radius: 0.05rem 0.05rem 0.05rem 0.05rem;
+	border:1px solid rgba(111, 179, 224, 1);
+	outline: none;
+}
+#role-authorization .btnbox button:last-child{
+	color:rgba(111, 179, 224, 1);
+	background:rgb(255,255,255);
+	margin-left:0.47rem;
+	margin-right:0.3rem;
+}
+/*#role-authorization button:hover{
+	background-color: rgba(55, 142, 248, 1);
+}*/
+#role-authorization button.success{
+	background-color: rgba(55, 142, 248, 1);
+}
+#role-authorization form .inputwrapper span.errormessage{
+	color:rgb(245,82,58);
+	font-size:0.16rem;
+	display: none;
+	position:absolute;
+	left:100%;
+	top:50%;
+	margin-top:-0.12rem;
+	margin-left:0.4rem;
+	right:-2rem;
+}
+
+/*最大化样式*/
+.maxcontainer  .titlezl{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	/*padding:0 0.25rem;*/
+	background-color: rgba(55, 142, 248, 0);
+	color:rgb(51,51,51);
+	position:relative;
+	border-bottom:1px solid rgba(213,213,213,1);
+}
+.maxcontainer  .titlezl:before{
+	position:absolute;
+	content:'';
+	width:0.04rem;
+	height:0.24rem;
+	background:rgb(55,142,248);
+	left:0rem;
+	top:0.28rem;
+}
+.maxcontainer  .titlezl p{
+	font-size:0.24rem;
+	padding-left:0.1rem;
+	float:left;
+	line-height: 0.8rem;
+}
+.maxcontainer  .titlezl div.btns{
+	float:right;
+	height:0.6rem;
+	margin-top:0.1rem;
+}
+.maxcontainer  .titlezl div.btns a{
+	float:left;
+	width:0.3rem;
+	height:0.6rem;
+	margin-left:0.1rem;
+}
+.maxcontainer  .titlezl div.btns a img{
+	width:100%;
+	height:100%;
+	vertical-align: top;
+}
+.maxcontainer  form{
+	display: block;
+	padding:0.4rem 0.3rem;
+}
+.maxcontainer form .form-group label{
+	font-size:0.18rem;
+	color:rgb(0,0,0);
+	position:relative;
+	/*line-height: 0.2rem;*/
+	float:left;
+	font-size:0.18rem;
+	color:rgb(51,51,51);
+}
+@media (max-width:992px){
+	.maxcontainer form .form-group>label{
+		float:none;
+		display: block;
+	}
+}
+.maxcontainer form .form-group>label{
+	line-height: 0.52rem;
+}
+.maxcontainer form .form-group >label:before{
+	position:absolute;
+	content:'';
+	top:50%;
+	left:-0.3rem;
+	width:6px;
+	height:6px;
+	margin-top:-3px;
+	border-radius:50%;
+	background:rgba(55, 142, 248, 1);
+}
+.maxcontainer .form-group >label.prompt:before{
+	display:none;
+}
+.maxcontainer .form-group >label.prompt .icheckbox_flat-blue{
+	transform: scale(0.75);
+	margin-top:-0.04rem;
+}
+/*#rolename, #authorization{
+	font-size:0.16rem;
+	color:rgb(102,102,102);
+	height: 0.52rem;
+	line-height: 0.52rem;
+	outline:none;
+	box-shadow: none;
+}*/
+.maxcontainer form .form-group .rolename:focus{
+	background:rgb(244,244,244);
+}
+.maxcontainer form #rolename{
+	display: inline-block;
+	margin-bottom:0rem;
+	color:rgb(51,51,51);
+	font-size:0.18rem;
+}
+.maxcontainer form .rolename span.errormessage{
+	float:right;
+	color:rgb(245,82,58);
+	font-size:0.16rem;
+	display: none;
+}
+@media (max-width:992px){
+	.maxcontainer form .rolename span.errormessage{
+		display: block;
+	}
+}
+.maxcontainer form .inputwrapper span.errormessage{
+	color:rgb(245,82,58);
+	font-size:0.16rem;
+	display: block;
+	position:absolute;
+	left:100%;
+	top:50%;
+	margin-top:-0.12rem;
+	margin-left:0.45rem;
+	right:-17em;
+}
+/*滑块*/
+.maxcontainer .role-slider{
+	width:3.4rem;
+	height:0.1rem;
+	border-radius:0.05rem;
+	margin:0.2rem;
+	background:rgb(244,244,244);
+	display: block;
+	border:0!important;
+	margin-left:1.25rem;
+}
+@media (max-width:992px){
+	.maxcontainer .role-slider{
+		display: none;
+	}
+}
+.maxcontainer .ui-state-default{
+	
+	background-color: rgba(245, 245, 245, 1);
+	border-radius: 0.05rem;
+	border: solid 1px rgba(55, 142, 248, 1);
+
+}
+.maxcontainer .ui-slider-horizontal .ui-slider-handle{
+	top:-0.07rem;
+	text-align: center;
+	background-image:url('../../images/sys/slidericon.png');
+	background-repeat: no-repeat;
+	background-position:center;
+	background-size:0.22rem 0.24rem;
+}
+.maxcontainer .ui-state-default,.maxcontainer .ui-widget-content .ui-state-default{
+	background-color: rgba(245, 245, 245, 1);
+	border-radius: 0.05rem;
+	border: solid 1px rgba(55, 142, 248, 1);
+	width: 0.22rem;
+	height:0.24rem;
+}
+.maxcontainer .ui-state-active,.maxcontainer .ui-slider-handle{
+	background-color: rgba(245, 245, 245, 1)!important;
+}
+/*.maxcontainer .ui-slider-horizontal .ui-slider-handle:before{
+	content:'|||';
+	color:rgba(55, 142, 248, 1);
+	font-size:0.17rem;
+	position:relative;
+	top:-0.02rem;
+}*/
+.maxcontainer .ui-slider-horizontal .ui-slider-range-min{
+	background:rgb(55,142,248);
+}
+.maxcontainer .inputwrapper{
+	overflow: hidden;
+	position:relative;
+	padding-left:0.4rem;
+	padding-right:3rem;
+}
+@media (max-width:992px){
+	.maxcontainer .inputwrapper{
+		padding:0;
+	}
+}
+.maxcontainer .inputwrappermax{
+	position: relative;
+	width:50%;
+}
+@media (max-width:992px){
+	.maxcontainer .inputwrappermax{
+		width:100%!important;
+	}
+}
+.maxcontainer .inputwrapper span{
+	position:absolute;
+	font-size: 0.35rem;
+	right:-0.4rem;
+	top:50%;
+	margin-top:-0.17rem;
+}
+@media (max-width:992px){
+	.maxcontainer .inputwrapper span{
+		right:0.12rem;
+	}
+}
+.maxcontainer .inputwrapper span.rolenamelimit{
+	position:absolute;
+	font-size: 0.16rem;
+	right:0.12rem;
+	top:50%;
+	margin-top:-0.2rem;
+	/*width:;*/
+	line-height:0.4rem;
+	color:red;
+}
+@media (max-width:992px){
+	.maxcontainer .inputwrapper span.rolenamelimit{
+		right:0.5rem;
+	}
+}
+.icon-exclamation-sign{
+	color:rgb(245,82,58);
+}
+.icon-ok-sign{
+	display: none;
+	color:rgb(91,222,147);
+}
+/*多选框容器*/
+
+.maxcontainer .wrapper{
+	width: auto;
+	height: 5rem;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0.06rem 0.06rem 0.06rem 0.06rem;
+	border: solid 1px rgba(55, 142, 248, 1);
+	overflow: hidden;
+	position:relative;
+	margin-left:1.13rem;
+}
+@media (max-width:992px){
+	.maxcontainer .wrapper{
+		margin-left:0;
+	}
+}
+.maxcontainer .wrapper header{
+	height: 0.54rem;
+	line-height: 0.54rem;
+	background-color: rgba(222, 233, 247, 1);
+	border-radius: 0.06rem 0.06rem 0 0;
+
+}
+.maxcontainer .wrapper header .icheckbox_flat-blue{
+	/*border:1px solid rgb(191,191,191);*/
+	margin-top:-3px;
+	background-color:white;
+	border-radius: 6px;
+	transform: scale(0.75);
+}
+.maxcontainer .wrapper header label{
+	line-height: 0.54rem;
+	float:left;
+	padding-left:0.3rem;
+	font-size:0.14rem;
+	margin-bottom:0;
+}
+.maxcontainer .wrapper header label.prompt{
+	float:right;
+	padding-right:0.1rem;
+}
+.maxcontainer .treezl{
+	position:absolute;
+	top:0.54rem;
+	left:0;
+	right:0;
+	bottom:0;
+	overflow:auto; 
+}
+.maxcontainer .btnbox{
+	text-align: center;
+}
+.maxcontainer .btnbox button.btn:active:focus{
+	outline: none;
+}
+/*.maxcontainer .btnbox button.btn-default:active:hover, .maxcontainer .btnbox button.btn-default:active:focus{
+	border:1px solid rgba(111, 179, 224, 1);
+	background-color: rgba(111, 179, 224, 1);
+	color:rgb(255,255,255);
+} */
+.maxcontainer .btnbox button.btn{
+	font-size:0.22rem;
+	color:rgb(255,255,255);
+	/*width: 1.3rem;
+	height: 0.5rem;*/
+	padding:0.15rem 0.45rem;
+	line-height: 0.22rem;
+	/*background-color: rgba(171, 186, 195, 1);*/
+	background-color: rgba(111, 179, 224, 1);
+	border-radius: 0.05rem 0.05rem 0.05rem 0.05rem;
+	border:1px solid rgba(111, 179, 224, 1);
+	outline: none;
+}
+.maxcontainer .btnbox button:last-child{
+	color:rgba(111, 179, 224, 1);
+	background:rgb(255,255,255);
+	margin-left:0.47rem;
+	/*margin-right:0.3rem;*/
+}
+/*.maxcontainer button:hover{
+	background-color: rgba(55, 142, 248, 1);
+}*/
+.maxcontainer button.success{
+	background-color: rgba(55, 142, 248, 1);
+}
+#role-authorization input[type=text]{
+	height:0.52rem;
+}
+#user-authorization input[type=text]{
+	height:0.52rem;
+}
+.maxcontainer input[type=text]{
+	height:0.52rem;
+}

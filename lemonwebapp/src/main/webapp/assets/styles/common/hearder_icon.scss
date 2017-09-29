@@ -1,0 +1,87 @@
+.role_hearde_icon {
+//          margin-top: 0.27rem;
+padding-top:0.1rem;
+            font-size: 0.16rem; 
+        }
+            .role_hearde_this_icon {
+                width: 0.3rem;
+                height: 0.6rem;
+                border-radius: 50%;
+                padding: 0;
+                text-align: center;
+                cursor:pointer;
+                .small_icon {
+                    font-weight: bolder;
+                    display: inline-block;
+                    line-height: 0.03rem;
+                    font-size: 0.4rem;
+//                  left: 0;
+                }
+               img{
+                   width:100%;
+               }
+                span {
+                    width: 0.22rem;
+                    height: 0.22rem;
+                    border-radius: 50%;
+                    color: white;
+//                  line-height: 0.29rem;
+                    border:1px solid white;
+//                  left: 0.5px;
+                    top: 0px;
+                    font-size:0.12rem;
+//                  &.green_back {
+//                      background-color: #5bde93;
+//                  }
+//                  &.blue_back {
+//                      background-color: #5ca2f7;
+//                  }
+//                  &.red_back {
+//                      background-color: #f17372;
+//                  }
+                }
+//              &.green_border {
+//                  border: 3px solid #5bde93;
+//              }
+//              &.blue_border {
+//                  border: 3px solid #5ca2f7;
+//              }
+//              &.red_border {
+//                  border: 3px solid #f17372;
+//              }
+            }
+        .role_button {
+            margin-top: 0.83rem;
+            .role_succse {
+                text-align: right;
+                .btn {
+                    font-size:0.22rem;
+                    background-color: #bdc3c7;
+                    padding: 0.15rem 0.45rem;
+                    color: white;
+                    background-color: #6fb3e0;
+                    &:focus {
+                        outline: none;
+                    }
+                    &.active {
+                        
+                    }
+                }
+            }
+            .role_remove {
+                .btn {
+                    font-size:0.22rem;
+                    padding: 0.15rem 0.45rem;
+                    color:#6FB3E0;
+                    background-color:white;
+border:1px solid #6FB3E0;
+
+                    &:focus {
+                        outline: none;
+                    }
+                    &.active {
+                        background-color: #6fb3e0;
+                    }
+                }
+            }
+        }

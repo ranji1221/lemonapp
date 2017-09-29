@@ -1,0 +1,34 @@
+(function($){
+	$(function(){
+					var arr = [
+						"common/icheck/skins/all.css",
+						"common/icheck/icheck.js",
+						"js/index/getDom.js",
+						"css/editModal/editModal.css",
+						"js/editModal/editModal.js",
+						"common/vakata-jstree/dist/themes/default/style.min.css",
+						"common/vakata-jstree/dist/jstree.min.js",
+						"css/role/rolelistREM.css",
+						"css/role/role-authorization.css",
+						"css/user/user-authorization.css",
+						"css/role/bulkaddrolesREM.css",
+						"css/role/role.css",
+						"https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css",
+						"css/user/edit.css",
+						"css/resources/add.css",
+						"js/icheck/custom.min.js",
+						"css/role/look.css",
+						"css/database/progress.css",
+						"js/database/progress.js",
+						"css/database/backup.css",
+						"css/database/backupComplex.css"
+						]
+		$.each(arr,function(i,v){
+			if(v.substring(v.length-3) == "css"){
+				$("<link>").attr({rel:"stylesheet",href:v}).appendTo("head")
+			}else{
+				$("<script>").attr({src:v}).appendTo("head")
+			}
+		})
+	})
+})(jQuery)

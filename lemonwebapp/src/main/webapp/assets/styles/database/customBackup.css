@@ -1,0 +1,115 @@
+.customBackup .panel-heading{
+	height: 0.52rem;
+	background-color: rgba(222, 233, 247, 1);
+	border-radius: 0.06rem;
+	border: solid 0.01rem rgba(221, 221, 221, 1);
+	line-height: 0.52rem;
+}
+.backupComplex .role_content{
+	/*padding:0;
+	padding-top:0.33rem;*/
+	padding:0.33rem 0 0!important;
+}
+.l-pd{
+	padding-left: 0;
+}
+.r-pd{
+	padding-right: 0;
+}
+.all-pd{
+	padding: 0;
+}
+.customBackup .panel-heading{
+	padding-left: 0.3rem;
+}
+.customBackup .panel{
+	border: 0.01rem solid #ddd;
+}
+.customBackup .panel-body{
+	padding: 0;
+}
+.customBackup .panel-body .middle{
+	height:2.08rem;
+	margin:0.08rem;
+	overflow-y:auto ;
+	overflow-x:hidden ;
+}
+.customBackup .dataTable .tableTitle{
+	padding-left:0.27rem;
+}
+.customBackup .dataTable .list{
+	padding:0
+}
+.customBackup .dataTable .list .l,
+.customBackup .dataTable .list .r
+{
+	padding-top:0.02rem;
+	padding-right:0.23rem;
+	padding-left: 0.02rem;
+	padding-bottom: 0.02rem;
+}
+.customBackup .dataTable .list li{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.customBackup .dataTable .list li,
+.customBackup .dataTable .list li label{
+	margin: 0;
+	padding-left:0.22rem;
+	height: 0.34rem;
+	line-height: 0.34rem;
+
+}
+.customBackup .dataTable .list li label s{
+	display: inline-block;
+	height: 0.34rem;
+	line-height: 0.34rem;
+}
+.customBackup .dataTable .list li label s img{
+	margin-bottom: 0.03rem;
+}
+.backupComplex .role_content .role_form .form-horizontal .form-group .dataTable label{
+	height: 0.34rem;
+	line-height: 0.34rem;
+	font-size:0.14rem;
+}
+.customBackup .dataTable .list li:nth-child(odd){
+	background-color: rgba(251, 251, 251, 1);
+}
+.customBackup .dataTable .list li:hover{
+	background-color: rgba(247, 247, 247, 1);
+	outline: solid 1px rgba(55, 142, 248, 1);
+}
+.customBackup .icheckbox_flat-blue, .iradio_flat-blue{
+	margin-bottom:0.03rem ;
+}
+/*数据表的响应式*/
+@media screen and (max-width:991px){
+	.customBackup .dataTable .list .r{
+		/*padding-left:0rem;*/
+		padding-left:0.02rem;
+	}
+	.customBackup .dataTable .list.r li:nth-child(odd){
+		background-color: #fff;
+	}
+	.customBackup .dataTable .list.r li:nth-child(even){
+		background-color: rgba(251, 251, 251, 1);
+	}
+	.container-fluid .role_content{
+		padding:0.59rem 0 0 0;
+	}
+}
+@media screen and (min-width: 1170px) {
+	.container-fluid .role_content .role_max_number .subsectionLabel{
+	width: 19%;
+	}
+}
+.customBackup .inputlb{
+	min-width:8em;
+}
+.customBackup .select2-results .select2-result-selectable:hover{
+	color:rgb(109, 167, 249);
+}
+
+
