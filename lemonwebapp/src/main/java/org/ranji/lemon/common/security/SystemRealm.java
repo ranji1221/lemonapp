@@ -80,8 +80,12 @@ public class SystemRealm extends AuthorizingRealm{
 		SimpleAuthorizationInfo info = null;
 		if(userName != null && !"".equals(userName))
 			info = new SimpleAuthorizationInfo();
-		if(userName.equals("zhangsan"))
+		if(userName.equals("zhangsan2"))
 			info.addStringPermission("user:add");
+			info.addStringPermission("user:list");
+			info.addStringPermission("user:bulkadd");
+			info.addStringPermission("user:lookuser");
+			info.addStringPermission("user:edituser");
 		//info.addStringPermission("user:delete");
 		return info;
 		

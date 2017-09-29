@@ -30,6 +30,8 @@
 				/img/** = anon
 				/css/** = anon
 				/js/** = anon
+				/fonts/** = anon
+				/common/** = anon
 				/** = authc
 			</value>
 		</property>

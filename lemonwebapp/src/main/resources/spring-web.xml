@@ -41,7 +41,8 @@
 	<mvc:resources mapping="/img/**" location="/assets/images/" />
 	<mvc:resources mapping="/css/**" location="/assets/styles/" />
 	<mvc:resources mapping="/js/**" location="/assets/scripts/" />
-
+	<mvc:resources mapping="/fonts/**" location="/assets/fonts/" />
+	<mvc:resources mapping="/common/**" location="/assets/common/" />
 	<!-- 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

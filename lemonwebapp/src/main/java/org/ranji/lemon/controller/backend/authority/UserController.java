@@ -8,6 +8,7 @@ import org.ranji.lemon.annotation.SystemControllerPermission;
 import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.service.authority.prototype.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,9 +52,44 @@ public class UserController {
 	@SystemControllerPermission("user:add")
 	@RequestMapping(value = "/adduser")
 	@SystemControllerLog(description="权限管理-添加用户")
-	@ResponseBody
 	public String addUser() {
-		return "add user success";
+		return "backend/authority/user/add";
+	}
+	
+	@SystemControllerPermission("user:list")
+	@RequestMapping(value = "/listuser")
+	@SystemControllerLog(description="权限管理-用户列表")
+	public String listUser() {
+		return "backend/authority/user/list";
+	}
+	
+	@SystemControllerPermission("user:bulkadd")
+	@RequestMapping(value = "/bulkaddusers")
+	@SystemControllerLog(description="权限管理-批量添加用户")
+	public String bulkAddUser() {
+		return "backend/authority/user/bulkaddusers";
+	}
+	
+	//@RequiresPermissions("user:lookuser")
+	@SystemControllerPermission("user:lookuser")
+	@RequestMapping(value = "/lookuser/{size}")
+	@SystemControllerLog(description="权限管理-查看用户")
+	public String lookUser(@PathVariable String size) {
+		if("modal".equals(size)){
+			return "backend/authority/user/lookUserModal";
+		}else if("max".equals(size)){
+			return "backend/authority/user/look";
+		}
+		return null;
+		
+	}
+	
+	@SystemControllerPermission("user:edituser")
+	@RequestMapping(value = "/edituser")
+	@SystemControllerLog(description="权限管理-更新用户")
+	public String editUser() {
+
+		return "backend/authority/user/editUserModal";
 	}
 	
 	@RequiresPermissions("user:delete")

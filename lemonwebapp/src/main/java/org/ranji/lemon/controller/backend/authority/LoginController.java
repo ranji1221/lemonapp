@@ -50,7 +50,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView loginPage(){
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/backend/authority/login");
+		mv.setViewName("/backend/login/login");
 		return mv;
 	}
 	/**
