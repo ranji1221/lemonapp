@@ -238,7 +238,7 @@ $(function() {
 			e.preventDefault()
 			$("#lookSourceModal").modal('hide')
 			$.ajax({
-				url: "./pages/resources/look.html",
+				url: "backend/authority/resource/lookresource/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -265,7 +265,7 @@ $(function() {
 			e.preventDefault()
 			$("#editSourceModal").modal('hide')
 			$.ajax({
-				url: "./pages/resources/edit.html",
+				url: "backend/authority/resource/editresource/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()

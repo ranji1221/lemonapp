@@ -6,10 +6,10 @@ $(function() {
 	var editModal = $("#editModal");
 	var editRoleUrl = "pages/role/editRoleModal.html";
 	var editUserUrl = "backend/authority/user/edituser/modal";
-	var editSourceUrl = "pages/resources/editSourceModal.html";
+	var editSourceUrl = "backend/authority/resource/editresource/modal";
 	var lookRoleUrl = "pages/role/lookRoleModal.html";
 	var lookUserUrl = "backend/authority/user/lookuser/modal";
-	var lookSourceUrl = "backend/authority/resources/looksource/modal";
+	var lookSourceUrl = "backend/authority/resource/lookresource/modal";
 	var removeUrl = "pages/remove/remove.html";
 	//  $("#editUserModal").on('hide.bs.modal',function () {
 	//     $(this).removeData('bs.modal');
