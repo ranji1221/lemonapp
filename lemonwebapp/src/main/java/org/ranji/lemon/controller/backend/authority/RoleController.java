@@ -1,11 +1,18 @@
 package org.ranji.lemon.controller.backend.authority;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.ranji.lemon.annotation.SystemControllerLog;
-import org.ranji.lemon.annotation.SystemControllerPermission;
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.service.authority.prototype.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -41,7 +48,12 @@ public class RoleController {
 	//@SystemControllerPermission("role:list")
 	@RequestMapping(value = "/listrole")
 	@SystemControllerLog(description="权限管理-角色列表")
-	public String listRole() {
+	public String listRole(HttpSession session) {
+		List <Role> roleList = roleService.findAll();
+		session.setAttribute("roleList", roleList);
+		for(Role r:roleList){
+			System.out.println(r.getRoleName());
+		}
 		return "backend/authority/role/rolelist";
 	}
 	
