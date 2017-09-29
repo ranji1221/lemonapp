@@ -336,12 +336,12 @@
 								<span class="iconfont icon-icon"></span>
 							</li>
 							<ul>
-								<li url='./pages/resources/resourcelist.html'>
+								<li url='${pageContext.request.contextPath}/backend/authority/resource/listresource'>
 									<div class="iconfont icon-ziyuanguanli2 icon-slidenav"></div>
 									<p>资源列表</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url="./pages/resources/add.html">
+								<li url="${pageContext.request.contextPath}/backend/authority/resource/addresources">
 									<div class="iconfont icon-tianjiaziyuan-q icon-slidenav"></div>
 									<p>添加资源</p>
 									<div class="hoverline"></div>
