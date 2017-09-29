@@ -31,7 +31,6 @@ public class AuthorityServiceImpl implements IAuthorityService{
 	private List<Role> roles = new ArrayList<Role>();//存储角色
 	private List<Role> recRole	=new ArrayList<Role>();  //存储递归角色
 	private List<Operation> operations= new ArrayList<Operation>(); //存储用户操集合
-	private Set<Operation> set = new HashSet<Operation>();
 	
 	@Override
 	public List<Role> userFindRole() {
