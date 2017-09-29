@@ -5,10 +5,10 @@
 		<a href="#" data="2">首页</a>
 	</li>
 	<li>
-		<a href="#" url="./pages/user/list">用户管理</a>
+		<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户管理</a>
 	</li>
 	<li>
-		<a href="" url="./pages/user/list">用户列表</a>
+		<a href="" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户列表</a>
 	</li>
 	<li class="active">用户编辑</li>
 	<div class="nav-search" id="nav-search">
