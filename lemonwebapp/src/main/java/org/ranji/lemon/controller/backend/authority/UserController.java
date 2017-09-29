@@ -97,6 +97,18 @@ public class UserController {
 		
 	}
 	
+	@SystemControllerPermission("user:authuser")
+	@RequestMapping(value = "/authuser/{size}")
+	@SystemControllerLog(description="权限管理-给用户分配角色")
+	public String authUser(@PathVariable String size) {
+		if("modal".equals(size)){
+			return "backend/authority/user/user-authorization";
+		}else if("max".equals(size)){
+			return "backend/authority/user/user-authorizationlg";
+		}
+		return null;
+	}
+	
 	@RequiresPermissions("user:delete")
 	@RequestMapping(value = "/deleteuser")
 	@SystemControllerLog(description="权限管理-删除用户")

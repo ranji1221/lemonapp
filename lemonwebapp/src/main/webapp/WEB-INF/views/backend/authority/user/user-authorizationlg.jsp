@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<script src="./assets/scripts/user/user-authorizationlg.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/user-authorizationlg.js"></script>
 
 <!-- 用户授权 -->
 <!-- 最大化 -->
@@ -10,10 +10,10 @@
 	    	<a href="#" data="2" url="home">首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="./pages/user/list">用户管理</a>
+	    	<a href="#" url="backend/authority/user/listuser">用户管理</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="./pages/user/list">用户列表</a>
+	    	<a href="#" url="backend/authority/user/listuser">用户列表</a>
 	    </li>
 	    <li class="active">用户授权</li>
     	<div class="nav-search" id="nav-search">
@@ -22,7 +22,7 @@
 			        <input type="text" class="form-control" placeholder="搜索你想找到的...">
 			        <span class="input-group-btn">
 			        <button class="btn btn-default" type="button">
-						<img src="./assets/images/sys/iconsearch.png" alt="">
+						<img src="${pageContext.request.contextPath}/img/sys/iconsearch.png" alt="">
 			        </button>
 			        </span>
 			    </div><!-- /input-group -->
@@ -33,18 +33,18 @@
 			<p>用户授权</p>
 			<div class="btns">
 				<a href="javascript:;" class="min dom_minimize">
-					<img src="./assets/images/sys/modal2.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
 					<div class="hidmission">
 						<span class="icon-key icon-slidenav"></span>
-						<p url='./pages/user/user-authorizationlg'>用户授权</p>
+						<p url='backend/authority/user/authuser/max'>用户授权</p>
 						<span class="iconfont icon-chuyidong1 del"></span>
 					</div>
 				</a>
 				<a href="javascript:;" class="maxuser" data-dismiss="modal" u_id="4">
-					<img src="./assets/images/sys/modal3.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="">
 				</a>
 				<a href="javascript:;" class="zclose" data-dismiss="modal">
-					<img src="./assets/images/sys/modal1.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="">
 				</a>
 			</div>
 		</div>

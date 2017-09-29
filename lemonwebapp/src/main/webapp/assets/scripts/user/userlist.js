@@ -51,7 +51,7 @@ $(function(){
 		// console.log(user_aut_id);
 		$('#user-authorization .modal-content').attr('aut_id',user_aut_id);
 		$('#user-authorization .modal-content').html('');
-		$('#user-authorization .modal-content').load('./pages/user/user-authorization.html')
+		$('#user-authorization .modal-content').load('backend/authority/user/authuser/modal')
 		$('#user-authorization').modal('show');
 	})
 })

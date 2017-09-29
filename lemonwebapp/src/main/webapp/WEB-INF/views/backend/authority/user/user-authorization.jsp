@@ -8,7 +8,7 @@
 			<p>用户授权</p>
 			<div class="btns">
 				<a href="javascript:;" class="min module_minimize" data-dismiss="modal">
-					<img src="./assets/images/sys/modal2.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
 					<div class="hidmission">
 						<span class="icon-key icon-slidenav"></span>
 						<p class='user-aut'>用户授权</p>
@@ -17,10 +17,10 @@
 				</a>
 				<!-- <a href="javascript:;" class="maxuser" data-dismiss="modal" u_id="4"> -->
 				<a href="javascript:;" class="maxuser external-link" data-dismiss="modal" u_id="4">
-					<img src="./assets/images/sys/modal3.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="">
 				</a>
 				<a href="javascript:;" class="zclose" data-dismiss="modal">
-					<img src="./assets/images/sys/modal1.png" alt="">
+					<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="">
 				</a>
 			</div>
 		</div>
@@ -81,4 +81,4 @@
 		</form>
 	</div>
 
-<script src="./assets/scripts/user/user-authorization.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/user-authorization.js"></script>

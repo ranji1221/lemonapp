@@ -171,14 +171,14 @@ $(function(){
 		
 		$.ajaxSetup ({ cache: false });
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('./pages/role/rolelist.html').show();
+        $('.ajax_dom').load('backend/authority/user/listuser').show();
 		$('#user-authorization .modal-content').html('');
-		$('#user-authorization .modal-content').load('./pages/user/user-authorization.html')
+		$('#user-authorization .modal-content').load('backend/authority/user/authuser/modal')
 		$('#user-authorization').modal('show');
 	})
 	$('.maxcontainer').off('click.lgclose').on('click.lgclose','.zclose',function(){
 	// $('.maxcontainer .zclose').off('click.lgclose').on('click.lgclose',function(){
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('./pages/role/rolelist.html').show();
+        $('.ajax_dom').load('backend/authority/user/listuser').show();
 	})
 })
