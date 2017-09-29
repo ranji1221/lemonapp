@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 
-<script src="./assets/scripts/role/bulkaddroles.js"></script>
+<script src="./js/role/bulkaddroles.js"></script>
 
 <div class="bulkaddroles">
 	<ol class="breadcrumb">
@@ -18,7 +18,7 @@
 			        <input type="text" class="form-control" placeholder="搜索你想找到的...">
 			        <span class="input-group-btn">
 			        <button class="btn btn-default" type="button">
-						<img src="./assets/images/sys/iconsearch.png" alt="">
+						<img src="./img/sys/iconsearch.png" alt="">
 			        </button>
 			        </span>
 			    </div><!-- /input-group -->
@@ -29,7 +29,7 @@
 		<p>批量添加角色</p>
 		<div class="btns">
 			<a href="javascript:;" class="min dom_minimize">
-				<img src="./assets/images/sys/modal2.png" alt="">
+				<img src="./img/sys/modal2.png" alt="">
 				<div class="hidmission">
 					<span class="iconfont icon-piliangtianjia icon-slidenav"></span>
 					<p url="./pages/role/bulkaddroles">批量添加角色</p>
@@ -37,27 +37,27 @@
 				</div>
 			</a>
 			<!-- <a href="javascript:;" class="maxrole" data-dismiss="modal">
-				<img src="./assets/images/sys/modal3.png" alt="">
+				<img src="./img/sys/modal3.png" alt="">
 			</a> -->
 			<a href="javascript:;" class="zclose" data-dismiss="modal">
-				<img src="./assets/images/sys/modal1.png" alt="">
+				<img src="./img/sys/modal1.png" alt="">
 			</a>
 		</div>
 	</div>
 	<!-- <div class="btns">
 		<a href="javascript:;" class="min">
-			<img src="./assets/images/sys/addrolees1.png" alt="">
+			<img src="./img/sys/addrolees1.png" alt="">
 		</a>
 		<a href="javascript:;" class="max">
-			<img src="./assets/images/sys/addrolees2.png" alt="">
+			<img src="./img/sys/addrolees2.png" alt="">
 		</a>
 		<a href="javascript:;" class="zclose">
-			<img src="./assets/images/sys/addrolees3.png" alt="">
+			<img src="./img/sys/addrolees3.png" alt="">
 		</a>
 	</div> -->
 	<div class="upload">
 		<div class="title">
-			<img src="./assets/images/sys/addrolees4.png" alt="">
+			<img src="./img/sys/addrolees4.png" alt="">
 		</div>
 		<form action="">
 			<div class="uploadinput">

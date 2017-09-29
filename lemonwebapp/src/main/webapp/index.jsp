@@ -292,17 +292,17 @@
 								<span class="iconfont icon-icon"></span>
 							</li>
 							<ul>
-								<li url='./pages/role/rolelist.html'>
+								<li url="${pageContext.request.contextPath}/backend/authority/role/listrole">
 									<div class="iconfont icon-liebiao3 icon-slidenav"></div>
 									<p>角色列表</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url='./pages/role/add.html'>
+								<li url="${pageContext.request.contextPath}/backend/authority/role/addrole">
 									<div class="iconfont icon-tianjia icon-slidenav"></div>
 									<p>添加角色</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url='./pages/role/bulkaddroles.html'>
+								<li url="${pageContext.request.contextPath}/backend/authority/role/bulkaddrole">
 									<div class="iconfont icon-piliangtianjia icon-slidenav"></div>
 									<p>批量添加角色</p>
 									<div class="hoverline"></div>
