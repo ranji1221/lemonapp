@@ -12,11 +12,11 @@
 	</typeAliases>
 	<mappers>
 		<!-- system begin -->
-		<mapper resource="mapper/authority/User.xml" />
-		<mapper resource="mapper/authority/Role.xml" />
-		<mapper resource="mapper/authority/Resource.xml" />
-		<mapper resource="mapper/authority/Operation.xml" />
-		<mapper resource="mapper/log/SystemLog.xml" />
+		<mapper resource="../mapper/authority/User.xml" />
+		<mapper resource="../mapper/authority/Role.xml" />
+		<mapper resource="../mapper/authority/Resource.xml" />
+		<mapper resource="../mapper/authority/Operation.xml" />
+		<mapper resource="../mapper/log/SystemLog.xml" />
 		<!-- system end -->
 	</mappers>
 </configuration>

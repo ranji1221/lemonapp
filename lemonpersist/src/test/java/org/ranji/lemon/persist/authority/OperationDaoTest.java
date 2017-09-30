@@ -37,7 +37,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:spring-persist.xml")
+@ContextConfiguration(locations="classpath:config/spring-persist.xml")
 public class OperationDaoTest {
 	@Autowired
 	private IOperationDao operationDao;
