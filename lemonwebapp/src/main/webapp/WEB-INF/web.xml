@@ -6,10 +6,10 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:spring-persist.xml
-			classpath:spring-service.xml
-			classpath:spring-flowable.xml
-			classpath:spring-shiro.xml
+			classpath:config/spring-persist.xml
+			classpath:config/spring-service.xml
+			classpath:config/spring-flowable.xml
+			classpath:config/spring-shiro.xml
 		</param-value>
 	</context-param>
 	

@@ -36,7 +36,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @version 1.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:spring-persist.xml")
+@ContextConfiguration(locations="classpath:config/spring-persist.xml")
 public class SystemLogDaoTest {
 
 	@Autowired
