@@ -1,4 +1,5 @@
 $(function(){
+	// console.log('userlist')
 	// 全选中
 	// $('#checkall').on('click',function(){
 	// 	console.log($(this),$(this).prop('checked'))
@@ -41,20 +42,16 @@ $(function(){
 			zlsortdown.css('opacity','0');
 		}		
 	})
-		// $.ajaxSetup ({ 
-		// 	cache: false //关闭AJAX相应的缓存 
-		// });
 	// 授权模态框的调用
 	$('div.tablewrap').on('click','.icon-key',function(){
-		// console.log('启动授权模态框');
+		// console.log('启动授权模态框用户');
 		// $.ajax({cache: false});
 		$.ajaxSetup ({ cache: false });
-		// console.log('尝试清除js');
-		var role_aut_id=$(this).closest('tr').find('td').eq(1).html().trim();
-		// console.log(role_aut_id);
-		$('#role-authorization .modal-content').attr('aut_id',role_aut_id);
-		$('#role-authorization .modal-content').html('');
-		$('#role-authorization .modal-content').load('backend/authority/role/authrole/modal');
-		$('#role-authorization').modal('show');
+		var user_aut_id=$(this).closest('tr').find('td').eq(1).html().trim();
+		// console.log(user_aut_id);
+		$('#user-authorization .modal-content').attr('aut_id',user_aut_id);
+		$('#user-authorization .modal-content').html('');
+		$('#user-authorization .modal-content').load('backend/authority/user/auth/modal')
+		$('#user-authorization').modal('show');
 	})
 })

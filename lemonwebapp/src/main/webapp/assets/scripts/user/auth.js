@@ -171,14 +171,14 @@ $(function(){
 		
 		$.ajaxSetup ({ cache: false });
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('backend/authority/user/listuser').show();
+        $('.ajax_dom').load('backend/authority/user/list').show();
 		$('#user-authorization .modal-content').html('');
-		$('#user-authorization .modal-content').load('backend/authority/user/authuser/modal')
+		$('#user-authorization .modal-content').load('backend/authority/user/auth/modal')
 		$('#user-authorization').modal('show');
 	})
 	$('.maxcontainer').off('click.lgclose').on('click.lgclose','.zclose',function(){
 	// $('.maxcontainer .zclose').off('click.lgclose').on('click.lgclose',function(){
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('backend/authority/user/listuser').show();
+        $('.ajax_dom').load('backend/authority/user/list').show();
 	})
 })

@@ -1,55 +1,29 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 
-<script src="${pageContext.request.contextPath}/js/role/role-authorizationlg.js"></script>
+<script src="${pageContext.request.contextPath}/js/role/authmodal.js"></script>
 <!-- 角色授权 -->
-<!-- 最大化 -->
-<div class="maxcontainer" >
-	<ol class="breadcrumb">
-	    <li>
-	    	<i class="glyphicon glyphicon-home"></i>
-	    	<a href="#" data="2" url="home">首页</a>
-	    </li>
-	    <li>
-	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/listrole">角色管理</a>
-	    </li>
-	    <li>
-	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/listrole">角色列表</a>
-	    </li>
-	    <li class="active">角色授权</li>
-    	<div class="nav-search" id="nav-search">
-			<form class="form-search">
-				<div class="input-group">
-			        <input type="text" class="form-control" placeholder="搜索你想找到的...">
-			        <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">
-						<img src="${pageContext.request.contextPath}/img/sys/iconsearch.png" alt="">
-			        </button>
-			        </span>
-			    </div><!-- /input-group -->
-			</form>
+<!-- Modal -->
+	<div class="modal-contentbox">
+		<div class="titlezl">
+			<p>角色授权</p>
+			<div class="btns">
+				<a href="javascript:;" class="min module_minimize" data-dismiss="modal">
+					<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
+					<div class="hidmission">
+						<span class="icon-key icon-slidenav"></span>
+						<p class='role-aut'>角色授权</p>
+						<span class="iconfont icon-chuyidong1 del"></span>
+					</div>
+				</a>
+				<!-- <a href="javascript:;" class="maxrole" data-dismiss="modal" u_id="4"> -->
+				<a href="javascript:;" class="maxrole external-link" data-dismiss="modal" u_id="4">
+					<img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="">
+				</a>
+				<a href="javascript:;" class="zclose" data-dismiss="modal">
+					<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="">
+				</a>
+			</div>
 		</div>
-	</ol>
-	
-	<div class="titlezl">
-		<p>角色授权</p>
-		<div class="btns">
-			<a href="javascript:;" class="min dom_minimize">
-				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
-				<div class="hidmission">
-					<span class="icon-key icon-slidenav"></span>
-					<p url='${pageContext.request.contextPath}/backend/authority/role/authrole/max'>角色授权</p>
-					<span class="iconfont icon-chuyidong1 del"></span>
-				</div>
-			</a>
-			<a href="javascript:;" class="maxrole" data-dismiss="modal" u_id="4">
-				<img src="${pageContext.request.contextPath}/img/sys/modal3.png" alt="">
-			</a>
-			<a href="javascript:;" class="zclose" data-dismiss="modal">
-				<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="">
-			</a>
-		</div>
-	</div>
-	<div class="form_content">
 		<form>
 		  	<div class="form-group">
 		    	<label for="rolename" class="rolename">角色名称
@@ -106,5 +80,3 @@
 		  	</div>
 		</form>
 	</div>
-	
-</div>

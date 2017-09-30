@@ -151,6 +151,6 @@ $(function(){
 		console.log('触发次数+1')
 		// 填充列表页
 		$('.ajax_dom').html('');
-        $('.ajax_dom').load('backend/authority/user/authuser/max').show();
+        $('.ajax_dom').load('backend/authority/user/auth/max').show();
     })
 })

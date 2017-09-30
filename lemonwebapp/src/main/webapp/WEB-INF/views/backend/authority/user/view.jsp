@@ -1,14 +1,14 @@
-﻿<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <ol class="breadcrumb breadcrumb_margin">
 	    <li>
 	    	<i class="glyphicon glyphicon-home"></i>
-	    	<a href="#" data="2" url="hoem">首页</a>
+	    	<a href="#" data="2" url="hoem" >首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/resource/listresource">资源管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/list">用户管理</a>
 	    </li>
-	    <li><a href="" url="${pageContext.request.contextPath}/backend/authority/resource/listresource">资源列表</a></li>
-	    <li class="active">查看资源</li>
+	    <li><a href="" url="${pageContext.request.contextPath}/backend/authority/user/list">用户列表</a></li>
+	    <li class="active">查看用户</li>
     	<div class="nav-search" id="nav-search">
 			<form class="form-search">
 				<div class="input-group">
@@ -65,14 +65,13 @@
     <!--</from>-->
     <!--</div>-->
     <!--</div>-->
-    <!--编辑资源最大化开始-->
+    <!--编辑角色最大化开始-->
     <div class="row role_hearder">
         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 role_hearde_font">
-            <span>查看资源</span>
+            <span>查看用户</span>
         </div>
         <div class="pull-right col-lg-2 col-md-2 col-sm-3 col-xs-4 role_hearde_icon">
-           
-			<div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 role_hearde_this_icon red_border">
+            <div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 role_hearde_this_icon red_border">
             	
             	<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="" />
                 <!--<a href=""><span class="glyphicon glyphicon-remove red_back"></span></a>-->
@@ -87,11 +86,10 @@
                 <img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
                 <div class="hidmission">
 					<span class="icon-eye-open icon-slidenav"></span>
-					<p url="${pageContext.request.contextPath}/backend/authority/resource/lookresource/max">查看资源</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/user/view/max">查看用户</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
             </div>
-
         </div>
     </div>
     <div class="row role_content">
@@ -101,20 +99,20 @@
                 <td>09</td>
             </tr>
             <tr>
-                <td>资源名称</td>
-                <td>添加员工</td>
+                <td>用户名称</td>
+                <td>马小米</td>
             </tr>
             <tr>
-                <td>资源类型</td>
-                <td>操作</td>
+                <td>分配角色</td>
+                <td>超级管理员</td>
             </tr>
             <tr>
-                <td>父级资源</td>
-                <td>用户管理</td>
+                <td>手机号</td>
+                <td>18288888888</td>
             </tr>
             <tr>
-                <td>相关操作</td>
-                <td>查看，操作</td>
+                <td>邮箱号码</td>
+                <td>234892390@qq.com</td>
             </tr>
         </table>
     </div>
@@ -125,19 +123,19 @@
 			$('.blue_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"${pageContext.request.contextPath}/backend/authority/resource/listresource",
+					url:"${pageContext.request.contextPath}/backend/authority/user/list",
 					dataType:"html"
 				}).done(function(data){
 					$(".ajax_dom").empty()
 					$(".ajax_dom").html(data)
-					$("#lookSourceModal").modal('show')
+					$("#lookUserModal").modal('show')
 				})
 			})
 	//点击关闭
 	$('.red_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"${pageContext.request.contextPath}/backend/authority/resource/listresource",
+					url:"${pageContext.request.contextPath}/backend/authority/user/list",
 					dataType:"html"
 				}).done(function(data){
 					$(".ajax_dom").empty()

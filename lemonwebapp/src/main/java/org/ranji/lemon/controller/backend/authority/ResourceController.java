@@ -39,36 +39,36 @@ public class ResourceController {
 	private IResourceService resourceService;
 	
 //	@SystemControllerPermission("resource:list")
-	@RequestMapping(value = "/listresource")
+	@RequestMapping(value = "/list")
 	@SystemControllerLog(description="权限管理-资源列表")
 	public String listResource() {
-		return "backend/authority/resources/resourcelist";
+		return "backend/authority/resources/list";
 	}
 
 //	@SystemControllerPermission("resource:add")
-	@RequestMapping(value = "/addresources")
+	@RequestMapping(value = "/add")
 	@SystemControllerLog(description="权限管理-添加资源")
 	public String addResources() {
 		return "backend/authority/resources/add";
 	}
 	
 //	@SystemControllerPermission("resource:looksource")
-	@RequestMapping(value = "/lookresource/{request_param}")
+	@RequestMapping(value = "/view/{request_param}")
 	@SystemControllerLog(description="权限管理-查看资源")
-	public String lookSource(@PathVariable String request_param) {
+	public String viewSource(@PathVariable String request_param) {
 		if("modal".equals(request_param)){
-			return "backend/authority/resources/lookSourceModal";
+			return "backend/authority/resources/viewmodal";
 		}else if("max".equals(request_param)){
-			return "backend/authority/resources/look";
+			return "backend/authority/resources/view";
 		}
 		return null;
 	}
 //	@SystemControllerPermission("resource:looksource")
-	@RequestMapping(value = "/editresource/{request_param}")
+	@RequestMapping(value = "/edit/{request_param}")
 	@SystemControllerLog(description="权限管理-查看资源")
 	public String editSource(@PathVariable String request_param) {
 		if("modal".equals(request_param)){
-			return "backend/authority/resources/editSourceModal";
+			return "backend/authority/resources/editmodal";
 		}else if("max".equals(request_param)){
 			return "backend/authority/resources/edit";
 		}

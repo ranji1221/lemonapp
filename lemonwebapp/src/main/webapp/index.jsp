@@ -292,17 +292,17 @@
 								<span class="iconfont icon-icon"></span>
 							</li>
 							<ul>
-								<li url="${pageContext.request.contextPath}/backend/authority/role/listrole">
+								<li url="${pageContext.request.contextPath}/backend/authority/role/list">
 									<div class="iconfont icon-liebiao3 icon-slidenav"></div>
 									<p>角色列表</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url="${pageContext.request.contextPath}/backend/authority/role/addrole">
+								<li url="${pageContext.request.contextPath}/backend/authority/role/add">
 									<div class="iconfont icon-tianjia icon-slidenav"></div>
 									<p>添加角色</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url="${pageContext.request.contextPath}/backend/authority/role/bulkaddrole">
+								<li url="${pageContext.request.contextPath}/backend/authority/role/adds">
 									<div class="iconfont icon-piliangtianjia icon-slidenav"></div>
 									<p>批量添加角色</p>
 									<div class="hoverline"></div>
@@ -314,17 +314,17 @@
 								<span class="iconfont icon-icon"></span>
 							</li>
 							<ul>
-								<li url="${pageContext.request.contextPath}/backend/authority/user/listuser">
+								<li url="${pageContext.request.contextPath}/backend/authority/user/list">
 									<div class="iconfont icon-yonghuliebiao icon-slidenav"></div>
 									<p>用户列表</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url="${pageContext.request.contextPath}/backend/authority/user/adduser">
+								<li url="${pageContext.request.contextPath}/backend/authority/user/add">
 									<div class="iconfont icon-tianjiaxinyonghu icon-slidenav"></div>
 									<p>添加用户</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url="${pageContext.request.contextPath}/backend/authority/user/bulkaddusers">
+								<li url="${pageContext.request.contextPath}/backend/authority/user/adds">
 									<div class="iconfont icon-tianjiaduoyonghu icon-slidenav"></div>
 									<p>批量添加用户</p>
 									<div class="hoverline"></div>
@@ -336,12 +336,12 @@
 								<span class="iconfont icon-icon"></span>
 							</li>
 							<ul>
-								<li url='${pageContext.request.contextPath}/backend/authority/resource/listresource'>
+								<li url='${pageContext.request.contextPath}/backend/authority/resource/list'>
 									<div class="iconfont icon-ziyuanguanli2 icon-slidenav"></div>
 									<p>资源列表</p>
 									<div class="hoverline"></div>
 								</li>
-								<li url="${pageContext.request.contextPath}/backend/authority/resource/addresources">
+								<li url="${pageContext.request.contextPath}/backend/authority/resource/add">
 									<div class="iconfont icon-tianjiaziyuan-q icon-slidenav"></div>
 									<p>添加资源</p>
 									<div class="hoverline"></div>

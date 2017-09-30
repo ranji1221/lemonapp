@@ -1,14 +1,15 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+
 <ol class="breadcrumb breadcrumb_margin">
 	    <li>
 	    	<i class="glyphicon glyphicon-home"></i>
-	    	<a href="#" data="2" url="hoem" >首页</a>
+	    	<a href="#" data="2" url="home">首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/listusert">用户管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/list">角色管理</a>
 	    </li>
-	    <li><a href="" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户列表</a></li>
-	    <li class="active">查看用户</li>
+	    <li><a href="" url="${pageContext.request.contextPath}/backend/authority/role/list">角色列表</a></li>
+	    <li class="active">查看角色</li>
     	<div class="nav-search" id="nav-search">
 			<form class="form-search">
 				<div class="input-group">
@@ -68,7 +69,7 @@
     <!--编辑角色最大化开始-->
     <div class="row role_hearder">
         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 role_hearde_font">
-            <span>查看用户</span>
+            <span>查看角色</span>
         </div>
         <div class="pull-right col-lg-2 col-md-2 col-sm-3 col-xs-4 role_hearde_icon">
             <div class="pull-right col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 role_hearde_this_icon red_border">
@@ -86,7 +87,7 @@
                 <img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
                 <div class="hidmission">
 					<span class="icon-eye-open icon-slidenav"></span>
-					<p url="${pageContext.request.contextPath}/backend/authority/user/lookuser/max">查看用户</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/role/view/max">查看角色</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
             </div>
@@ -95,24 +96,24 @@
     <div class="row role_content">
         <table class="table table-striped">
             <tr>
-                <td class="col-lg-2 col-md-2 col-xs-2">编号</td>
-                <td>09</td>
+                <td class="col-lg-2 col-md-2 col-xs-2">角色名称</td>
+                <td>UI设计师</td>
             </tr>
             <tr>
-                <td>用户名称</td>
-                <td>马小米</td>
+                <td>父级角色</td>
+                <td>首页</td>
             </tr>
             <tr>
-                <td>分配角色</td>
-                <td>超级管理员</td>
+                <td>依赖角色</td>
+                <td>员工</td>
             </tr>
             <tr>
-                <td>手机号</td>
-                <td>18288888888</td>
+                <td>最大限制用户数</td>
+                <td>6</td>
             </tr>
             <tr>
-                <td>邮箱号码</td>
-                <td>234892390@qq.com</td>
+                <td>备注消息</td>
+                <td>UI设计师为研发部门付出了艰辛的努力</td>
             </tr>
         </table>
     </div>
@@ -123,22 +124,21 @@
 			$('.blue_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"${pageContext.request.contextPath}/backend/authority/user/listuser",
+					url:"${pageContext.request.contextPath}/backend/authority/role/list",
 					dataType:"html"
 				}).done(function(data){
 					$(".ajax_dom").empty()
 					$(".ajax_dom").html(data)
-					$("#lookUserModal").modal('show')
+					$("#lookRoleModal").modal('show')
 				})
 			})
 	//点击关闭
 	$('.red_border').on("click",function(e){
 				e.preventDefault()
 				$.ajax({
-					url:"${pageContext.request.contextPath}/backend/authority/user/listuser",
+					url:"${pageContext.request.contextPath}/backend/authority/role/list",
 					dataType:"html"
 				}).done(function(data){
-					console.log(data)
 					$(".ajax_dom").empty()
 					$(".ajax_dom").html(data)
 				})

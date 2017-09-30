@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<script src="${pageContext.request.contextPath}/js/user/bulkaddusers.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/adds.js"></script>
 
 <div class="bulkaddroles">
 	<ol class="breadcrumb">
@@ -8,7 +8,7 @@
 	    	<a href="#" data="2" url='home'>首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/list">用户管理</a>
 	    </li>
 	    <li class="active">批量添加用户</li>
 	    <div class="nav-search" id="nav-search">
@@ -31,7 +31,7 @@
 				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
 				<div class="hidmission">
 					<span class="iconfont icon-piliangtianjia icon-slidenav"></span>
-					<p url="${pageContext.request.contextPath}/backend/authority/user/bulkaddusers">批量添加用户</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/user/adds">批量添加用户</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
 			</a>

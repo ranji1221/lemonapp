@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="${pageContext.request.contextPath}/js/role/rolelist.js"></script>
+<script src="${pageContext.request.contextPath}/js/role/list.js"></script>
 <script src="${pageContext.request.contextPath}/js/twbs-pagination-1.4.1/jquery.twbsPagination.js"></script>
 <script >
 	//alert(122);
@@ -406,7 +406,7 @@
 		</table>
 		<div class="tfoot">
 			<div class="btns">
-				<span class="newPro" url="./pages/role/add.html">
+				<span class="newPro" url="${pageContext.request.contextPath}/backend/authority/role/add">
 					<img src="${pageContext.request.contextPath}/img/sys/icons4.png" alt="">
 					新建
 				</span>

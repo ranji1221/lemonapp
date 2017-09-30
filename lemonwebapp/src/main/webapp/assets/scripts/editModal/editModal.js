@@ -4,12 +4,12 @@
 
 $(function() {
 	var editModal = $("#editModal");
-	var editRoleUrl = "backend/authority/role/editrole/modal";
-	var editUserUrl = "backend/authority/user/edituser/modal";
-	var editSourceUrl = "backend/authority/resource/editresource/modal";
-	var lookRoleUrl = "backend/authority/role/lookrole/modal";
-	var lookUserUrl = "backend/authority/user/lookuser/modal";
-	var lookSourceUrl = "backend/authority/resource/lookresource/modal";
+	var editRoleUrl = "backend/authority/role/edit/modal";
+	var editUserUrl = "backend/authority/user/edit/modal";
+	var editSourceUrl = "backend/authority/resource/edit/modal";
+	var lookRoleUrl = "backend/authority/role/view/modal";
+	var lookUserUrl = "backend/authority/user/view/modal";
+	var lookSourceUrl = "backend/authority/resource/view/modal";
 	var removeUrl = "pages/remove/remove.html";
 	//  $("#editUserModal").on('hide.bs.modal',function () {
 	//     $(this).removeData('bs.modal');
@@ -25,6 +25,7 @@ $(function() {
 			async: true,
 			success: function(data) {
 				$("#editRoleModal").html(data);
+				$('#editRoleModal').modal('show');
 				var input = $("#roleName");
 				limitChangeLength(input, 15);
 				$(".modal-content").attr("n_id", $(this_nid).attr("n_id"))
@@ -111,7 +112,7 @@ $(function() {
 	}
 	$(document).on("click", ".editRole", function(e) {
 		e.preventDefault();
-		$('#editRoleModal').modal('show');
+		
 		editRole($(this));
 
 	});
@@ -125,7 +126,7 @@ $(function() {
 		var limitNum;
 		uStr = localStorage.getItem("this_role" + nId);
 //		console.log("uStr:" + uStr);
-		if(uStr) {
+		if(uStr&&JSON.parse(uStr)[3].value) {
 
 			maxNum = JSON.parse(uStr)[3].value;
 //			console.log("本地存储maxNum" + maxNum);
@@ -186,7 +187,7 @@ $(function() {
 			success: function(data) {
 
 				$("#editUserModal").html(data);
-
+				$('#editUserModal').modal('show');
 				var input = $("#userName");
 				limitChangeLength(input, 15);
 				$(".modal-content").attr("n_id", $(this_nid).attr("n_id"))
@@ -199,7 +200,7 @@ $(function() {
 	}
 	$(document).on("click", ".editUser", function(e) {
 		e.preventDefault();
-		$('#editUserModal').modal('show');
+		
 		editUser($(this));
 	});
 
@@ -212,6 +213,7 @@ $(function() {
 
 				$("#editSourceModal").html(data);
 				$(".modal-content").attr("n_id", $(this_nid).attr("n_id"))
+				$('#editSourceModal').modal('show');
 				$(".modal-content .editSource").attr("n_id", $(this_nid).attr("n_id"))
 			},
 			error: function(data) {
@@ -221,7 +223,7 @@ $(function() {
 	}
 	$(document).on("click", ".editSource", function(e) {
 		e.preventDefault();
-		$('#editSourceModal').modal('show');
+		
 		editSource($(this));
 	});
 
@@ -233,6 +235,7 @@ $(function() {
 			success: function(data) {
 
 				$("#lookRoleModal").html(data);
+				$('#lookRoleModal').modal('show');
 			},
 			error: function(data) {
 				console.log(data);
@@ -242,7 +245,7 @@ $(function() {
 
 	$(document).on("click", ".lookRole", function(e) {
 		e.preventDefault();
-		$('#lookRoleModal').modal('show');
+		
 		lookRoleModal();
 	});
 
@@ -253,6 +256,7 @@ $(function() {
 			async: true,
 			success: function(data) {
 				$("#lookUserModal").html(data);
+				$('#lookUserModal').modal('show');
 			},
 			error: function(data) {
 				if(data.status==404){
@@ -266,7 +270,7 @@ $(function() {
 
 	$(document).on("click", ".lookUser", function(e) {
 		e.preventDefault();
-		$('#lookUserModal').modal('show');
+		
 		lookUserModal();
 	});
 
@@ -278,6 +282,7 @@ $(function() {
 			success: function(data) {
 
 				$("#lookSourceModal").html(data);
+				$('#lookSourceModal').modal('show');
 			},
 			error: function(data) {
 				console.log(data);
@@ -287,7 +292,7 @@ $(function() {
 
 	$(document).on("click", ".lookSource", function(e) {
 		e.preventDefault();
-		$('#lookSourceModal').modal('show');
+		
 		lookSourceModal();
 	});
 	$(document).on("click", ".removeBtn", function(e) {
@@ -322,7 +327,7 @@ $(function() {
 			cache: false
 		});
 		$('#user-authorization .modal-content').html('');
-		$('#user-authorization .modal-content').load('backend/authority/user/authuser/modal')
+		$('#user-authorization .modal-content').load('backend/authority/user/auth/modal')
 		$('#user-authorization').modal('show');
 	})
 	// 角色授权模态框的调用
@@ -334,7 +339,7 @@ $(function() {
 		});
 		// console.log('尝试清除js');
 		$('#role-authorization .modal-content').html('');
-		$('#role-authorization .modal-content').load('backend/authority/role/authrole/modal')
+		$('#role-authorization .modal-content').load('backend/authority/role/auth/modal')
 		$('#role-authorization').modal('show');
 	})
 });

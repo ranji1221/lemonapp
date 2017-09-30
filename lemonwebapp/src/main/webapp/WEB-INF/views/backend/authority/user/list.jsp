@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!-- <link rel="stylesheet" href="./assets/styles/rolelist/rolelistREM.css" /> -->
-<script src="${pageContext.request.contextPath}/js/user/userlist.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/list.js"></script>
 
 <div class="rolelist userlist">
 	<ol class="breadcrumb">
@@ -9,7 +9,7 @@
 			<a href="#" data="2" url="home">首页</a>
 		</li>
 		<li>
-			<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/bulkaddusers">用户管理</a>
+			<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/list">用户管理</a>
 		</li>
 		<li class="active">用户列表</li>
 		<div class="nav-search" id="nav-search">
@@ -563,7 +563,7 @@
 		</table>
 		<div class="tfoot">
 			<div class="btns">
-				<span class="newPro" url="${pageContext.request.contextPath}/backend/authority/user/adduser">
+				<span class="newPro" url="${pageContext.request.contextPath}/backend/authority/user/add">
 					<img src="${pageContext.request.contextPath}/img/sys/icons4.png" alt="">
 					新建
 				</span>

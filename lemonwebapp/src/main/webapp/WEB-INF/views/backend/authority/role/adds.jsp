@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 
-<script src="./js/role/bulkaddroles.js"></script>
+<script src="${pageContext.request.contextPath}/js/role/adds.js"></script>
 
 <div class="bulkaddroles">
 	<ol class="breadcrumb">
@@ -9,7 +9,7 @@
 	    	<a href="#" data="2" url="home">首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="./pages/role/rolelist">角色管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/list">角色管理</a>
 	    </li>
 	    <li class="active">批量添加角色</li>
 	    <div class="nav-search" id="nav-search">
@@ -18,7 +18,7 @@
 			        <input type="text" class="form-control" placeholder="搜索你想找到的...">
 			        <span class="input-group-btn">
 			        <button class="btn btn-default" type="button">
-						<img src="./img/sys/iconsearch.png" alt="">
+						<img src="${pageContext.request.contextPath}/img/sys/iconsearch.png" alt="">
 			        </button>
 			        </span>
 			    </div><!-- /input-group -->
@@ -29,10 +29,10 @@
 		<p>批量添加角色</p>
 		<div class="btns">
 			<a href="javascript:;" class="min dom_minimize">
-				<img src="./img/sys/modal2.png" alt="">
+				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
 				<div class="hidmission">
 					<span class="iconfont icon-piliangtianjia icon-slidenav"></span>
-					<p url="./pages/role/bulkaddroles">批量添加角色</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/role/adds">批量添加角色</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
 			</a>
@@ -40,7 +40,7 @@
 				<img src="./img/sys/modal3.png" alt="">
 			</a> -->
 			<a href="javascript:;" class="zclose" data-dismiss="modal">
-				<img src="./img/sys/modal1.png" alt="">
+				<img src="${pageContext.request.contextPath}/img/sys/modal1.png" alt="">
 			</a>
 		</div>
 	</div>
@@ -57,7 +57,7 @@
 	</div> -->
 	<div class="upload">
 		<div class="title">
-			<img src="./img/sys/addrolees4.png" alt="">
+			<img src="${pageContext.request.contextPath}/img/sys/addrolees4.png" alt="">
 		</div>
 		<form action="">
 			<div class="uploadinput">

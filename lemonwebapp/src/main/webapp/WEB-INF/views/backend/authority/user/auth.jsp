@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<script src="${pageContext.request.contextPath}/js/user/user-authorizationlg.js"></script>
+<script src="${pageContext.request.contextPath}/js/user/auth.js"></script>
 
 <!-- 用户授权 -->
 <!-- 最大化 -->
@@ -10,10 +10,10 @@
 	    	<a href="#" data="2" url="home">首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="backend/authority/user/listuser">用户管理</a>
+	    	<a href="#" url="backend/authority/user/list">用户管理</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="backend/authority/user/listuser">用户列表</a>
+	    	<a href="#" url="backend/authority/user/list">用户列表</a>
 	    </li>
 	    <li class="active">用户授权</li>
     	<div class="nav-search" id="nav-search">
@@ -36,7 +36,7 @@
 					<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="">
 					<div class="hidmission">
 						<span class="icon-key icon-slidenav"></span>
-						<p url='backend/authority/user/authuser/max'>用户授权</p>
+						<p url='${pageContext.request.contextPath}/backend/authority/user/auth/max'>用户授权</p>
 						<span class="iconfont icon-chuyidong1 del"></span>
 					</div>
 				</a>

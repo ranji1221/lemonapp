@@ -100,12 +100,13 @@ $(function() {
 	//角色模态框
 	$("#lookRoleModal").on("shown.bs.modal", function(e) {
 		var max_role = $(this).find(".external-link")
-		max_role.on("click", function(e) {
+		$(this).on("click",".external-link", function(e) {
+			
 			e.preventDefault()
 			$(".ajax_dom").show()
 			$("#lookRoleModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/role/lookrole/max",
+				url: "backend/authority/role/view/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -134,7 +135,7 @@ $(function() {
 			e.preventDefault()
 			$("#editRoleModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/role/editrole/max",
+				url: "backend/authority/role/edit/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -174,7 +175,7 @@ $(function() {
 			e.preventDefault()
 			$("#lookUserModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/user/lookuser/max",
+				url: "backend/authority/user/view/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -199,7 +200,7 @@ $(function() {
 			e.preventDefault()
 			$("#editUserModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/user/edituser/max",
+				url: "backend/authority/user/edit/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -238,7 +239,7 @@ $(function() {
 			e.preventDefault()
 			$("#lookSourceModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/resource/lookresource/max",
+				url: "backend/authority/resource/view/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -265,7 +266,7 @@ $(function() {
 			e.preventDefault()
 			$("#editSourceModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/resource/editresource/max",
+				url: "backend/authority/resource/edit/max",
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
@@ -578,14 +579,14 @@ $(document).on("click", ".blue_border", function(e) {
 	//	console.log(form,u_id,n_id)
 })
 //模态框点击最大化
-$(document).on("click", ".external-link", function() {
-	var form = $(this).closest(".modal-content").find(".modal-body form")
-	var u_id = $(this).closest(".modal-content").attr("u_id")
-	var n_id = $(this).closest(".modal-content").attr("n_id")
-	ifu_id(u_id, n_id, form)
-	$(this).closest(".modal").find("input").val(" ")
-	//	console.log($(this).closest(".modal").find("input").val(" "))
-})
+//$(document).on("click", ".external-link", function() {
+//	var form = $(this).closest(".modal-content").find(".modal-body form")
+//	var u_id = $(this).closest(".modal-content").attr("u_id")
+//	var n_id = $(this).closest(".modal-content").attr("n_id")
+//	ifu_id(u_id, n_id, form)
+//	$(this).closest(".modal").find("input").val(" ")
+//	//	console.log($(this).closest(".modal").find("input").val(" "))
+//})
 //模态框最小化按钮本地存储
 $(document).on("click", ".module_minimize", function() {
 	var form = $(this).closest(".modal-content").find(".modal-body form")
