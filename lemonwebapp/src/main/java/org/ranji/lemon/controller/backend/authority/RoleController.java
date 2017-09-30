@@ -61,8 +61,10 @@ public class RoleController {
 		return "backend/authority/role/rolelist";
 	}
 	
-	@ResponseBody
+	//@SystemControllerPermission("role:list")
+	@SystemControllerLog(description="权限管理-角色列表")
 	@RequestMapping(value = "/data")
+	@ResponseBody
 	public String data(String params,HttpSession session) {
 		try {
 			ObjectMapper om = new ObjectMapper();
@@ -77,8 +79,6 @@ public class RoleController {
 			Map<String, Object> result = new HashMap<String, Object>();
 			result.put("total", pg.getTotal());
 			result.put("rows", pg.getData());
-			System.out.println(pg.getData());
-			session.setAttribute("roleList", pg.getData());
 			return om.writeValueAsString(result);
 		} catch (Exception e) {
 			e.printStackTrace();

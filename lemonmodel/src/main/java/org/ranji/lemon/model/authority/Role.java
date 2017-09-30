@@ -34,8 +34,11 @@ public class Role implements Serializable{
 	private String roleName; // 角色名称
 	private String displayName; //角色名称 中文
 	private int roleExtendPId; // 角色的父ID
+	private String rolePName;  //父角色名（数据显示用）
 	private int roleRelyId; //  角色依赖ID
+	private String roleRelyName; //依赖角色名（数据显示用）
 	private int roleMaxNum; // 最大限制用户数
+	private String remarks;  //备注
 	private List<Role> list = new ArrayList<Role>();
 	
 	public List<Role> getList() {
@@ -54,6 +57,30 @@ public class Role implements Serializable{
 		this.id = id;
 	}
 	
+	public String getRolePName() {
+		return rolePName;
+	}
+
+	public void setRolePName(String rolePName) {
+		this.rolePName = rolePName;
+	}
+
+	public String getRoleRelyName() {
+		return roleRelyName;
+	}
+
+	public void setRoleRelyName(String roleRelyName) {
+		this.roleRelyName = roleRelyName;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
 	public String getRoleName() {
 		return roleName;
 	}
