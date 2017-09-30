@@ -100,6 +100,7 @@
 		if(true){
 			var role = data;
 			$.each(role,function(index,value,role){
+				var Pname = value.rolePName == null ? '无':value.rolePName ;
 				html += '<tr>'+
 				'<td class="checkboxtd">'+
 					'<label>'+
@@ -113,7 +114,7 @@
 					value.roleName +//${role.roleName}
 				'</td>'+
 				'<td title="首页">'+
-					"123"  +
+				     Pname +
 				'</td>'+
 				'<td>'+
 					'<span class="icon-eye-open iconact lookRole"></span>'+
@@ -142,7 +143,7 @@
 	    	<a href="#" data="2" url="home">首页</a>
 	    </li>
 	    <li>
-	    	<a href="#" url="/pages/role/rolelist">角色管理</a>
+	    	<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/list">角色管理</a>
 	    </li>
 	    <li class="active">角色列表</li>
     	<div class="nav-search" id="nav-search">
@@ -190,7 +191,7 @@
 						</span>
 					</th>
 					<th>
-						父菜单
+						父角色
 						<span class="sort">
 							<i class="glyphicon glyphicon-triangle-top"></i>
 							<i class="glyphicon glyphicon-triangle-bottom"></i>

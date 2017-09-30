@@ -57,13 +57,10 @@ public class RoleController {
 	public String listRole(HttpSession session) {
 		//List <Role> roleList = roleService.findAll();
 		//session.setAttribute("roleList", JsonUtils.objectToJson(roleList));
-<<<<<<< HEAD
-		session.setAttribute("roleList", roleList);
-		return "backend/authority/role/list";
-=======
 		//session.setAttribute("roleList", roleList);
-		return "backend/authority/role/rolelist";
->>>>>>> branch 'master' of https://github.com/ranji1221/lemonapp.git
+		return "backend/authority/role/list";
+		//session.setAttribute("roleList", roleList);
+		//return "backend/authority/role/rolelist";
 	}
 	
 	//@SystemControllerPermission("role:list")
