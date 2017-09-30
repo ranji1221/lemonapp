@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.ranji.lemon.model.authority.Operation;
 import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.service.authority.prototype.IAuthorityService;
+import org.ranji.lemon.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -35,7 +36,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @version 1.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring-persist.xml","classpath:spring-service.xml","classpath:spring-flowable.xml"})
+@ContextConfiguration(locations={"classpath:config/spring-persist.xml","classpath:config/spring-service.xml","classpath:config/spring-flowable.xml"})
 public class AuthServiceTest {
 	@Autowired
 	private IAuthorityService authService;
@@ -43,10 +44,9 @@ public class AuthServiceTest {
 	//查询用户所有角色及父级角色测试
 	@Test
 	public void testFindRolesByUserId(){
-		List<Role> role = authService.findRolesByUserId(1);
-		for(Role r: role){
-			System.out.println(r.getRoleName());
-		}
+		List<Role> role = authService.findRolesByUserId(2);
+			System.out.println(JsonUtils.objectToJson(role));
+		
 	}
 	//查询用户的所有操作
 	@Test
