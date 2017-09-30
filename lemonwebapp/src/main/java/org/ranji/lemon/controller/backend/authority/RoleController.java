@@ -1,19 +1,23 @@
 package org.ranji.lemon.controller.backend.authority;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.ranji.lemon.annotation.SystemControllerLog;
 import org.ranji.lemon.model.authority.Role;
+import org.ranji.lemon.pagination.PagerModel;
 import org.ranji.lemon.service.authority.prototype.IRoleService;
-import org.ranji.lemon.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -52,8 +56,34 @@ public class RoleController {
 	@SystemControllerLog(description="权限管理-角色列表")
 	public String listRole(HttpSession session) {
 		List <Role> roleList = roleService.findAll();
-		session.setAttribute("roleList", JsonUtils.objectToJson(roleList));
+		//session.setAttribute("roleList", JsonUtils.objectToJson(roleList));
+		session.setAttribute("roleList", roleList);
 		return "backend/authority/role/rolelist";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/data")
+	public String data(String params,HttpSession session) {
+		try {
+			ObjectMapper om = new ObjectMapper();
+			Map<String, Object> map = new HashMap<String, Object>();
+			// 当前只查询管理员
+			if (!StringUtils.isEmpty(params)) {
+				// 参数处理
+				map = om.readValue(params, new TypeReference<Map<String, Object>>() {});
+			}
+			PagerModel<Role	> pg = roleService.findPaginated(map);
+			// 序列化查询结果为JSON
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("total", pg.getTotal());
+			result.put("rows", pg.getData());
+			System.out.println(pg.getData());
+			session.setAttribute("roleList", pg.getData());
+			return om.writeValueAsString(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{ \"total\" : 0, \"rows\" : [] }";
+		}
 	}
 	
 	//@SystemControllerPermission("role:add")
