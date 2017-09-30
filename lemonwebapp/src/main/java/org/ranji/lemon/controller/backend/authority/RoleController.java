@@ -55,9 +55,9 @@ public class RoleController {
 	@RequestMapping(value = "/listrole")
 	@SystemControllerLog(description="权限管理-角色列表")
 	public String listRole(HttpSession session) {
-		List <Role> roleList = roleService.findAll();
+		//List <Role> roleList = roleService.findAll();
 		//session.setAttribute("roleList", JsonUtils.objectToJson(roleList));
-		session.setAttribute("roleList", roleList);
+		//session.setAttribute("roleList", roleList);
 		return "backend/authority/role/rolelist";
 	}
 	
