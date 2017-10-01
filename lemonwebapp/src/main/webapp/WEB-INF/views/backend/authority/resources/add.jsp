@@ -5,7 +5,7 @@
 		<a href="#" data="2" url="home">首页</a>
 	</li>
 	<li>
-		<a href="#" url="${pageContext.request.contextPath}/backend/authority/resource/listresource">资源管理</a>
+		<a href="#" url="${pageContext.request.contextPath}/backend/authority/resource/list">资源管理</a>
 	</li>
 	<li class="active">添加资源</li>
 	<div class="nav-search" id="nav-search">
@@ -82,7 +82,7 @@
 				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
 				<div class="hidmission">
 					<span class="icon-pencil icon-slidenav"></span>
-					<p url="${pageContext.request.contextPath}/backend/authority/resource/addresources" u_id="1" n_id="-1">添加资源</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/resource/add" u_id="1" n_id="-1">添加资源</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
 			</div>
@@ -241,7 +241,7 @@
 	$('.red_border').on("click", function(e) {
 		e.preventDefault()
 		$.ajax({
-			url: "${pageContext.request.contextPath}/backend/authority/resource/listresource",
+			url: "${pageContext.request.contextPath}/backend/authority/resource/list",
 			dataType: "html"
 		}).done(function(data) {
 			$(".ajax_dom").empty()

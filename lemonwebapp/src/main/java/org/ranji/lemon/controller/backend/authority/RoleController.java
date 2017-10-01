@@ -52,13 +52,15 @@ public class RoleController {
 	private IRoleService roleService;
 		
 	//@SystemControllerPermission("role:list")
-	@RequestMapping(value = "/listrole")
+	@RequestMapping(value = "/list")
 	@SystemControllerLog(description="权限管理-角色列表")
 	public String listRole(HttpSession session) {
 		//List <Role> roleList = roleService.findAll();
 		//session.setAttribute("roleList", JsonUtils.objectToJson(roleList));
 		//session.setAttribute("roleList", roleList);
-		return "backend/authority/role/rolelist";
+		return "backend/authority/role/list";
+		//session.setAttribute("roleList", roleList);
+		//return "backend/authority/role/rolelist";
 	}
 	
 	//@SystemControllerPermission("role:list")
@@ -87,38 +89,38 @@ public class RoleController {
 	}
 	
 	//@SystemControllerPermission("role:add")
-	@RequestMapping(value = "/addrole")
+	@RequestMapping(value = "/add")
 	@SystemControllerLog(description="权限管理-添加角色")
 	public String addRole() {
 		return "backend/authority/role/add";
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")
-	@RequestMapping(value = "/bulkaddrole")
+	@RequestMapping(value = "/adds")
 	@SystemControllerLog(description="权限管理-批量添加角色")
-	public String bulkAddRoles() {
-		return "backend/authority/role/bulkaddroles";
+	public String addsRoles() {
+		return "backend/authority/role/adds";
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")
-	@RequestMapping(value = "/lookrole/{size}")
+	@RequestMapping(value = "/view/{size}")
 	@SystemControllerLog(description="权限管理-查看角色")
-	public String lookRole(@PathVariable String size) {
+	public String viewRole(@PathVariable String size) {
 		if("modal".equals(size)){
-			return "backend/authority/role/lookRoleModal";
+			return "backend/authority/role/viewmodal";
 		}else if("max".equals(size)){
-			return "backend/authority/role/look";
+			return "backend/authority/role/view";
 		}
 		return null;
 		
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")
-	@RequestMapping(value = "/editrole/{size}")
+	@RequestMapping(value = "/edit/{size}")
 	@SystemControllerLog(description="权限管理-修改角色")
 	public String editRole(@PathVariable String size) {
 		if("modal".equals(size)){
-			return "backend/authority/role/editRoleModal";
+			return "backend/authority/role/editmodal";
 		}else if("max".equals(size)){
 			return "backend/authority/role/edit";
 		}
@@ -127,13 +129,13 @@ public class RoleController {
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")
-	@RequestMapping(value = "/authrole/{size}")
+	@RequestMapping(value = "/auth/{size}")
 	@SystemControllerLog(description="权限管理-给角色分配资源")
 	public String authRole(@PathVariable String size) {
 		if("modal".equals(size)){
-			return "backend/authority/role/role-authorization";
+			return "backend/authority/role/authmodal";
 		}else if("max".equals(size)){
-			return "backend/authority/role/role-authorizationlg";
+			return "backend/authority/role/auth";
 		}
 		return null;
 	}

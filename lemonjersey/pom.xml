@@ -27,7 +27,7 @@
 			<version>${project.version}</version>
 		</dependency>
 		
-		<!-- Jersey1.19.4 -->
+		<!-- Jersey1.19.4 (Web Service框架)-->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
@@ -37,6 +37,52 @@
 		    <groupId>com.sun.jersey.contribs</groupId>
 		    <artifactId>jersey-spring</artifactId>
 		    <version>${jersey.version}</version>
+		</dependency>
+		
+		<!-- Oatuth2 （web service安全认证框架） -->
+		<dependency>
+		    <groupId>org.apache.oltu.oauth2</groupId>
+		    <artifactId>org.apache.oltu.oauth2.common</artifactId>
+		    <version>1.0.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.oltu.oauth2</groupId>
+		    <artifactId>org.apache.oltu.oauth2.client</artifactId>
+		    <version>1.0.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.oltu.oauth2</groupId>
+		    <artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+		    <version>1.0.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.oltu.oauth2</groupId>
+		    <artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
+		    <version>1.0.2</version>
+		</dependency>
+		
+		<!-- JavaEE -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		
+		<!-- Commons -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
 		</dependency>
 		
 		<dependency>

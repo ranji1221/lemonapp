@@ -5,10 +5,10 @@
 		<a href="#" data="2">首页</a>
 	</li>
 	<li>
-		<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户管理</a>
+		<a href="#" url="${pageContext.request.contextPath}/backend/authority/user/list">用户管理</a>
 	</li>
 	<li>
-		<a href="" url="${pageContext.request.contextPath}/backend/authority/user/listuser">用户列表</a>
+		<a href="" url="${pageContext.request.contextPath}/backend/authority/user/list">用户列表</a>
 	</li>
 	<li class="active">用户编辑</li>
 	<div class="nav-search" id="nav-search">
@@ -88,7 +88,7 @@
 				<!--<a href=""><span class="small_icon glyphicon green_back">-</span></a>-->
 				<div class="hidmission">
 					<span class="icon-pencil icon-slidenav"></span>
-					<p url="${pageContext.request.contextPath}/backend/authority/user/edituser/max" u_id="3" >用户编辑</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/user/edit/max" u_id="3" >用户编辑</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
 				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
@@ -208,7 +208,7 @@
 	$('.blue_border').on("click", function(e) {
 		e.preventDefault()
 		$.ajax({
-			url: "${pageContext.request.contextPath}/backend/authority/user/listuser",
+			url: "${pageContext.request.contextPath}/backend/authority/user/list",
 			dataType: "html"
 		}).done(function(data) {
 			$(".ajax_dom").empty()
@@ -220,7 +220,7 @@
 	$('.red_border').on("click", function(e) {
 		e.preventDefault()
 		$.ajax({
-			url: "${pageContext.request.contextPath}/backend/authority/user/listuser",
+			url: "${pageContext.request.contextPath}/backend/authority/user/list",
 			dataType: "html"
 		}).done(function(data) {
 			$(".ajax_dom").empty()

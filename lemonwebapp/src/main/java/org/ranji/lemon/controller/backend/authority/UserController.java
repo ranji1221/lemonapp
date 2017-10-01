@@ -50,46 +50,46 @@ public class UserController {
 	
 	//@RequiresPermissions("user:add")
 	@SystemControllerPermission("user:add")
-	@RequestMapping(value = "/adduser")
+	@RequestMapping(value = "/add")
 	@SystemControllerLog(description="权限管理-添加用户")
 	public String addUser() {
 		return "backend/authority/user/add";
 	}
 	
-	@SystemControllerPermission("user:list")
-	@RequestMapping(value = "/listuser")
+//	@SystemControllerPermission("user:list")
+	@RequestMapping(value = "/list")
 	@SystemControllerLog(description="权限管理-用户列表")
 	public String listUser() {
 		return "backend/authority/user/list";
 	}
 	
-	@SystemControllerPermission("user:bulkadd")
-	@RequestMapping(value = "/bulkaddusers")
+//	@SystemControllerPermission("user:adds")
+	@RequestMapping(value = "/adds")
 	@SystemControllerLog(description="权限管理-批量添加用户")
-	public String bulkAddUser() {
-		return "backend/authority/user/bulkaddusers";
+	public String AddsUser() {
+		return "backend/authority/user/adds";
 	}
 	
 	//@RequiresPermissions("user:lookuser")
-	@SystemControllerPermission("user:lookuser")
-	@RequestMapping(value = "/lookuser/{size}")
+//	@SystemControllerPermission("user:view")
+	@RequestMapping(value = "/view/{size}")
 	@SystemControllerLog(description="权限管理-查看用户")
-	public String lookUser(@PathVariable String size) {
+	public String viewUser(@PathVariable String size) {
 		if("modal".equals(size)){
-			return "backend/authority/user/lookUserModal";
+			return "backend/authority/user/viewmodal";
 		}else if("max".equals(size)){
-			return "backend/authority/user/look";
+			return "backend/authority/user/view";
 		}
 		return null;
 		
 	}
 	
-	@SystemControllerPermission("user:edituser")
-	@RequestMapping(value = "/edituser/{size}")
+//	@SystemControllerPermission("user:edit")
+	@RequestMapping(value = "/edit/{size}")
 	@SystemControllerLog(description="权限管理-更新用户")
 	public String editUser(@PathVariable String size) {
 		if("modal".equals(size)){
-			return "backend/authority/user/editUserModal";
+			return "backend/authority/user/editmodal";
 		}else if("max".equals(size)){
 			return "backend/authority/user/edit";
 		}
@@ -97,14 +97,14 @@ public class UserController {
 		
 	}
 	
-	@SystemControllerPermission("user:authuser")
-	@RequestMapping(value = "/authuser/{size}")
+//	@SystemControllerPermission("user:auth")
+	@RequestMapping(value = "/auth/{size}")
 	@SystemControllerLog(description="权限管理-给用户分配角色")
 	public String authUser(@PathVariable String size) {
 		if("modal".equals(size)){
-			return "backend/authority/user/user-authorization";
+			return "backend/authority/user/authmodal";
 		}else if("max".equals(size)){
-			return "backend/authority/user/user-authorizationlg";
+			return "backend/authority/user/auth";
 		}
 		return null;
 	}
@@ -119,7 +119,7 @@ public class UserController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/add")
+	@RequestMapping(value = "/adduser")
 	public String add(User obj) {
 		try {
 			userService.save(obj);

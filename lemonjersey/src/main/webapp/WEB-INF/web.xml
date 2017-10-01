@@ -6,20 +6,24 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
    version="2.5">
 	
-	<display-name>Sample Maven JavaEE Jersey Project</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:config/spring-persist.xml
+			classpath:config/spring-service.xml
+			classpath:config/spring-jersey.xml
+			classpath:config/spring-flowable.xml
+		</param-value>
+	</context-param>
 	
 	<!-- Spring容器的监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:spring-persist.xml
-			classpath:spring-service.xml
-			classpath:spring-jersey.xml
-		</param-value>
-	</context-param>
+	<!-- 防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
 	
 	<!-- 设置字符编码的过滤器 -->
 	<filter>
@@ -35,6 +39,7 @@
 	  <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	
 	<!-- Jersey的核心控制器 -->
 	<servlet>
 	  <servlet-name>jersey-serlvet</servlet-name>
@@ -42,14 +47,31 @@
 	  <init-param>
 	  	<param-name>com.sun.jersey.config.property.packages</param-name>
 	  	<param-value>
-	  		org.ranji.lemon.webservice
+	  		org.ranji.lemon.resource
 	  	</param-value>
 	  </init-param>
 	  <load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 	  <servlet-name>jersey-serlvet</servlet-name>
-	  <url-pattern>/*</url-pattern>
+	  <url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Spring MVC的核心控制器 -->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:config/spring-web.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

@@ -7,10 +7,10 @@
 		<a href="#" data="2" url="home">首页</a>
 	</li>
 	<li>
-		<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/listrole">角色管理</a>
+		<a href="#" url="${pageContext.request.contextPath}/backend/authority/role/list">角色管理</a>
 	</li>
 	<li>
-		<a href="" url="${pageContext.request.contextPath}/backend/authority/role/listrole">角色列表</a>
+		<a href="" url="${pageContext.request.contextPath}/backend/authority/role/list">角色列表</a>
 	</li>
 	<li class="active">编辑角色</li>
 	<div class="nav-search" id="nav-search">
@@ -50,7 +50,7 @@
 				<img src="${pageContext.request.contextPath}/img/sys/modal2.png" alt="" />
 				<div class="hidmission">
 					<span class="icon-pencil icon-slidenav"></span>
-					<p url="${pageContext.request.contextPath}/backend/authority/role/editrole/max" u_id="2">编辑角色</p>
+					<p url="${pageContext.request.contextPath}/backend/authority/role/edit/max" u_id="2">编辑角色</p>
 					<span class="iconfont icon-chuyidong1 del"></span>
 				</div>
 			</div>
@@ -231,7 +231,7 @@
 			$('.blue_border').on("click", function(e) {
 				e.preventDefault()
 				$.ajax({
-					url: "${pageContext.request.contextPath}/backend/authority/role/listrole",
+					url: "${pageContext.request.contextPath}/backend/authority/role/list",
 					dataType: "html"
 				}).done(function(data) {
 					$(".ajax_dom").empty()
@@ -243,7 +243,7 @@
 			$('.red_border').on("click", function(e) {
 				e.preventDefault()
 				$.ajax({
-					url: "${pageContext.request.contextPath}/backend/authority/role/listrole",
+					url: "${pageContext.request.contextPath}/backend/authority/role/list",
 					dataType: "html"
 				}).done(function(data) {
 					$(".ajax_dom").empty()
