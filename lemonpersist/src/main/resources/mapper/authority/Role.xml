@@ -28,7 +28,13 @@
 	
 	<!-- 查询某个角色 -->
 	<select id="find" parameterType="int" resultType="Role">
-		select * from lemon_auth_role where id = #{id}
+		SELECT
+			r.*,pr.roleName rolePName,rr.roleName roleRelyName
+		FROM
+			lemon_auth_role r
+		LEFT JOIN lemon_auth_role pr ON r.roleExtendPId = pr.id
+		LEFT JOIN lemon_auth_role rr ON r.roleRelyId = rr.id 
+		where r.id = #{id}
 	</select>
 	
 	<!-- 查询全部角色 -->

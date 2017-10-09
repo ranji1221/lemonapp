@@ -227,13 +227,12 @@ $(function() {
 		editSource($(this));
 	});
 
-	function lookRoleModal() {
+	function lookRoleModal(id) {
 		$.ajax({
 			dataType: "html",
-			url: lookRoleUrl,
+			url: lookRoleUrl+'/'+ id,
 			async: true,
 			success: function(data) {
-
 				$("#lookRoleModal").html(data);
 				$('#lookRoleModal').modal('show');
 			},
@@ -245,8 +244,8 @@ $(function() {
 
 	$(document).on("click", ".lookRole", function(e) {
 		e.preventDefault();
-		
-		lookRoleModal();
+		 var id = $(this).closest("tr").attr("role_id")
+		lookRoleModal(id);
 	});
 
 	function lookUserModal() {

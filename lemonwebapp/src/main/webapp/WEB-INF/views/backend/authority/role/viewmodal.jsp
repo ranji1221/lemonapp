@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal-dialog modal-lg" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -27,23 +27,23 @@
 			<table class="table table-striped">
 				<tr>
 					<td class="col-lg-2">角色名称</td>
-					<td>UI设计师</td>
+					<td>${role.roleName}</td>
 				</tr>
 				<tr>
 					<td>父级角色</td>
-					<td>首页</td>
+					<td><c:out value="${role.rolePName }" default="无"/></td>
 				</tr>
 				<tr>
 					<td>依赖角色</td>
-					<td>员工</td>
+					<td><c:out value="${role.roleRelyName }" default="无"/></td>
 				</tr>
 				<tr>
 					<td>最大限制用户数</td>
-					<td>6</td>
+					<td>${role.roleMaxNum }</td>
 				</tr>
 				<tr>
 					<td>备注消息</td>
-					<td>UI设计师为研发部门付出了艰辛的努力</td>
+					<td><c:out value="${role.remarks }" default="无"/></td>
 				</tr>
 			</table>
 		</div>

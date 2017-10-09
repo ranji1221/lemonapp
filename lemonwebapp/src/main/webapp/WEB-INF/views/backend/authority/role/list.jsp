@@ -95,13 +95,14 @@
 			}
 		});
 	}
+
 	function initHtml(data){
 		var html = '';
 		if(true){
 			var role = data;
 			$.each(role,function(index,value,role){
 				var Pname = value.rolePName == null ? '无':value.rolePName ;
-				html += '<tr>'+
+				html += '<tr role_id='+value.id+'>'+
 				'<td class="checkboxtd">'+
 					'<label>'+
 						'<input  type="checkbox" name="layout">'+
@@ -117,7 +118,7 @@
 				     Pname +
 				'</td>'+
 				'<td>'+
-					'<span class="icon-eye-open iconact lookRole"></span>'+
+					'<span class="icon-eye-open iconact lookRole"></span> '+
 				'</td>'+
 				'<td>'+
 					'<span class="icon-pencil iconact editRole" n_id="1"></span>'+

@@ -59,7 +59,7 @@ public class RoleController {
 		//session.setAttribute("roleList", JsonUtils.objectToJson(roleList));
 		//session.setAttribute("roleList", roleList);
 		return "backend/authority/role/list";
-		//session.setAttribute("roleList", roleList);
+		//session.setAttribute("roleList", roleList); //页面
 		//return "backend/authority/role/rolelist";
 	}
 	
@@ -103,9 +103,13 @@ public class RoleController {
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")
-	@RequestMapping(value = "/view/{size}")
+	@RequestMapping(value = "/view/{size}/{id}")
 	@SystemControllerLog(description="权限管理-查看角色")
-	public String viewRole(@PathVariable String size) {
+	public String viewRole(@PathVariable String size,@PathVariable int id, HttpSession session) {
+		
+		Role role = roleService.find(id);
+		System.out.println(role.getRolePName());
+		session.setAttribute("role", role);
 		if("modal".equals(size)){
 			return "backend/authority/role/viewmodal";
 		}else if("max".equals(size)){
@@ -116,9 +120,9 @@ public class RoleController {
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")
-	@RequestMapping(value = "/edit/{size}")
+	@RequestMapping(value = "/edit/{size}/{id}")
 	@SystemControllerLog(description="权限管理-修改角色")
-	public String editRole(@PathVariable String size) {
+	public String editRole(@PathVariable String size,@PathVariable int id) {
 		if("modal".equals(size)){
 			return "backend/authority/role/editmodal";
 		}else if("max".equals(size)){
