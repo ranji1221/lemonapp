@@ -135,7 +135,7 @@ $(function() {
 			e.preventDefault()
 			$("#editRoleModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/role/edit/max",
+				url: "backend/authority/role/edit/max/" + $("#roleId").val(),
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()

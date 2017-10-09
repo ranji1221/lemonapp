@@ -19,9 +19,9 @@ $(function() {
 	//  });
 	const maxLimitNum = 10;
 
-	function editRole(this_nid) {
+	function editRole(this_nid,id) {
 		$.ajax({
-			url: editRoleUrl,
+			url: editRoleUrl + "/" + id,
 			async: true,
 			success: function(data) {
 				$("#editRoleModal").html(data);
@@ -112,8 +112,8 @@ $(function() {
 	}
 	$(document).on("click", ".editRole", function(e) {
 		e.preventDefault();
-		
-		editRole($(this));
+		var id = $(this).closest("tr").attr("role_id")
+		editRole($(this),id);
 
 	});
 	$("#editRoleModal").on("shown.bs.modal", function() {

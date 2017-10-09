@@ -108,7 +108,6 @@ public class RoleController {
 	public String viewRole(@PathVariable String size,@PathVariable int id, HttpSession session) {
 		
 		Role role = roleService.find(id);
-		System.out.println(role.getRolePName());
 		session.setAttribute("role", role);
 		if("modal".equals(size)){
 			return "backend/authority/role/viewmodal";
@@ -122,7 +121,11 @@ public class RoleController {
 	//@SystemControllerPermission("role:bulkadd")
 	@RequestMapping(value = "/edit/{size}/{id}")
 	@SystemControllerLog(description="权限管理-修改角色")
-	public String editRole(@PathVariable String size,@PathVariable int id) {
+	public String editRole(@PathVariable String size,@PathVariable int id, HttpSession session) {
+		List<Role> roleList = roleService.findAll();
+		session.setAttribute("roleList", roleList);
+		Role role = roleService.find(id);
+		session.setAttribute("role", role);
 		if("modal".equals(size)){
 			return "backend/authority/role/editmodal";
 		}else if("max".equals(size)){
@@ -130,6 +133,20 @@ public class RoleController {
 		}
 		return null;
 		
+	}
+	@ResponseBody
+	@RequestMapping(value = "/edit")
+	@SystemControllerLog(description="权限管理-修改角色")
+	public String edit(Role role, HttpSession session) {
+		try {
+			roleService.update(role);
+			System.out.println(role.getId());
+			return "{ \"success\" : true }";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "{ \"success\" : false }";
+		}
 	}
 	
 	//@SystemControllerPermission("role:bulkadd")

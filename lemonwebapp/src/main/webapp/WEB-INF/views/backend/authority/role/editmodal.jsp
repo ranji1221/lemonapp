@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal-dialog modal-lg" role="document">
 	<div class="modal-content" u_id="2">
 		<div class="modal-header">
@@ -25,7 +25,7 @@
 			</h4>
 		</div>
 		<div class="modal-body">
-			<form class="form-horizontal flatUi">
+			<form class="form-horizontal flatUi" id="editRole" action="${pageContext.request.contextPath}/backend/authority/role/edit" method="post">
 				<div class="form-group has-feedback">
 					<div class="col-xs-12 roleNameError text-right row-xs-h">
 						<!--不要输入特殊符号-->
@@ -34,7 +34,8 @@
 						<label for="roleName" class=" control-label"><span class="dot">·</span>角色名称：</label>
 					</div>
 					<div class="col-xs-9 col-sm-10 row-lg-h roleNameBox">
-						<input name="name" type="text" class="form-control bg-grey" value="" id="roleName" placeholder="请输入角色名称">
+						<input type="hidden" value="${role.id}" name="id" id="roleId">
+						<input type="text" class="form-control bg-grey" value="${role.roleName}" name="roleName" id="roleName" placeholder="请输入角色名称">
 						<span class="wordNum">15</span>
 						<!--<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>-->
 						<!--<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="false"></span>-->
@@ -59,12 +60,10 @@
 						<div class="col-xs-4 col-md-6 row-lg-h select-l-pd">
 							<select name="fath" data-toggle="select" class=" form-control" id="sourceType">
 								<option value="0" disabled="disabled">选择父级角色</option>
-								<option value="1">角色列表</option>
-								<option value="2">首页</option>
-								<option value="3">角色列表</option>
-								<option value="4">角色列表</option>
-								<option value="4">角色列表</option>
-								<option value="4">角色列表</option>
+								<c:forEach items="${roleList}" var = "roleList">
+									<option value="${roleList.id }" name="roleExtendPId" <c:if test="${roleList.id == role.roleExtendPId}">selected</c:if>>${roleList.roleName}</option>
+								</c:forEach>
+								
 							</select>
 						</div>
 					</div>
@@ -77,12 +76,9 @@
 						<div class="col-xs-4 col-md-6 row-lg-h select-l-pd">
 							<select name="yilai" data-toggle="select" class="form-control" id="parentRole">
 								<option value="0" disabled="disabled">选择依赖角色</option>
-								<option value="1">角色列表</option>
-								<option value="2">首页</option>
-								<option value="3">角色列表</option>
-								<option value="4">角色列表</option>
-								<option value="4">角色列表</option>
-								<option value="4">角色列表</option>
+								<c:forEach items="${roleList}" var = "roleList">
+									<option value="${roleList.id }" name="roleRelyId" <c:if test="${roleList.id == role.roleRelyId}">selected</c:if>>${roleList.roleName}</option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -96,7 +92,7 @@
 					</div>
 					<div class="col-xs-2 row-lg-h numCtr">
 						<a href="" class=" icon-minus text-center"></a>
-						<input readonly name="max_num" class="form-control" id="limitNum" type="text" value="0" />
+						<input readonly class="form-control" id="limitNum" name="roleMaxNum" type="text" value="${role.roleMaxNum}" />
 						<a href="" class="icon-plus text-center"></a>
 					</div>
 				</div>
@@ -106,7 +102,7 @@
                 <span class="dot">·</span>备注：</label>
 					</div>
 					<div class="col-xs-9 col-sm-10 textarea-h">
-						<textarea name="beizhu" class="form-control bg-grey" name="" id="remark" cols="30" rows="5" placeholder="请输入备注"></textarea>
+						<textarea name="remarks" class="form-control bg-grey" id="remark" cols="30" rows="5" placeholder="请输入备注">${role.remarks}</textarea>
 					</div>
 
 				</div>
@@ -127,4 +123,5 @@
 
 <script>
 	$('[data-toggle="select"]').select2();
+	
 </script>
