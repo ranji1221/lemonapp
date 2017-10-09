@@ -29,8 +29,11 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = -7866077717886165234L;
 	private int id;
-	private String userName;
-	private String userPass;
+	private String userName;  //用户名
+	private String userPass;  //密码
+	private String phone;  //电话
+	private String email;  //邮箱
+	private String createTime;  //创建时间
 
 	public int getId() {
 		return id;
@@ -54,6 +57,30 @@ public class User implements Serializable {
 
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 	
 }

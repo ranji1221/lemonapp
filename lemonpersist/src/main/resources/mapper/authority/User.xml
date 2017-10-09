@@ -3,7 +3,7 @@
 <mapper namespace="org.ranji.lemon.model.authority.User">
 
 	<insert id="save" parameterType="User" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_auth_user (userName, userPass) values (#{userName}, #{userPass})
+		insert into lemon_auth_user (userName, userPass,phone,email,createTime) values (#{userName}, #{userPass},#{phone},#{email},now())
 	</insert>
 	
 	<!-- 存储某个用户和角色的对应关系 -->
@@ -66,6 +66,8 @@
 		<set>
 			<if test="userName != null and userName != ''">userName = #{userName},</if>
 			<if test="userPass != null and userPass != ''">userPass = #{userPass},</if>
+			<if test="phone != null and phone != ''">phone = #{phone},</if>
+			<if test="email != null and email != ''">email = #{email},</if>
 		</set>
 		where id = #{id}
 	</update>
@@ -91,11 +93,26 @@
 			<if test=" userNameLike != null and userNameLike != '' ">
 				and userName like concat(concat('%', #{userNameLike, jdbcType=VARCHAR}),'%')
 			</if>
+			
 			<if test=" userPass != null and userPass != '' ">
 				and userPass = #{userPass}
 			</if>
 			<if test=" userPassLike != null and userPassLike != '' ">
 				and userPass like concat(concat('%', #{userPassLike, jdbcType=VARCHAR}),'%')
+			</if>
+			
+			<if test=" phone != null and phone != '' ">
+				and phone = #{phone}
+			</if>
+			<if test=" phoneLike != null and phoneLike != '' ">
+				and phone like concat(concat('%', #{phoneLike, jdbcType=VARCHAR}),'%')
+			</if>
+			
+			<if test=" email != null and email != '' ">
+				and email = #{email}
+			</if>
+			<if test=" emailLike != null and emailLike != '' ">
+				and email like concat(concat('%', #{emailLike, jdbcType=VARCHAR}),'%')
 			</if>
 		</where>
 	</sql>

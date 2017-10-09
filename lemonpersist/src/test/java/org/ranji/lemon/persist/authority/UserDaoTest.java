@@ -52,13 +52,12 @@ public class UserDaoTest {
 	//存储用户测试方法
 	@Test
 	public void testAddUser(){
-		for(int i = 1; i < 10; i++){
 			User u = new User();
-			u.setUserName("zhangsan" + i);
+			u.setUserName("zhangsa");
 			u.setUserPass("123456");
-			
+			u.setPhone("13534211234");
+			u.setEmail("15423344@qq.com");
 			userDao.save(u);
-		}
 		
 	}
 	

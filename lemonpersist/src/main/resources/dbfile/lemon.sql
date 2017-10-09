@@ -990,6 +990,7 @@ CREATE TABLE `lemon_auth_user` (
   `userPass` varchar(255) DEFAULT NULL,
   `phone`    varchar(255) DEFAULT NULL,
   `email`    varchar(255) DEFAULT NULL,
+  `createTime` timestamp  ,
   PRIMARY KEY (`id`),
   UNIQUE KEY (`userName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
