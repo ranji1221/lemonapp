@@ -31,9 +31,10 @@ public class Resource implements Serializable{
 	
 	private int id;
 	private String resourceName; // 资源名称
-	private int resourceType;  // 资源类型
+	private int resourceType;  // 资源类型 [1 菜单][2 文件]
 	private String resourceURL; // 资源URL
 	private int resourcePId; // 资源父ID
+	private String resourcePName; //资源父名称
 	
 	
 	public int getId() {
@@ -74,6 +75,14 @@ public class Resource implements Serializable{
 	
 	public void setResourcePId(int resourcePId) {
 		this.resourcePId = resourcePId;
+	}
+
+	public String getResourcePName() {
+		return resourcePName;
+	}
+
+	public void setResourcePName(String resourcePName) {
+		this.resourcePName = resourcePName;
 	}
 	
 

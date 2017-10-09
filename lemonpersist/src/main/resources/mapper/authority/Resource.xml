@@ -57,7 +57,7 @@
 	
 	<!-- 查找资源分页查询 -->
 	<select id="findPaginated" parameterType="Map" resultType="Resource">
-		select * from lemon_auth_resource 
+		SELECT r1.*,rp.resourceName as resourcePName FROM lemon_auth_resource r1 LEFT JOIN lemon_auth_resource rp ON r1.resourcePID = rp.id  
 		<include refid="paramsSQL" />
 		limit #{offset}, #{limit}
 	</select>

@@ -1,12 +1,25 @@
 package org.ranji.lemon.controller.backend.authority;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringUtils;
 import org.ranji.lemon.annotation.SystemControllerLog;
 import org.ranji.lemon.annotation.SystemControllerPermission;
+import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.model.authority.Resource;
+import org.ranji.lemon.pagination.PagerModel;
 import org.ranji.lemon.service.authority.prototype.IResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -73,5 +86,30 @@ public class ResourceController {
 			return "backend/authority/resources/edit";
 		}
 		return null;
+	}	
+	
+	//@SystemControllerPermission("resource:list")
+	@SystemControllerLog(description="权限管理-资源列表")
+	@RequestMapping(value = "/data")
+	@ResponseBody
+	public String data(String params,HttpSession session) {
+		try {
+			ObjectMapper om = new ObjectMapper();
+			Map<String, Object> map = new HashMap<String, Object>();
+			// 当前只查询管理员
+			if (!StringUtils.isEmpty(params)) {
+				// 参数处理
+				map = om.readValue(params, new TypeReference<Map<String, Object>>() {});
+			}
+			PagerModel<Resource	> pg = resourceService.findPaginated(map);
+			// 序列化查询结果为JSON
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("total", pg.getTotal());
+			result.put("rows", pg.getData());
+			return om.writeValueAsString(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{ \"total\" : 0, \"rows\" : [] }";
+		}
 	}
 }
