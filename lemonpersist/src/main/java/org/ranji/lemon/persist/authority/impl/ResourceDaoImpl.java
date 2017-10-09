@@ -1,13 +1,9 @@
 package org.ranji.lemon.persist.authority.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.ranji.lemon.model.authority.Resource;
-import org.ranji.lemon.model.authority.User;
 import org.ranji.lemon.persist.authority.prototype.IResourceDao;
-import org.ranji.lemon.persist.authority.prototype.IUserDao;
 import org.ranji.lemon.persist.common.impl.GenericDaoImpl;
 import org.springframework.stereotype.Repository;
 /**

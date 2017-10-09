@@ -9,6 +9,10 @@
 		<typeAlias type="org.ranji.lemon.model.authority.Operation" alias="Operation" />
 		<typeAlias type="org.ranji.lemon.model.log.SystemLog" alias="SystemLog" />
 		<!-- system end -->
+		
+		<!-- oauth2 begin -->
+		<typeAlias type="org.ranji.lemon.model.oauth2.Client" alias="Client"/>
+		<!-- oauth2 end -->
 	</typeAliases>
 	<mappers>
 		<!-- system begin -->
@@ -18,5 +22,9 @@
 		<mapper resource="mapper/authority/Operation.xml" />
 		<mapper resource="mapper/log/SystemLog.xml" />
 		<!-- system end -->
+		
+		<!-- oauth2 beign -->
+		<mapper resource="mapper/oauth2/Client.xml"/>
+		<!-- oauth2 end -->
 	</mappers>
 </configuration>
