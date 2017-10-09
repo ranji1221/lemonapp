@@ -3,53 +3,55 @@
 <mapper namespace="org.ranji.lemon.model.oauth2.Client">
 
 	<insert id="save" parameterType="Client" keyProperty="id" useGeneratedKeys="true">
-		insert into lemon_oauth2_client (logType, logTitle,remoteAddr,requestUri,method,params,exception,authStatus,operateDate,timeout,userName) 
-		values (#{logType}, #{logTitle},#{remoteAddr},#{requestUri},#{method},#{params},#{exception},#{authStatus},#{operateDate},#{timeout},#{userName})
+		insert into lemon_oauth2_client (clientName, clientId,clientSecret) 
+		values (#{clientName}, #{clientId},#{clientSecret})
 	</insert>
 	
 	<!-- 删除某条日志 -->
 	<delete id="delete" parameterType="int" >
-		delete from lemon_log_systemLog where id = #{id}
+		delete from lemon_oauth2_client where id = #{id}
 	</delete>
 	
-	<!-- 查询某条日志 -->
-	<select id="find" parameterType="int" resultType="User">
-		select * from lemon_log_systemLog where id = #{id}
+	<!-- 查询根据id -->
+	<select id="find" parameterType="int" resultType="Client">
+		select * from lemon_oauth2_client where id = #{id}
+	</select>
+	
+	<!--根据客服端Id查询 -->
+	<select id="findByClientId" parameterType="String" resultType="Client">
+		select * from lemon_oauth2_client where clientId = #{clientId}
+	</select>
+	
+	<!-- 根据客户端安全key查询 -->
+	<select id="findByClientSecret" parameterType="String" resultType="Client">
+		select * from lemon_oauth2_client where clientSecret = #{clientSecret}
 	</select>
 	
 	<!-- 查询全部日志 -->
-	<select id="findAll" resultType="SystemLog" parameterType="Map">
-		select * from lemon_log_systemLog
+	<select id="findAll" resultType="Client" parameterType="Map">
+		select * from lemon_oauth2_client
 		<include refid="paramsSQL"/>
 	</select>
 	
 	<!-- 分页查询用户 -->
-	<select id="findPaginated" resultType="SystemLog" parameterType="Map">
-		select * from lemon_log_systemLog
+	<select id="findPaginated" resultType="Client" parameterType="Map">
+		select * from lemon_oauth2_client
 		<include refid="paramsSQL"/>
 		 limit #{offset}, #{limit}
 	</select>
 	
 	<select id="getTotalOfItems" parameterType="Map" resultType="int">
-		select count(*) from lemon_log_systemLog
+		select count(*) from lemon_oauth2_client
 		<include refid="paramsSQL"/>
 	</select>
 	
 	<!-- 修个某条日志 -->
-	<update id="update" parameterType="SystemLog">
-		update lemon_log_systemLog
+	<update id="update" parameterType="Client">
+		update lemon_oauth2_client
 		<set>
-			<if test="logType != null and logType != ''">logType = #{logType},</if>
-			<if test="logTitle != null and logTitle != ''">logTitle = #{logTitle},</if>
-			<if test="remoteAddr != null and remoteAddr != ''">remoteAddr = #{remoteAddr},</if>
-			<if test="requestUri != null and requestUri != ''">requestUri = #{requestUri},</if>
-			<if test="method != null and method != ''">method = #{method},</if>
-			<if test="params != null and params != ''">params = #{params},</if>
-			<if test="exception != null and exception != ''">exception = #{exception},</if>
-			<if test="authStatus != null and authStatus != ''">authStatus = #{authStatus},</if>
-			<if test="operateDate != null and operateDate != ''">operateDate = #{operateDate},</if>
-			<if test="timeout != null and timeout != ''">timeout = #{timeout},</if>
-			<if test="userName != null and userName != ''">userName = #{userName},</if>
+			<if test="clientName != null and clientName != ''">clientName = #{clientName},</if>
+			<if test="clientId != null and clientId != ''">clientId = #{clientId},</if>
+			<if test="clientSecret != null and clientSecret != ''">clientSecret = #{clientSecret},</if>
 		</set>
 		<!-- where logId = #{logId} -->
 		where id = #{id}
@@ -58,78 +60,25 @@
 	<!-- 通用的设置条件的查询SQL语句 -->
 	<sql id="paramsSQL">
 		<where>
-			<if test=" logType != null and logType != '' ">
-				and logType = #{logType}
+			<if test=" clientName != null and clientName != '' ">
+				and clientName = #{clientName}
 			</if>
-			<if test="logTypeLike != null and logTypeLike != '' ">
-				and logType like concat(concat('%', #{logTypeLike, jdbcType=VARCHAR}),'%')
-			</if>
-			
-			<if test=" logTitle != null and logTitle != '' ">
-				and logTitle = #{logTitle}
-			</if>
-			<if test="logTitleLike != null and logTitleLike != '' ">
-				and logType like concat(concat('%', #{logTitleLike, jdbcType=VARCHAR}),'%')
+			<if test="clientNameLike != null and clientNameLike != '' ">
+				and clientName like concat(concat('%', #{clientNameLike, jdbcType=VARCHAR}),'%')
 			</if>
 			
-			<if test=" remoteAddr != null and remoteAddr != '' ">
-				and remoteAddr = #{remoteAddr}
+			<if test=" clientId != null and clientId != '' ">
+				and clientId = #{clientId}
 			</if>
-			<if test="remoteAddrLike != null and remoteAddrLike != '' ">
-				and remoteAddr like concat(concat('%', #{remoteAddrLike, jdbcType=VARCHAR}),'%')
-			</if>
-			
-			<if test=" requestUri != null and requestUri != '' ">
-				and requestUri = #{requestUri}
-			</if>
-			<if test="requestUriLike != null and requestUriLike != '' ">
-				and requestUri like concat(concat('%', #{requestUriLike, jdbcType=VARCHAR}),'%')
+			<if test="clientIdLike != null and clientIdLike != '' ">
+				and clientId like concat(concat('%', #{clientIdLike, jdbcType=VARCHAR}),'%')
 			</if>
 			
-			<if test=" method != null and method != '' ">
-				and method = #{method}
+			<if test=" clientSecret != null and clientSecret != '' ">
+				and clientSecret = #{clientSecret}
 			</if>
-			<if test="methodLike != null and methodLike != '' ">
-				and method like concat(concat('%', #{methodLike, jdbcType=VARCHAR}),'%')
-			</if>
-			
-			<if test=" params != null and params != '' ">
-				and params = #{params}
-			</if>
-			<if test="paramsLike != null and paramsLike != '' ">
-				and params like concat(concat('%', #{paramsLike, jdbcType=VARCHAR}),'%')
-			</if>
-			
-			<if test=" exception != null and exception != '' ">
-				and exception = #{exception}
-			</if>
-			<if test="exceptionLike != null and exceptionLike != '' ">
-				and exception like concat(concat('%', #{exceptionLike, jdbcType=VARCHAR}),'%')
-			</if>
-			
-			<if test=" authStatus != null and authStatus != '' ">
-				and authStatus = #{authStatus}
-			</if>
-			<if test="authStatusLike != null and authStatusLike != '' ">
-				and authStatus like concat(concat('%', #{authStatusLike, jdbcType=INTEGER}),'%')
-			</if>
-			<if test=" operateDate != null and operateDate != '' ">
-				and operateDate = #{operateDate}
-			</if>
-			<if test="operateDateLike != null and operateDateLike != '' ">
-				and operateDate like concat(concat('%', #{operateDate, jdbcType=DATE}),'%')
-			</if>
-			<if test=" timeout != null and timeout != '' ">
-				and timeout = #{timeout}
-			</if>
-			<if test="timeoutLike != null and timeoutLike != '' ">
-				and timeout like concat(concat('%', #{timeout, jdbcType=VARCHAR}),'%')
-			</if>
-			<if test=" userName != null and userName != '' ">
-				and userName = #{userName}
-			</if>
-			<if test="userNameLike != null and userNameLike != '' ">
-				and userName like concat(concat('%', #{userName, jdbcType=INTEGER}),'%')
+			<if test="clientSecretLike != null and clientSecretLike != '' ">
+				and clientSecret like concat(concat('%', #{clientSecretLike, jdbcType=VARCHAR}),'%')
 			</if>
 		</where>
 	</sql>

@@ -44,7 +44,10 @@
 		var html = '';
 		if(true){
 			$.each(data,function(index,value,data){
-				html += '<tr>'+
+				var phone = value.phone == null ? '无':value.phone ;
+				var email = value.email == null ? '无':value.email ;
+				var createTime = value.createTime == null ? '无':value.createTime.substr(0,10);
+				html += '<tr user_id='+value.id+'>'+
 				'<td class="checkboxtd">'+
 					'<label>'+
 						'<input  type="checkbox" name="layout">'+
@@ -56,14 +59,14 @@
 				'<td title="姓名">'+
 					value.userName +
 				'</td>'+
-				'<td title="角色">'+
-					value.roleName +
+				'<td title='+ phone +'>'+
+					phone +
 				'</td>'+
-				'<td title="联系电话">'+
-					value.tel +
+				'<td title='+ email +'>'+
+					email +
 				'</td>'+
-				'<td title="邮箱">'+
-					value.email +
+				'<td title='+ createTime +'>'+
+					createTime +
 				'</td>'+
 				'<td>'+
 					'<span class="icon-eye-open iconact lookUser"></span>'+
@@ -139,13 +142,6 @@
 						</span>
 					</th>
 					<th>
-						分配角色
-						<span class="sort">
-							<i class="glyphicon glyphicon-triangle-top"></i>
-							<i class="glyphicon glyphicon-triangle-bottom"></i>
-						</span>
-					</th>
-					<th>
 						手机号码
 						<span class="sort">
 							<i class="glyphicon glyphicon-triangle-top"></i>
@@ -153,7 +149,14 @@
 						</span>
 					</th>
 					<th>
-						邮箱号码
+						邮箱
+						<span class="sort">
+							<i class="glyphicon glyphicon-triangle-top"></i>
+							<i class="glyphicon glyphicon-triangle-bottom"></i>
+						</span>
+					</th>
+					<th>
+						创建时间
 						<span class="sort">
 							<i class="glyphicon glyphicon-triangle-top"></i>
 							<i class="glyphicon glyphicon-triangle-bottom"></i>
