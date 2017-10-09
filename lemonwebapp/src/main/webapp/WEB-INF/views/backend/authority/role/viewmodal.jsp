@@ -1,6 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal-dialog modal-lg" role="document">
+	<!-- 传id -->
+	<input type="hidden" value="${role.id}" name="roleId" id="roleId">
 	<div class="modal-content">
 		<div class="modal-header">
 			<div class="pull-right">

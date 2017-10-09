@@ -106,7 +106,7 @@ $(function() {
 			$(".ajax_dom").show()
 			$("#lookRoleModal").modal('hide')
 			$.ajax({
-				url: "backend/authority/role/view/max",
+				url: "backend/authority/role/view/max/" + $("#roleId").val(),
 				dataType: "html"
 			}).done(function(data) {
 				$(".ajax_dom").show()
