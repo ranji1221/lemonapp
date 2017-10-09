@@ -1,11 +1,18 @@
 package org.ranji.lemon.controller.backend.authority;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.ranji.lemon.annotation.SystemControllerLog;
 import org.ranji.lemon.annotation.SystemControllerPermission;
+import org.ranji.lemon.model.authority.Role;
 import org.ranji.lemon.model.authority.User;
+import org.ranji.lemon.pagination.PagerModel;
 import org.ranji.lemon.service.authority.prototype.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
@@ -15,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -165,6 +173,31 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "{}";
+		}
+	}
+	
+	//@SystemControllerPermission("user:list")
+	@SystemControllerLog(description="权限管理-用户列表")
+	@RequestMapping(value = "/data")
+	@ResponseBody
+	public String data(String params,HttpSession session) {
+		try {
+			ObjectMapper om = new ObjectMapper();
+			Map<String, Object> map = new HashMap<String, Object>();
+			// 当前只查询管理员
+			if (!StringUtils.isEmpty(params)) {
+				// 参数处理
+				map = om.readValue(params, new TypeReference<Map<String, Object>>() {});
+			}
+			PagerModel<User	> pg = userService.findPaginated(map);
+			// 序列化查询结果为JSON
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("total", pg.getTotal());
+			result.put("rows", pg.getData());
+			return om.writeValueAsString(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{ \"total\" : 0, \"rows\" : [] }";
 		}
 	}
 
