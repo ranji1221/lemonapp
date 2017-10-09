@@ -1038,3 +1038,19 @@ CREATE TABLE `lemon_log_systemlog` (
 -- ----------------------------
 -- Records of lemon_log_systemlog
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `lemon_oauth2_client`
+-- ----------------------------
+DROP TABLE IF EXISTS `lemon_oauth2_client`;
+CREATE TABLE `lemon_oauth2_client` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `clientName` varchar(255) DEFAULT NULL COMMENT '客户端名称',
+  `clientId` varchar(255) DEFAULT NULL COMMENT '客户端ID',
+  `clientSecret` varchar(255) DEFAULT NULL COMMENT '客户端安全key',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of lemon_oauth2_client
+-- ----------------------------

@@ -7,7 +7,7 @@
 		values (#{clientName}, #{clientId},#{clientSecret})
 	</insert>
 	
-	<!-- 删除某条日志 -->
+	<!-- 删除某条记录 -->
 	<delete id="delete" parameterType="int" >
 		delete from lemon_oauth2_client where id = #{id}
 	</delete>
@@ -27,13 +27,13 @@
 		select * from lemon_oauth2_client where clientSecret = #{clientSecret}
 	</select>
 	
-	<!-- 查询全部日志 -->
+	<!-- 查询全部client -->
 	<select id="findAll" resultType="Client" parameterType="Map">
 		select * from lemon_oauth2_client
 		<include refid="paramsSQL"/>
 	</select>
 	
-	<!-- 分页查询用户 -->
+	<!-- 分页查询client -->
 	<select id="findPaginated" resultType="Client" parameterType="Map">
 		select * from lemon_oauth2_client
 		<include refid="paramsSQL"/>
@@ -45,7 +45,7 @@
 		<include refid="paramsSQL"/>
 	</select>
 	
-	<!-- 修个某条日志 -->
+	<!-- 修个某条client -->
 	<update id="update" parameterType="Client">
 		update lemon_oauth2_client
 		<set>
