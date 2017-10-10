@@ -122,10 +122,12 @@ public class RoleController {
 	@RequestMapping(value = "/edit/{size}/{id}")
 	@SystemControllerLog(description="权限管理-修改角色")
 	public String editRole(@PathVariable String size,@PathVariable int id, HttpSession session) {
+		if(session.getAttribute("role")==null){
+			Role role = roleService.find(id);
+			session.setAttribute("role", role);
+		}
 		List<Role> roleList = roleService.findAll();
 		session.setAttribute("roleList", roleList);
-		Role role = roleService.find(id);
-		session.setAttribute("role", role);
 		if("modal".equals(size)){
 			return "backend/authority/role/editmodal";
 		}else if("max".equals(size)){
