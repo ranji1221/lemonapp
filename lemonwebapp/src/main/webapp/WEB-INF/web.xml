@@ -77,7 +77,17 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- 跳转删除页面 -->
+	<servlet>
+		<servlet-name>remove</servlet-name>
+		<jsp-file>/WEB-INF/views/backend/common/remove/remove.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>remove</servlet-name>
+		<url-pattern>/remove</url-pattern>
+	</servlet-mapping>
+	
 	<!-- 欢迎首页 -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

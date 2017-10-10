@@ -10,7 +10,7 @@ $(function() {
 	var lookRoleUrl = "backend/authority/role/view/modal";
 	var lookUserUrl = "backend/authority/user/view/modal";
 	var lookSourceUrl = "backend/authority/resource/view/modal";
-	var removeUrl = "pages/remove/remove.html";
+	//var removeUrl = "backend/common/remove/remove";
 	//  $("#editUserModal").on('hide.bs.modal',function () {
 	//     $(this).removeData('bs.modal');
 	//  });
@@ -294,7 +294,7 @@ $(function() {
 		
 		lookSourceModal();
 	});
-	$(document).on("click", ".removeBtn", function(e) {
+	/*$(document).on("click", ".removeBtn", function(e) {
 		e.preventDefault();
 		var str = $(this).closest(".roleslist").length ?
 			"角色" : $(this).closest(".sourcelist").length ?
@@ -317,7 +317,7 @@ $(function() {
 			}
 		});
 
-	});
+	});*/
 	// 用户授权模态框的调用
 	$(document).on('click', '.user-aut', function() {
 		// console.log('启动授权模态框用户');

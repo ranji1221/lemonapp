@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-xs-4">
         <div class="trashImg text-right">
-            <img src="assets/images/modal/trash.png" alt="">
+            <img src="${pageContext.request.contextPath}/img/modal/trash.png" alt="">
 
         </div>
     </div>
