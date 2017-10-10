@@ -85,7 +85,31 @@
 		}
 		$('#dataList').html(html);
 	}
+	$(document).on("click", ".removeBtn", function(e) {
+		
+		e.preventDefault();
+		var str = $(this).closest(".roleslist").length ?
+			"角色" : $(this).closest(".sourcelist").length ?
+			"资源" : $(this).closest(".userlist").length ?
+			"用户" : $(this).closest(".recoverlist").length ? "数据库备份" : "";
+		var strFoot = $(this).closest(".tfoot").length ? "这些" : "此";
+		$('#removeModal .modal').modal('show');
+		$.ajax({
+			dataType: "html",
+			url: '${pageContext.request.contextPath}/remove',
+			async: true,
+			success: function(data) {
+				$("#removeModal .modal-body").html(data);
+				if($("#removeModal .modal-body .removeName")) {
+					$("#removeModal .modal-body .removeName").html(strFoot + str);
+				}
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
 
+	});
 </script>
 
 <div class="rolelist userlist">
