@@ -6,11 +6,12 @@
 <script src="${pageContext.request.contextPath}/js/common/common.js"></script>
 <script src="${pageContext.request.contextPath}/js/common/LemonForm.js"></script>
 <script >
+alert('${pageContext.request.contextPath}/backend/authority/resource/data');
 $("#rolesList").LemonCreateTable({
     requestListUrl : '${pageContext.request.contextPath}/backend/authority/role/data',
-   	trForm : function(index,value){
+   	trForm : function(index,value,data,extend){
 		var Pname = value.rolePName == null ? '无':value.rolePName ;
-		var tr_data = '<tr role_id='+value.id+'>'+
+		var tr_data = '<tr role_id="'+value.id+'" '+extend+'>'+
 			'<td class="checkboxtd">'+
 				'<label>'+
 					'<input  type="checkbox" name="layout">'+
@@ -19,8 +20,8 @@ $("#rolesList").LemonCreateTable({
 			'<td>'+
 				(index+1) +
 			'</td>'+
-			'<td title="首页">'+
-				value.roleName +//${role.roleName}
+			'<td title="首页" class="asdf">'+
+				value.roleName +'[点我]'+//${role.roleName}
 			'</td>'+
 			'<td title="首页">'+
 			     Pname +
@@ -32,7 +33,7 @@ $("#rolesList").LemonCreateTable({
 				'<span class="icon-pencil iconact editRole" n_id="1"></span>'+
 			'</td>'+
 			'<td>'+
-				'<span class="icon-trash iconact removeBtn"></span>'+
+				'<span class="icon-trash iconact removeBtn" ></span>'+
 			'</td>'+
 			'<td>'+
 				'<span class="icon-key iconact"></span>'+
@@ -41,7 +42,12 @@ $("#rolesList").LemonCreateTable({
        	return tr_data; 
    		}
 	})
-	
+	//获取到本地的某条数据 示例代码
+	$(document).on("click", ".asdf", function(e) {
+		var storage_name = $(this).closest('tr').attr('storage_name');
+		var storage_id = $(this).closest('tr').attr('storage_id');
+		console.log(getDataByStorage(storage_name,storage_id));
+	})
 </script>
 
 <script >

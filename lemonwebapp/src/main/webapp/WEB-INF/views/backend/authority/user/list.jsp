@@ -9,11 +9,11 @@
 <script >
 $("#dataList").LemonCreateTable({
     requestListUrl : '${pageContext.request.contextPath}/backend/authority/user/data',
-   	trForm : function(index,value){
+   	trForm : function(index,value,data,extend){
 		var phone = value.phone == null ? '无':value.phone ;
 		var email = value.email == null ? '无':value.email ;
 		var createTime = value.createTime == null ? '无':value.createTime.substr(0,10);
-		tr_data = '<tr user_id='+value.id+'>'+
+		tr_data = '<tr user_id='+value.id+extend+'>'+
 			'<td class="checkboxtd">'+
 				'<label>'+
 					'<input  type="checkbox" name="layout">'+

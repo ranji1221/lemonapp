@@ -8,7 +8,7 @@
 <script >
 $("#dataList").LemonCreateTable({
     requestListUrl : '${pageContext.request.contextPath}/backend/authority/resource/data',
-   	trForm : function(index,value){
+   	trForm : function(index,value,data,extend){
 	   		var thisType = '';
 	   		switch(value.resourceType){
 	   			case 1:
@@ -22,7 +22,7 @@ $("#dataList").LemonCreateTable({
 	   				break;
 	   		}
 	   		if(!value.resourcePName) value.resourcePName = '无';
-	   		var tr_data = '<tr>'+
+	   		var tr_data = '<tr'+extend+'>'+
 	   			'<td class="checkboxtd">'+
 	   				'<label>'+
 	   					'<input  type="checkbox" name="layout">'+
