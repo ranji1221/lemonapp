@@ -54,4 +54,5 @@ $(function(){
 		$('#user-authorization .modal-content').load('backend/authority/user/auth/modal')
 		$('#user-authorization').modal('show');
 	})
+	
 })

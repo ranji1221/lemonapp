@@ -8,7 +8,6 @@
 $("#rolesList").LemonCreateTable({
     requestListUrl : '${pageContext.request.contextPath}/backend/authority/role/data',
    	trForm : function(index,value){
-   		console.log(value)
 		var Pname = value.rolePName == null ? '无':value.rolePName ;
 		var tr_data = '<tr role_id='+value.id+'>'+
 			'<td class="checkboxtd">'+
