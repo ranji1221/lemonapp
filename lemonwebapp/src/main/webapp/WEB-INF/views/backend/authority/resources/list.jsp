@@ -3,6 +3,7 @@
 <script src="${pageContext.request.contextPath}/js/twbs-pagination-1.4.1/jquery.twbsPagination.js"></script>
 
 <script src="${pageContext.request.contextPath}/js/user/list.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/common.js"></script>
 <script src="${pageContext.request.contextPath}/js/common/LemonForm.js"></script>
 <script >
 $("#dataList").LemonCreateTable({

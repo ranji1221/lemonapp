@@ -11,14 +11,21 @@ $(
 			}
 		};
 		var TableObj = $.extend(defaults,params);
+		
 		//去 后台 请求数据
 		var getData = function(url,pages,page_first){
-			$.post(url,{
-				page: pages,
-				rows: TableObj.pageSize
-			}, function(data){  //get 请求数据 需要获取当前 总数 和 本次分页数据
-				dealData(data,pages,page_first);
-			},"json");
+ 			var data = getStorage(TableObj.requestListUrl+"_"+pages);
+			if(data){
+	 			dealData(data,pages,page_first);
+			}else{
+				$.post(url,{
+					page: pages,
+					rows: TableObj.pageSize
+				}, function(data){  //get 请求数据 需要获取当前 总数 和 本次分页数据
+					setStorage(TableObj.requestListUrl+"_"+pages,data);
+					dealData(data,pages,page_first);
+				},"json");
+			}
 		};
 		getData(TableObj.requestListUrl,1,true)
 		
