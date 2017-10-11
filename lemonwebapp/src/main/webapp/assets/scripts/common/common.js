@@ -25,3 +25,12 @@
 			return null;
 		}
 	}
+	
+	function removeStorage(key,storageType) {
+		var storage = storageType || sessionStorage;
+		if(key) {
+			storage.removeItem(key);
+		}else {
+			storage.clear();
+		}
+	}
