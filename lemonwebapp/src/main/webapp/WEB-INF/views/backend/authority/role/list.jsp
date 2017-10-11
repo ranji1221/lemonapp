@@ -3,97 +3,51 @@
 <script src="${pageContext.request.contextPath}/js/role/list.js"></script>
 <script src="${pageContext.request.contextPath}/js/twbs-pagination-1.4.1/jquery.twbsPagination.js"></script>
 <script >
-	//alert(122);
-	/* initHtml();
-	function initHtml(data){
-		var html = '';
-		if(true){
-			var role = ${roleList};
-			$.each(role,function(index,value,role){
-				html += '<tr>'+
-				'<td class="checkboxtd">'+
-					'<label>'+
-						'<input  type="checkbox" name="layout">'+
-					'</label>'+
-				'</td>'+
-				'<td>'+
-					(index+1) +
-				'</td>'+
-				'<td title="首页">'+
-					value.roleName +//${role.roleName}
-				'</td>'+
-				'<td title="首页">'+
-					"123"  +
-				'</td>'+
-				'<td>'+
-					'<span class="icon-eye-open iconact lookRole"></span>'+
-				'</td>'+
-				'<td>'+
-					'<span class="icon-pencil iconact editRole" n_id="1"></span>'+
-				'</td>'+
-				'<td>'+
-					'<span class="icon-trash iconact removeBtn"></span>'+
-				'</td>'+
-				'<td>'+
-					'<span class="icon-key iconact"></span>'+
-				'</td>'+
-			'</tr>';
-				
-			})		
-		}
-		$('#rolesList').html(html);
-	}
- */
-  
-	/*  $("#btn").click(function(){
-		 $.post('${pageContext.request.contextPath}/backend/authority/role/data',{
-				page :'2',
-				rows : '12',
-				// 注意传参的方式
-				//params : JSON.stringify(params)
-			},function(data){
-			 console.info(data);
-		 },'json')
-	 }) */
-		 
-</script>
-
-<script >
      var pageSize =15;
 	//初始化页面执行
 	$(function(){
 		getData(1,true);
 	})
 	//去 后台 请求数据
+	//去 后台 请求数据
 	function getData(pages,page_first){
 		$.post('${pageContext.request.contextPath}/backend/authority/role/data',{
 			page: pages,
 			rows: pageSize
 		}, function(data){  //get 请求数据 需要获取当前 总数 和 本次分页数据
-			initHtml(data.rows);
-			if(page_first){ 
-				createPage(pages,data.total,pageSize);
+			if(data.total > 0){
+				initHtml(data.rows);
+				if(page_first){ 
+					//如果页面是第一次加载,进入本流程
+					createPage(pages,data.total,pageSize);
+				}
+				$('.tablewrap input').iCheck({
+				    checkboxClass: 'icheckbox_flat-blue',
+				    radioClass: 'iradio_flat-blue',
+				    labelHover : true, 
+				  	cursor : false,
+				 });
+			}else{
+				$('#dataList').html("<tr><td style='width:100%' colspan='9'><span class='center text-center' style='display:inline-block;width:100%;'>没有查找到数据!</span></td></tr>");
 			}
-			$('.tablewrap input').iCheck({
-			    checkboxClass: 'icheckbox_flat-blue',
-			    radioClass: 'iradio_flat-blue',
-			    labelHover : true, 
-			  	cursor : false,
-			 });
+		
+			
 		},"json");
 	}
 	// 需要 当前分页 和 总数
 	function createPage(now_page,all_num,pageSize){
 		// 计算总页数
 		var pageNum = all_num % pageSize == 0 ? (all_num / pageSize):(all_num / pageSize) +1 ;
-		//生成分页
-		$('.pagination').twbsPagination({
-			totalPages : pageNum,
-			visiblePages : 5,
-			onPageClick : function (event, page) {
-				getData(page,false);
-			}
-		});
+		if(pageNum >= 2){
+			//生成分页
+			$('.pagination').twbsPagination({
+				totalPages : pageNum,
+				visiblePages : 5,
+				onPageClick : function (event, page) {
+					getData(page,false);
+				}
+			});
+		}
 	}
 
 	function initHtml(data){
